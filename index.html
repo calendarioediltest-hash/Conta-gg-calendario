@@ -393,123 +393,82 @@ function formatoGoogle(data){
 
 
 
-
 function creaCalendario(){
-
 
     let valoreData = document.getElementById("data").value;
 
-
-
     if(!valoreData){
-
         alert("Inserisci una data");
         return;
-
     }
-
-
 
     let data = new Date(valoreData);
 
     let campione = document.getElementById("campione").value;
 
-
-
     let giorni = getGiorniSelezionati();
 
 
-
     if(giorni.length === 0){
-
         alert("Seleziona almeno una prova");
         return;
-
     }
 
 
-
-    giorni.forEach((g, indice)=>{
-
-
-        setTimeout(()=>{
-
-
-            let dataEvento = aggiungiGiorni(data,g);
+    let calendario =
+`BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Rotture Cubetti//IT
+`;
 
 
+    giorni.forEach((g)=>{
 
-            let titolo =
-            "🧱 Rottura cubetti";
-
-
-            if(campione){
-
-                titolo += " - " + campione;
-
-            }
+        let evento = aggiungiGiorni(data,g);
 
 
-            titolo += " - " + g + " giorni";
+        let dataICS =
+        evento.getFullYear()
+        + String(evento.getMonth()+1).padStart(2,"0")
+        + String(evento.getDate()).padStart(2,"0");
 
 
+        let titolo = "Rottura cubetti - " + g + " giorni";
 
-            let url =
-            "https://calendar.google.com/calendar/render?action=TEMPLATE"
-            + "&text=" + encodeURIComponent(titolo)
-            + "&dates=" + formatoGoogle(dataEvento);
-
-
-
-            window.open(url,"_blank");
+        if(campione){
+            titolo += " - " + campione;
+        }
 
 
-
-        }, indice * 1200);
-
-
+        calendario +=
+`BEGIN:VEVENT
+SUMMARY:${titolo}
+DTSTART:${dataICS}
+DTEND:${dataICS}
+END:VEVENT
+`;
 
     });
 
 
+    calendario += "END:VCALENDAR";
+
+
+    let file = new Blob(
+        [calendario],
+        {type:"text/calendar"}
+    );
+
+
+    let link = document.createElement("a");
+
+    link.href = URL.createObjectURL(file);
+
+    link.download = "rotture_cubetti.ics";
+
+    link.click();
 
 }
-
-
-
-
-
-function condividi(){
-
-
-
-    if(!testoCondivisione){
-
-        alert("Prima fai il calcolo");
-        return;
-
-    }
-
-
-
-    if(navigator.share){
-
-
-        navigator.share({
-
-            title:"Rotture a compressione cubetti",
-
-            text:testoCondivisione
-
-        });
-
-
-    }else{
-
-
-        navigator.clipboard.writeText(testoCondivisione);
-
-        alert("Testo copiato negli appunti");
 
 
     }
