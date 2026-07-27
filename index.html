@@ -8,15 +8,17 @@
 
 <title>Gestione Prove Calcestruzzo</title>
 
+
 <style>
 
 body{
 font-family:Arial,sans-serif;
-background:#555;
-margin:0;
+background:#5b5b5b;
 padding:20px;
+margin:0;
 color:white;
 }
+
 
 .container{
 max-width:520px;
@@ -27,14 +29,12 @@ border-radius:15px;
 box-shadow:0 0 15px #222;
 }
 
+
 h1{
 text-align:center;
 color:#f59e0b;
 }
 
-label{
-font-weight:bold;
-}
 
 input{
 width:100%;
@@ -46,23 +46,26 @@ box-sizing:border-box;
 font-size:16px;
 }
 
+
 .prova{
 background:#3f3f3f;
 padding:10px;
-margin:8px 0;
 border-radius:8px;
+margin:8px 0;
 }
+
 
 button{
 width:100%;
-padding:14px;
+padding:13px;
 margin-top:15px;
-background:#d97706;
-color:white;
 border:0;
 border-radius:10px;
-font-size:17px;
+background:#d97706;
+color:white;
+font-size:16px;
 }
+
 
 .risultato{
 margin-top:20px;
@@ -70,6 +73,7 @@ background:#111;
 padding:15px;
 border-radius:10px;
 }
+
 
 .link{
 display:block;
@@ -82,7 +86,19 @@ text-align:center;
 text-decoration:none;
 }
 
+
+.fatto{
+background:#16a34a !important;
+}
+
+
+.reset{
+background:#dc2626;
+}
+
+
 </style>
+
 
 </head>
 
@@ -98,7 +114,7 @@ text-decoration:none;
 
 <label>Nome impianto</label>
 
-<input id="impianto" placeholder="Inserire nome impianto">
+<input id="impianto" placeholder="Nome impianto">
 
 
 <label>Data prelievo</label>
@@ -106,7 +122,8 @@ text-decoration:none;
 <input type="date" id="data">
 
 
-<h3>Rotture cubetti</h3>
+
+<h3>Seleziona rotture</h3>
 
 
 <div class="prova">
@@ -151,8 +168,13 @@ text-decoration:none;
 </div>
 
 
-<button onclick="generaEventi()">
+<button onclick="genera()">
 Genera calendario
+</button>
+
+
+<button class="reset" onclick="resetStato()">
+Reset stato importazioni
 </button>
 
 
@@ -163,11 +185,13 @@ Nessun evento creato
 <script>
 
 
+// data di oggi automatica
+
 document.getElementById("data").valueAsDate = new Date();
 
 
 
-// aggiunge giorni alla data
+// aggiunge giorni
 
 function aggiungiGiorni(data, giorni){
 
@@ -191,7 +215,7 @@ function formatoData(data){
 
 
 
-// prove selezionate
+// legge prove selezionate
 
 function getProve(){
 
@@ -281,278 +305,417 @@ function creaLinkGoogle(titolo, inizio, fine, descrizione){
 
 
 
+// controlla se già importato
 
-function generaEventi(){
+function eventoImportato(id){
 
+    return localStorage.getItem(id)==="si";
 
+}
 
-    let valore = document.getElementById("data").value;
 
 
 
-    if(!valore){
+// segna come importato
 
-        alert("Inserire la data del prelievo");
+function segnaImportato(id, bottone){
 
-        return;
+    localStorage.setItem(id,"si");
 
-    }
+    bottone.innerHTML="✓ Inserito nel calendario";
 
+    bottone.classList.add("fatto");
 
+}
 
-    let impianto = document.getElementById("impianto").value;
 
 
 
-    if(!impianto){
+// crea pulsante
 
-        alert("Inserire il nome impianto");
+function creaBottone(link,id,testo){
 
-        return;
 
-    }
+    let giaFatto = eventoImportato(id);
 
 
 
-    let dataPrelievo = new Date(valore);
+    let classe = giaFatto ? "link fatto" : "link";
 
 
 
-    let prove = getProve();
+    let scritta = giaFatto ?
 
+    "✓ Inserito nel calendario"
 
+    :
 
-    if(prove.length === 0){
+    testo;
 
-        alert("Selezionare almeno una rottura");
 
-        return;
 
-    }
+    return `
 
+    <a 
 
+    class="${classe}"
 
-    let html = "";
+    target="_blank"
 
+    href="${link}"
 
+    onclick="segnaImportato('${id}',this)">
 
-    let dataTesto = formatoData(dataPrelievo);
+    ${scritta}
 
+    </a>
 
+    `;
 
-    // EVENTO REPORT
+}
 
-    let titoloReport =
 
-    "REPORT calcestruzzo - " + impianto;
+function genera(){
 
 
 
-    let descrizioneReport =
+let impianto =
+document.getElementById("impianto").value;
 
-    "Report calcestruzzo\n\n"
 
-    +
 
-    "Impianto: "
+let valoreData =
+document.getElementById("data").value;
 
-    +
 
-    impianto
 
-    +
+if(!impianto || !valoreData){
 
-    "\nData prelievo: "
+alert("Inserire impianto e data prelievo");
 
-    +
+return;
 
-    dataTesto;
+}
 
 
 
-    let linkReport = creaLinkGoogle(
+let dataPrelievo =
+new Date(valoreData);
 
-        titoloReport,
 
-        formatoGoogle(dataPrelievo,"080000"),
 
-        formatoGoogle(dataPrelievo,"170000"),
+let prove =
+getProve();
 
-        descrizioneReport
 
-    );
 
+if(prove.length===0){
 
+alert("Selezionare almeno una rottura");
 
-    html +=
+return;
 
-    "<b>REPORT calcestruzzo</b><br>"
+}
 
-    +
 
-    dataTesto
 
-    +
+let html="";
 
-    "<a class='link' target='_blank' href='"
 
-    +
 
-    linkReport
+let dataTesto =
+formatoData(dataPrelievo);
 
-    +
 
-    "'>Importa nel Calendario Google</a>";
 
-    
 
-    // EVENTI ROTTURA CUBETTI
+// REPORT
 
+let titoloReport =
 
-    prove.forEach(function(giorni){
+"REPORT calcestruzzo - " + impianto;
 
 
-        let dataRottura = aggiungiGiorni(
-            dataPrelievo,
-            giorni
-        );
 
+let descrizioneReport =
 
+"Report calcestruzzo\n\n"
 
-        let titoloRottura =
++
 
-        "Rottura cubetti "
+"Impianto: "
 
-        +
++
 
-        giorni
+impianto
 
-        +
++
 
-        " giorni - Prelievo "
+"\nData prelievo: "
 
-        +
++
 
-        dataTesto
+dataTesto;
 
-        +
 
-        " - "
 
-        +
+let linkReport = creaLinkGoogle(
 
-        impianto;
+titoloReport,
 
+formatoGoogle(dataPrelievo,"080000"),
 
+formatoGoogle(dataPrelievo,"170000"),
 
+descrizioneReport
 
-        let descrizioneRottura =
+);
 
-        "Prova compressione cubetti\n\n"
 
-        +
 
-        "Impianto: "
+let idReport =
 
-        +
+"report_" +
 
-        impianto
+impianto +
 
-        +
+"_" +
 
-        "\nData prelievo: "
+valoreData;
 
-        +
 
-        dataTesto
 
-        +
+html +=
 
-        "\nData rottura: "
+"<b>REPORT CALCESTRUZZO</b><br>"
 
-        +
++
 
-        formatoData(dataRottura)
+dataTesto;
 
-        +
 
-        "\nEtà provino: "
 
-        +
+html += creaBottone(
 
-        giorni
+linkReport,
 
-        +
+idReport,
 
-        " giorni";
+"Importa nel Calendario Google"
 
+);
 
 
 
 
-        let linkRottura = creaLinkGoogle(
 
-            titoloRottura,
 
-            formatoGoogle(dataRottura,"090000"),
+// ROTTURE
 
-            formatoGoogle(dataRottura,"100000"),
 
-            descrizioneRottura
+prove.forEach(function(giorni){
 
-        );
 
 
+let dataRottura =
 
+aggiungiGiorni(
 
+dataPrelievo,
 
-        html +=
+giorni
 
+);
 
 
-        "<br><br><b>Rottura "
 
-        +
+let dataRotturaTesto =
 
-        giorni
+formatoData(dataRottura);
 
-        +
 
-        " giorni</b><br>"
 
-        +
+let titolo =
 
-        formatoData(dataRottura)
+"Rottura cubetti "
 
++
 
+giorni
 
-        +
++
 
-        "<a class='link' target='_blank' href='"
+" giorni - Prelievo "
 
-        +
++
 
-        linkRottura
+dataTesto
 
-        +
++
 
-        "'>Importa nel Calendario Google</a>";
+" - "
 
++
 
+impianto;
 
-    });
 
 
 
 
-    document.getElementById("risultato").innerHTML = html;
+let descrizione =
+
+"Prova compressione cubetti\n\n"
+
++
+
+"Impianto: "
+
++
+
+impianto
+
++
+
+"\nData prelievo: "
+
++
+
+dataTesto
+
++
+
+"\nData rottura: "
+
++
+
+dataRotturaTesto
+
++
+
+"\nEtà provino: "
+
++
+
+giorni
+
++
+
+" giorni";
+
+
+
+
+
+let link = creaLinkGoogle(
+
+titolo,
+
+formatoGoogle(dataRottura,"090000"),
+
+formatoGoogle(dataRottura,"100000"),
+
+descrizione
+
+);
+
+
+
+
+
+let id =
+
+"rottura_"
+
++
+
+impianto
+
++
+
+"_"
+
++
+
+valoreData
+
++
+
+"_"
+
++
+
+giorni;
+
+
+
+
+
+html +=
+
+"<br><br><b>Rottura "
+
++
+
+giorni
+
++
+
+" giorni</b><br>"
+
++
+
+dataRotturaTesto;
+
+
+
+html += creaBottone(
+
+link,
+
+id,
+
+"Importa nel Calendario Google"
+
+);
+
+
+
+});
+
+
+
+
+
+document.getElementById("risultato").innerHTML = html;
 
 
 
 }
 
 
-    
+
+
+function resetStato(){
+
+
+if(confirm("Cancellare lo stato delle importazioni?")){
+
+
+localStorage.clear();
+
+
+alert("Stato azzerato");
+
+
+genera();
+
+
+}
+
+
+}
+
 </script>
 
 
