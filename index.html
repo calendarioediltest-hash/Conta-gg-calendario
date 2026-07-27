@@ -6,80 +6,87 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Rotture Cubetti</title>
+<title>Gestione Prove Calcestruzzo</title>
 
 <style>
 
 body{
     font-family:Arial,sans-serif;
-    background:#0f172a;
-    color:white;
+    background:#4b5563;
+    margin:0;
     padding:20px;
+    color:white;
 }
 
+
 .box{
-    max-width:500px;
+    max-width:520px;
     margin:auto;
-    background:#1e293b;
-    padding:20px;
+    background:#1f2937;
     border-radius:18px;
+    padding:20px;
+    box-shadow:0 5px 20px #000;
 }
+
 
 h1{
     text-align:center;
+    color:#f59e0b;
 }
+
+
+label{
+    font-weight:bold;
+}
+
 
 input{
     width:100%;
     padding:12px;
-    border-radius:10px;
-    border:0;
     margin:8px 0 15px;
+    border-radius:8px;
+    border:0;
+    font-size:16px;
     box-sizing:border-box;
 }
 
 
 .prova{
-    background:#334155;
+    background:#374151;
     padding:10px;
-    border-radius:10px;
     margin:8px 0;
+    border-radius:8px;
 }
 
 
 button{
     width:100%;
-    padding:12px;
-    margin-top:12px;
+    padding:14px;
+    margin-top:15px;
     border:0;
     border-radius:10px;
-    background:#16a34a;
+    background:#f97316;
     color:white;
     font-size:17px;
 }
 
 
-.calendar{
-    background:#2563eb;
-}
-
-
 .risultato{
-    margin-top:20px;
+    background:#111827;
     padding:15px;
-    background:#334155;
+    margin-top:20px;
     border-radius:10px;
 }
 
 
 .link{
     display:block;
-    background:#2563eb;
+    background:#dc2626;
     color:white;
-    padding:12px;
-    margin-top:10px;
-    border-radius:10px;
     text-align:center;
+    padding:12px;
+    border-radius:10px;
+    margin-top:10px;
     text-decoration:none;
 }
 
@@ -95,93 +102,95 @@ button{
 <div class="box">
 
 
-<h1>🧱 Rotture a compressione cubetti</h1>
+<h1>🏗️ Prove Calcestruzzo</h1>
 
 
-<label>Campione / Cantiere</label>
+<label>Nome impianto</label>
 
-<input id="campione" placeholder="es. Cantiere Rossi">
+<input id="impianto" placeholder="es. Impianto Rossi">
 
 
-<label>Data confezionamento</label>
+<label>Data prelievo</label>
 
 <input type="date" id="data">
 
 
-<h3>Seleziona prove</h3>
+<h3>🧱 Rotture cubetti</h3>
 
 
 <div class="prova">
 <input type="checkbox" class="giorno" value="1">
-+1 giorno
+1 giorno
 </div>
 
 
 <div class="prova">
 <input type="checkbox" class="giorno" value="3">
-+3 giorni
+3 giorni
 </div>
 
 
 <div class="prova">
 <input type="checkbox" class="giorno" value="4">
-+4 giorni
+4 giorni
 </div>
 
 
 <div class="prova">
 <input type="checkbox" class="giorno" value="7" checked>
-+7 giorni
+7 giorni
 </div>
 
 
 <div class="prova">
 <input type="checkbox" class="giorno" value="14">
-+14 giorni
+14 giorni
 </div>
 
 
 <div class="prova">
 <input type="checkbox" class="giorno" value="28" checked>
-+28 giorni
+28 giorni
 </div>
 
 
 <div class="prova">
 <input type="checkbox" class="giorno" value="60" checked>
-+60 giorni
+60 giorni
 </div>
 
 
-<button onclick="calcola()">
-🧮 Calcola
+<button onclick="genera()">
+📅 Genera calendario
 </button>
 
 
 <div id="risultato" class="risultato">
-Nessun calcolo
+Nessun evento generato
 </div>
 
 <script>
 
 
-// imposta automaticamente la data di oggi
+// imposta data di oggi
 
 document.getElementById("data").valueAsDate = new Date();
 
 
 
-// aggiunge giorni
 
-function aggiungiGiorni(data, numero){
+// aggiunge giorni alla data di prelievo
+
+function aggiungiGiorni(data, giorni){
 
     let nuova = new Date(data);
 
-    nuova.setDate(nuova.getDate() + numero);
+    nuova.setDate(nuova.getDate() + giorni);
 
     return nuova;
 
 }
+
 
 
 
@@ -195,14 +204,15 @@ function formatoData(data){
 
 
 
-// legge le prove selezionate
+
+// prende prove selezionate
 
 function getProve(){
 
     let lista=[];
 
 
-    document.querySelectorAll(".giorno:checked").forEach((x)=>{
+    document.querySelectorAll(".giorno:checked").forEach(function(x){
 
         lista.push(Number(x.value));
 
@@ -217,9 +227,10 @@ function getProve(){
 
 
 
+
 // crea link Google Calendar
 
-function linkGoogle(dataEvento, giorni){
+function creaLink(titolo, dataEvento, descrizione){
 
 
     let anno =
@@ -244,39 +255,29 @@ function linkGoogle(dataEvento, giorni){
 
 
 
-    let campione =
-    document.getElementById("campione").value;
-
-
-
-    let titolo =
-    "🧱 Rottura cubetti - "
-    + giorni
-    + " giorni";
-
-
-
-    if(campione){
-
-        titolo +=
-        " - "
-        + campione;
-
-    }
-
-
-
     let url =
 
     "https://calendar.google.com/calendar/render"
-    + "?action=TEMPLATE"
-    + "&text="
-    + encodeURIComponent(titolo)
+    +
+    "?action=TEMPLATE"
+    +
+    "&text="
+    +
+    encodeURIComponent(titolo)
 
-    + "&dates="
-    + inizio
-    + "%2F"
-    + fine;
+    +
+    "&dates="
+    +
+    inizio
+    +
+    "%2F"
+    +
+    fine
+
+    +
+    "&details="
+    +
+    encodeURIComponent(descrizione);
 
 
 
@@ -289,8 +290,7 @@ function linkGoogle(dataEvento, giorni){
 
 
 
-
-function calcola(){
+function genera(){
 
 
     let valore =
@@ -300,7 +300,7 @@ function calcola(){
 
     if(!valore){
 
-        alert("Inserisci una data");
+        alert("Inserisci la data del prelievo");
 
         return;
 
@@ -308,8 +308,25 @@ function calcola(){
 
 
 
-    let data =
+
+    let dataPrelievo =
     new Date(valore);
+
+
+
+    let impianto =
+    document.getElementById("impianto").value;
+
+
+
+    if(!impianto){
+
+        alert("Inserisci il nome impianto");
+
+        return;
+
+    }
+
 
 
 
@@ -320,7 +337,7 @@ function calcola(){
 
     if(prove.length===0){
 
-        alert("Seleziona almeno una prova");
+        alert("Seleziona almeno una rottura");
 
         return;
 
@@ -328,33 +345,158 @@ function calcola(){
 
 
 
+
+
+    let dataTesto =
+    formatoData(dataPrelievo);
+
+
+
+
     let html =
-    "🧱 Rotture a compressione cubetti<br><br>";
+
+    "🏗️ <b>Report calcestruzzo</b><br>"
+    +
+    "Impianto: "
+    +
+    impianto
+    +
+    "<br>"
+    +
+    "Prelievo: "
+    +
+    dataTesto;
 
 
 
-    prove.forEach((giorni)=>{
+
+    let descrizioneReport =
+
+    "🏗️ Report calcestruzzo\n\n"
+    +
+    "Impianto: "
+    +
+    impianto
+    +
+    "\n"
+    +
+    "Data prelievo: "
+    +
+    dataTesto;
 
 
-        let dataEvento =
-        aggiungiGiorni(data,giorni);
+
+
+    html +=
+
+    "<a class='link' target='_blank' href='"
+
+    +
+    creaLink(
+
+        "🏗️ Report calcestruzzo - " + impianto,
+
+        dataPrelievo,
+
+        descrizioneReport
+
+    )
+
+    +
+    "'>📋 Apri Report Google Calendar</a>";
+
+    
+
+
+
+    prove.forEach(function(giorni){
+
+
+
+        let dataRottura =
+        aggiungiGiorni(dataPrelievo, giorni);
+
+
+
+        let titolo =
+
+        "🧱 Rottura cubetti "
+        +
+        giorni
+        +
+        " giorni - Prelievo "
+        +
+        dataTesto
+        +
+        " - "
+        +
+        impianto;
+
+
+
+        let descrizione =
+
+        "🧱 Prova compressione cubetti\n\n"
+        +
+        "Impianto: "
+        +
+        impianto
+        +
+        "\n"
+        +
+        "Data prelievo: "
+        +
+        dataTesto
+        +
+        "\n"
+        +
+        "Rottura prevista: "
+        +
+        formatoData(dataRottura)
+        +
+        "\n"
+        +
+        "Età provino: "
+        +
+        giorni
+        +
+        " giorni";
 
 
 
         html +=
 
-        "📅 <b>"
-        + giorni
-        + " giorni</b><br>"
 
-        + formatoData(dataEvento)
+        "<br><b>🧱 "
+        +
+        giorni
+        +
+        " giorni</b><br>"
+        +
+        formatoData(dataRottura);
 
 
-        + "<a class='link' target='_blank' href='"
 
-        + linkGoogle(dataEvento,giorni)
+        html +=
 
-        + "'>➕ Inserisci in Google Calendar</a>";
+
+        "<a class='link' target='_blank' href='"
+
+        +
+
+        creaLink(
+
+            titolo,
+
+            dataRottura,
+
+            descrizione
+
+        )
+
+        +
+
+        "'>➕ Inserisci rottura in Google Calendar</a>";
 
 
 
@@ -362,11 +504,14 @@ function calcola(){
 
 
 
-    document.getElementById("risultato").innerHTML =
-    html;
+
+    document.getElementById("risultato").innerHTML = html;
+
 
 
 }
+
+
 
 </script>
 
