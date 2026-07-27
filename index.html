@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -9,19 +11,19 @@
 <style>
 
 body{
-    font-family: Arial, sans-serif;
+    font-family:Arial,sans-serif;
     background:#0f172a;
     color:white;
     margin:0;
     padding:20px;
 }
 
-.box{
+.container{
     max-width:500px;
     margin:auto;
     background:#1e293b;
     padding:20px;
-    border-radius:15px;
+    border-radius:18px;
 }
 
 h1{
@@ -32,29 +34,30 @@ h1{
 input{
     width:100%;
     padding:12px;
-    margin:8px 0 15px;
-    border-radius:8px;
+    margin-top:8px;
+    margin-bottom:15px;
+    border-radius:10px;
     border:none;
     font-size:16px;
     box-sizing:border-box;
 }
 
-.check{
+.prova{
     background:#334155;
     padding:10px;
     margin:8px 0;
-    border-radius:8px;
+    border-radius:10px;
 }
 
 button{
     width:100%;
     padding:13px;
     margin-top:12px;
-    border:none;
+    border:0;
     border-radius:10px;
     font-size:17px;
-    background:#16a34a;
     color:white;
+    background:#16a34a;
 }
 
 button.blue{
@@ -63,8 +66,8 @@ button.blue{
 
 .risultato{
     background:#334155;
-    margin-top:20px;
     padding:15px;
+    margin-top:20px;
     border-radius:10px;
     line-height:1.8;
 }
@@ -73,20 +76,22 @@ button.blue{
 
 </head>
 
+
 <body>
 
 
-<div class="box">
+<div class="container">
+
 
 <h1>🧱 Rotture a compressione cubetti</h1>
 
 
-<label>Identificativo campione:</label>
+<label>Campione / Cantiere</label>
 
 <input id="campione" placeholder="es. Cantiere Rossi - Campione 1">
 
 
-<label>Data confezionamento:</label>
+<label>Data confezionamento</label>
 
 <input type="date" id="data">
 
@@ -94,43 +99,43 @@ button.blue{
 <h3>Seleziona prove:</h3>
 
 
-<div class="check">
+<div class="prova">
 <input type="checkbox" class="giorno" value="1">
 +1 giorno (24 ore)
 </div>
 
 
-<div class="check">
+<div class="prova">
 <input type="checkbox" class="giorno" value="3">
 +3 giorni
 </div>
 
 
-<div class="check">
+<div class="prova">
 <input type="checkbox" class="giorno" value="4">
 +4 giorni
 </div>
 
 
-<div class="check">
+<div class="prova">
 <input type="checkbox" class="giorno" value="7" checked>
 +7 giorni
 </div>
 
 
-<div class="check">
+<div class="prova">
 <input type="checkbox" class="giorno" value="14">
 +14 giorni
 </div>
 
 
-<div class="check">
+<div class="prova">
 <input type="checkbox" class="giorno" value="28" checked>
 +28 giorni
 </div>
 
 
-<div class="check">
+<div class="prova">
 <input type="checkbox" class="giorno" value="60" checked>
 +60 giorni
 </div>
@@ -142,32 +147,27 @@ button.blue{
 
 
 <div id="risultato" class="risultato">
-Nessun calcolo effettuato
+Nessun calcolo eseguito
 </div>
 
 
-<button class="blue" onclick="creaCalendario()">
-📅 Crea eventi Google Calendar
+<button class="blue" onclick="googleCalendar()">
+📅 Apri Google Calendar
 </button>
 
 
 <button onclick="condividi()">
 📤 Condividi
 </button>
-
-</div>
-
-
 <script>
 
 
-// salva il testo da condividere
+// testo da condividere
 
 let testo = "";
 
 
-
-// imposta automaticamente la data di oggi
+// data di oggi automatica
 
 document.getElementById("data").valueAsDate = new Date();
 
@@ -191,7 +191,7 @@ function aggiungiGiorni(data, giorni){
 
 // formato italiano
 
-function dataItaliana(data){
+function formatoData(data){
 
     return data.toLocaleDateString("it-IT");
 
@@ -200,17 +200,19 @@ function dataItaliana(data){
 
 
 
-// prende le prove selezionate
+// legge le caselle selezionate
 
-function proveSelezionate(){
+function selezionati(){
 
     let lista=[];
+
 
     document.querySelectorAll(".giorno:checked").forEach(c=>{
 
         lista.push(Number(c.value));
 
     });
+
 
     return lista;
 
@@ -243,7 +245,7 @@ function calcola(){
 
 
 
-    let prove = proveSelezionate();
+    let prove = selezionati();
 
 
 
@@ -260,10 +262,8 @@ function calcola(){
     testo =
 `🧱 Rotture a compressione cubetti
 
-${campione ? "Campione: "+campione : ""}
-
-📅 Data confezionamento:
-${dataItaliana(data)}
+${campione ? "Campione: "+campione+"\n\n" : ""}📅 Data confezionamento:
+${formatoData(data)}
 
 `;
 
@@ -272,12 +272,12 @@ ${dataItaliana(data)}
     prove.forEach(g=>{
 
 
-        let evento = aggiungiGiorni(data,g);
+        let d = aggiungiGiorni(data,g);
 
 
         testo +=
-        `📅 ${g} giorni → ${dataItaliana(evento)}
-`;
+        "➕ " + g + " giorni → " + formatoData(d) + "\n";
+
 
     });
 
@@ -293,9 +293,9 @@ ${dataItaliana(data)}
 
 
 
-// crea file calendario compatibile Google Calendar
+// apre Google Calendar con un solo evento
 
-function creaCalendario(){
+function googleCalendar(){
 
 
     let valore = document.getElementById("data").value;
@@ -310,6 +310,7 @@ function creaCalendario(){
     }
 
 
+
     let data = new Date(valore);
 
 
@@ -318,7 +319,7 @@ function creaCalendario(){
 
 
 
-    let prove = proveSelezionate();
+    let prove = selezionati();
 
 
 
@@ -332,104 +333,86 @@ function creaCalendario(){
 
 
 
-    let calendario =
-`BEGIN:VCALENDAR
-VERSION:2.0
-PRODID:-//Rotture Cubetti//IT
-CALSCALE:GREGORIAN
-`;
+
+    let dettagli =
+    "🧱 Rotture a compressione cubetti\n\n";
+
+
+
+    if(campione){
+
+        dettagli +=
+        "Campione: " + campione + "\n\n";
+
+    }
+
+
+
+    dettagli += "Date prove:\n\n";
 
 
 
     prove.forEach(g=>{
 
 
-        let giornoEvento =
+        let evento =
         aggiungiGiorni(data,g);
 
 
-
-        let y = giornoEvento.getFullYear();
-
-        let m = String(giornoEvento.getMonth()+1).padStart(2,"0");
-
-        let d = String(giornoEvento.getDate()).padStart(2,"0");
-
-
-
-        let dataEvento = y + m + d;
-
-
-
-        let titolo =
-        "🧱 Rottura cubetti - " 
-        + g + " giorni";
-
-
-
-        if(campione){
-
-            titolo += " - " + campione;
-
-        }
-
-
-
-        titolo += " (" + dataItaliana(giornoEvento) + ")";
-
-
-
-        calendario +=
-`BEGIN:VEVENT
-SUMMARY:${titolo}
-DTSTART;VALUE=DATE:${dataEvento}
-DTEND;VALUE=DATE:${dataEvento}
-DESCRIPTION:Rottura a compressione cubetti
-END:VEVENT
-`;
-
+        dettagli +=
+        "➕ " + g + " giorni: "
+        + formatoData(evento)
+        + "\n";
 
 
     });
 
 
 
-    calendario +=
-`END:VCALENDAR`;
+    let oggi = new Date();
+
+
+    let y = oggi.getFullYear();
+
+    let m = String(oggi.getMonth()+1).padStart(2,"0");
+
+    let d = String(oggi.getDate()).padStart(2,"0");
 
 
 
-    let file = new Blob(
-        [calendario],
-        {type:"text/calendar;charset=utf-8"}
-    );
+    let url =
+
+    "https://calendar.google.com/calendar/render?action=TEMPLATE"
+
+    + "&text="
+
+    + encodeURIComponent(
+        "🧱 Rotture cubetti "
+        + (campione ? "- "+campione : "")
+    )
+
+
+    + "&dates="
+
+    + y+m+d+"T090000/"+y+m+d+"T093000"
+
+
+    + "&details="
+
+    + encodeURIComponent(dettagli);
 
 
 
-    let link = document.createElement("a");
-
-    link.href = URL.createObjectURL(file);
-
-    link.download="rotture_cubetti.ics";
-
-    document.body.appendChild(link);
-
-    link.click();
-
-    document.body.removeChild(link);
+    window.open(url,"_blank");
 
 
 }
-
-
-// condivisione risultato
-
 function condividi(){
 
 
     if(!testo){
 
-        alert("Prima fai il calcolo");
+        alert("Prima calcola le date");
 
         return;
 
@@ -454,7 +437,7 @@ function condividi(){
 
         navigator.clipboard.writeText(testo);
 
-        alert("Testo copiato negli appunti");
+        alert("Risultato copiato negli appunti");
 
     }
 
@@ -464,6 +447,9 @@ function condividi(){
 
 
 </script>
+
+
+</div>
 
 
 </body>
