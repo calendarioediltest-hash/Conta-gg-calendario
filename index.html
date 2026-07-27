@@ -10,77 +10,69 @@
 <style>
 
 body{
-    font-family:Arial,sans-serif;
-    background:#0f172a;
-    color:white;
-    padding:20px;
+font-family:Arial,sans-serif;
+background:#0f172a;
+color:white;
+padding:20px;
 }
 
-.container{
-    max-width:500px;
-    margin:auto;
-    background:#1e293b;
-    padding:20px;
-    border-radius:15px;
+.box{
+max-width:500px;
+margin:auto;
+background:#1e293b;
+padding:20px;
+border-radius:15px;
 }
 
 h1{
-    text-align:center;
+text-align:center;
 }
 
 input{
-    width:100%;
-    padding:12px;
-    margin:8px 0;
-    border-radius:8px;
-    border:0;
-    box-sizing:border-box;
+width:100%;
+padding:12px;
+margin:8px 0 15px;
+border-radius:8px;
+border:0;
+box-sizing:border-box;
 }
-
 
 .prova{
-    background:#334155;
-    padding:10px;
-    margin:8px 0;
-    border-radius:8px;
+background:#334155;
+padding:10px;
+border-radius:8px;
+margin:8px 0;
 }
-
 
 button{
-    width:100%;
-    padding:13px;
-    margin-top:12px;
-    border:0;
-    border-radius:10px;
-    background:#16a34a;
-    color:white;
-    font-size:17px;
+width:100%;
+padding:13px;
+margin-top:12px;
+border:0;
+border-radius:10px;
+font-size:17px;
+background:#16a34a;
+color:white;
 }
-
 
 .blue{
-    background:#2563eb;
+background:#2563eb;
 }
-
 
 .risultato{
-    background:#334155;
-    padding:15px;
-    margin-top:20px;
-    border-radius:10px;
+background:#334155;
+padding:15px;
+border-radius:10px;
+margin-top:15px;
 }
-
 
 </style>
 
 </head>
 
-
 <body>
 
-
-<div class="container">
-
+<div class="box">
 
 <h1>🧱 Rotture a compressione cubetti</h1>
 
@@ -95,54 +87,47 @@ button{
 <input type="date" id="data">
 
 
-
-<h3>Seleziona prove</h3>
+<h3>Prove:</h3>
 
 
 <div class="prova">
-<input type="checkbox" class="giorni" value="1">
-+1 giorno (24 ore)
+<input type="checkbox" class="giorno" value="1">
++1 giorno
 </div>
 
-
 <div class="prova">
-<input type="checkbox" class="giorni" value="3">
+<input type="checkbox" class="giorno" value="3">
 +3 giorni
 </div>
 
-
 <div class="prova">
-<input type="checkbox" class="giorni" value="4">
+<input type="checkbox" class="giorno" value="4">
 +4 giorni
 </div>
 
-
 <div class="prova">
-<input type="checkbox" class="giorni" value="7" checked>
+<input type="checkbox" class="giorno" value="7" checked>
 +7 giorni
 </div>
 
-
 <div class="prova">
-<input type="checkbox" class="giorni" value="14">
+<input type="checkbox" class="giorno" value="14">
 +14 giorni
 </div>
 
-
 <div class="prova">
-<input type="checkbox" class="giorni" value="28" checked>
+<input type="checkbox" class="giorno" value="28" checked>
 +28 giorni
 </div>
 
-
 <div class="prova">
-<input type="checkbox" class="giorni" value="60" checked>
+<input type="checkbox" class="giorno" value="60" checked>
 +60 giorni
 </div>
 
 
 <button onclick="calcola()">
-🧮 Calcola
+🧮 Calcola date
 </button>
 
 
@@ -157,23 +142,24 @@ Nessun risultato
 <script>
 
 
-// imposta automaticamente la data di oggi
+// data di oggi automatica
 
 document.getElementById("data").valueAsDate = new Date();
 
 
 
-let risultatoTesto = "";
+let riepilogo = "";
+
 
 
 
 // aggiunge giorni alla data
 
-function aggiungiGiorni(data, giorni){
+function aggiungiGiorni(data, numero){
 
     let nuova = new Date(data);
 
-    nuova.setDate(nuova.getDate() + giorni);
+    nuova.setDate(nuova.getDate() + numero);
 
     return nuova;
 
@@ -182,9 +168,9 @@ function aggiungiGiorni(data, giorni){
 
 
 
-// formato data italiano
+// formato italiano
 
-function formatoItaliano(data){
+function formatoData(data){
 
     return data.toLocaleDateString("it-IT");
 
@@ -193,16 +179,16 @@ function formatoItaliano(data){
 
 
 
-// prende le prove selezionate
+// legge prove selezionate
 
-function getGiorni(){
+function getProve(){
 
     let lista=[];
 
 
-    document.querySelectorAll(".giorni:checked").forEach(x=>{
+    document.querySelectorAll(".giorno:checked").forEach((elemento)=>{
 
-        lista.push(Number(x.value));
+        lista.push(Number(elemento.value));
 
     });
 
@@ -215,18 +201,16 @@ function getGiorni(){
 
 
 
-// calcolo date
 
 function calcola(){
 
 
-    let valore =
-    document.getElementById("data").value;
+    let valore = document.getElementById("data").value;
 
 
     if(!valore){
 
-        alert("Inserisci la data");
+        alert("Inserisci una data");
 
         return;
 
@@ -242,35 +226,45 @@ function calcola(){
 
 
 
-    let giorni = getGiorni();
+    let prove = getProve();
 
 
 
-    risultatoTesto =
+    if(prove.length===0){
+
+        alert("Seleziona almeno una prova");
+
+        return;
+
+    }
+
+
+
+    riepilogo =
     "🧱 Rotture a compressione cubetti\n\n";
 
 
 
     if(campione){
 
-        risultatoTesto +=
+        riepilogo +=
         "Campione: " + campione + "\n\n";
 
     }
 
 
 
-    giorni.forEach(g=>{
+    prove.forEach((giorni)=>{
 
 
-        let nuova =
-        aggiungiGiorni(data,g);
+        let dataProva =
+        aggiungiGiorni(data,giorni);
 
 
 
-        risultatoTesto +=
-        "➕ " + g + " giorni → "
-        + formatoItaliano(nuova)
+        riepilogo +=
+        "📅 " + giorni + " giorni → "
+        + formatoData(dataProva)
         + "\n";
 
 
@@ -279,7 +273,7 @@ function calcola(){
 
 
     document.getElementById("risultato").innerHTML =
-    risultatoTesto.replace(/\n/g,"<br>");
+    riepilogo.replace(/\n/g,"<br>");
 
 }
 
@@ -288,7 +282,7 @@ function calcola(){
 
 
 
-// crea eventi Google Calendar uno alla volta
+// crea eventi Google Calendar
 
 function creaEventi(){
 
@@ -299,7 +293,7 @@ function creaEventi(){
 
     if(!valore){
 
-        alert("Inserisci la data");
+        alert("Inserisci una data");
 
         return;
 
@@ -316,11 +310,11 @@ function creaEventi(){
 
 
 
-    let giorni = getGiorni();
+    let prove = getProve();
 
 
 
-    if(giorni.length===0){
+    if(prove.length===0){
 
         alert("Seleziona almeno una prova");
 
@@ -331,33 +325,45 @@ function creaEventi(){
 
 
 
-    giorni.forEach((g,indice)=>{
+    prove.forEach((giorni,indice)=>{
 
 
         setTimeout(()=>{
 
 
-            let evento =
-            aggiungiGiorni(data,g);
+            let dataEvento =
+            aggiungiGiorni(data,giorni);
 
 
 
             let anno =
-            evento.getFullYear();
+            dataEvento.getFullYear();
+
 
 
             let mese =
-            String(evento.getMonth()+1).padStart(2,"0");
+            String(dataEvento.getMonth()+1).padStart(2,"0");
+
 
 
             let giorno =
-            String(evento.getDate()).padStart(2,"0");
+            String(dataEvento.getDate()).padStart(2,"0");
+
+
+
+            let inizio =
+            anno + mese + giorno + "T090000";
+
+
+
+            let fine =
+            anno + mese + giorno + "T100000";
 
 
 
             let titolo =
             "🧱 Rottura cubetti - "
-            + g
+            + giorni
             + " giorni";
 
 
@@ -372,34 +378,22 @@ function creaEventi(){
 
 
 
-
-            let link =
-
+            let url =
             "https://calendar.google.com/calendar/render?action=TEMPLATE"
-
             + "&text="
             + encodeURIComponent(titolo)
-
-
             + "&dates="
-
-            + anno
-            + mese
-            + giorno
-            + "T090000/"
-
-            + anno
-            + mese
-            + giorno
-            + "T100000";
+            + inizio
+            + "%2F"
+            + fine;
 
 
 
-            window.open(link,"_blank");
+            window.open(url,"_blank");
 
 
 
-        }, indice * 2000);
+        }, indice * 3000);
 
 
 
