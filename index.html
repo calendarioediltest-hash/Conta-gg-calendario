@@ -11,113 +11,78 @@
 <style>
 
 body{
-    font-family:Arial, sans-serif;
-    background:#5b5b5b;
-    margin:0;
-    padding:20px;
-    color:white;
+font-family:Arial,sans-serif;
+background:#555;
+margin:0;
+padding:20px;
+color:white;
 }
-
 
 .container{
-
-    max-width:520px;
-    margin:auto;
-    background:#292929;
-    padding:25px;
-    border-radius:15px;
-    box-shadow:0 0 15px #222;
-
+max-width:520px;
+margin:auto;
+background:#292929;
+padding:25px;
+border-radius:15px;
+box-shadow:0 0 15px #222;
 }
-
 
 h1{
-
-    text-align:center;
-    color:#f59e0b;
-
+text-align:center;
+color:#f59e0b;
 }
-
-
 
 label{
-
-    font-weight:bold;
-
+font-weight:bold;
 }
-
-
 
 input{
-
-    width:100%;
-    padding:12px;
-    margin-top:8px;
-    margin-bottom:15px;
-    border-radius:8px;
-    border:0;
-    font-size:16px;
-    box-sizing:border-box;
-
+width:100%;
+padding:12px;
+margin:8px 0 15px;
+border-radius:8px;
+border:0;
+box-sizing:border-box;
+font-size:16px;
 }
 
-
-
-.box-prova{
-
-    background:#3f3f3f;
-    padding:10px;
-    margin:8px 0;
-    border-radius:8px;
-
+.prova{
+background:#3f3f3f;
+padding:10px;
+margin:8px 0;
+border-radius:8px;
 }
-
-
 
 button{
-
-    width:100%;
-    padding:14px;
-    margin-top:15px;
-    border:0;
-    border-radius:10px;
-    background:#d97706;
-    color:white;
-    font-size:17px;
-    cursor:pointer;
-
+width:100%;
+padding:14px;
+margin-top:15px;
+background:#d97706;
+color:white;
+border:0;
+border-radius:10px;
+font-size:17px;
 }
-
-
 
 .risultato{
-
-    margin-top:20px;
-    background:#111;
-    padding:15px;
-    border-radius:10px;
-
+margin-top:20px;
+background:#111;
+padding:15px;
+border-radius:10px;
 }
-
-
 
 .link{
-
-    display:block;
-    background:#2563eb;
-    color:white;
-    padding:12px;
-    text-align:center;
-    border-radius:8px;
-    margin-top:10px;
-    text-decoration:none;
-
+display:block;
+background:#2563eb;
+color:white;
+padding:12px;
+margin-top:10px;
+border-radius:8px;
+text-align:center;
+text-decoration:none;
 }
 
-
-
 </style>
-
 
 </head>
 
@@ -141,92 +106,82 @@ button{
 <input type="date" id="data">
 
 
-
-<h3>Prove compressione cubetti</h3>
-
+<h3>Rotture cubetti</h3>
 
 
-<div class="box-prova">
+<div class="prova">
 <input type="checkbox" class="giorno" value="1">
 1 giorno
 </div>
 
 
-<div class="box-prova">
+<div class="prova">
 <input type="checkbox" class="giorno" value="3">
 3 giorni
 </div>
 
 
-<div class="box-prova">
+<div class="prova">
 <input type="checkbox" class="giorno" value="4">
 4 giorni
 </div>
 
 
-<div class="box-prova">
+<div class="prova">
 <input type="checkbox" class="giorno" value="7" checked>
 7 giorni
 </div>
 
 
-<div class="box-prova">
+<div class="prova">
 <input type="checkbox" class="giorno" value="14">
 14 giorni
 </div>
 
 
-<div class="box-prova">
+<div class="prova">
 <input type="checkbox" class="giorno" value="28" checked>
 28 giorni
 </div>
 
 
-<div class="box-prova">
+<div class="prova">
 <input type="checkbox" class="giorno" value="60" checked>
 60 giorni
 </div>
 
 
 <button onclick="generaEventi()">
-
 Genera calendario
-
 </button>
 
 
 <div id="risultato" class="risultato">
-
 Nessun evento creato
-
 </div>
 
 <script>
 
 
-// imposta automaticamente la data odierna
-
 document.getElementById("data").valueAsDate = new Date();
 
 
 
-
-// aggiunge giorni
+// aggiunge giorni alla data
 
 function aggiungiGiorni(data, giorni){
 
-    let nuovaData = new Date(data);
+    let nuova = new Date(data);
 
-    nuovaData.setDate(nuovaData.getDate() + giorni);
+    nuova.setDate(nuova.getDate() + giorni);
 
-    return nuovaData;
+    return nuova;
 
 }
 
 
 
-
-// formato data italiano
+// formato italiano
 
 function formatoData(data){
 
@@ -236,85 +191,35 @@ function formatoData(data){
 
 
 
-
-// legge prove selezionate
+// prove selezionate
 
 function getProve(){
 
-    let prove = [];
+    let lista=[];
 
 
-    document.querySelectorAll(".giorno:checked").forEach(function(c){
+    document.querySelectorAll(".giorno:checked").forEach(function(x){
 
-        prove.push(Number(c.value));
+        lista.push(Number(x.value));
 
     });
 
 
-    return prove;
+    return lista;
 
 }
 
 
 
-
-
-
-// crea link Google Calendar
-
-function creaEventoGoogle(titolo, inizio, fine, descrizione){
-
-
-
-    let url =
-
-    "https://calendar.google.com/calendar/render"
-
-    + "?action=TEMPLATE"
-
-    + "&text="
-
-    + encodeURIComponent(titolo)
-
-    + "&dates="
-
-    + inizio
-
-    + "%2F"
-
-    + fine
-
-    + "&details="
-
-    + encodeURIComponent(descrizione);
-
-
-
-    return url;
-
-}
-
-
-
-
-
-
-// converte data e orari per Google Calendar
+// formato Google Calendar
 
 function formatoGoogle(data, ora){
 
+    let anno = data.getFullYear();
 
-    let anno =
-    data.getFullYear();
+    let mese = String(data.getMonth()+1).padStart(2,"0");
 
-
-    let mese =
-    String(data.getMonth()+1).padStart(2,"0");
-
-
-    let giorno =
-    String(data.getDate()).padStart(2,"0");
-
+    let giorno = String(data.getDate()).padStart(2,"0");
 
 
     return anno + mese + giorno + "T" + ora;
@@ -324,17 +229,68 @@ function formatoGoogle(data, ora){
 
 
 
+// crea link Google Calendar
+
+function creaLinkGoogle(titolo, inizio, fine, descrizione){
+
+
+    return (
+
+    "https://calendar.google.com/calendar/render"
+
+    +
+
+    "?action=TEMPLATE"
+
+    +
+
+    "&text="
+
+    +
+
+    encodeURIComponent(titolo)
+
+    +
+
+    "&dates="
+
+    +
+
+    inizio
+
+    +
+
+    "%2F"
+
+    +
+
+    fine
+
+    +
+
+    "&details="
+
+    +
+
+    encodeURIComponent(descrizione)
+
+    );
+
+}
+
+
+
 
 
 function generaEventi(){
 
 
-    let valoreData =
-    document.getElementById("data").value;
+
+    let valore = document.getElementById("data").value;
 
 
 
-    if(!valoreData){
+    if(!valore){
 
         alert("Inserire la data del prelievo");
 
@@ -344,15 +300,13 @@ function generaEventi(){
 
 
 
-
-    let impianto =
-    document.getElementById("impianto").value;
+    let impianto = document.getElementById("impianto").value;
 
 
 
     if(!impianto){
 
-        alert("Inserire il nome dell'impianto");
+        alert("Inserire il nome impianto");
 
         return;
 
@@ -360,24 +314,21 @@ function generaEventi(){
 
 
 
-    let dataPrelievo =
-    new Date(valoreData);
+    let dataPrelievo = new Date(valore);
 
 
 
-    let prove =
-    getProve();
+    let prove = getProve();
 
 
 
     if(prove.length === 0){
 
-        alert("Selezionare almeno una prova");
+        alert("Selezionare almeno una rottura");
 
         return;
 
     }
-
 
 
 
@@ -385,9 +336,7 @@ function generaEventi(){
 
 
 
-    let dataTesto =
-    formatoData(dataPrelievo);
-
+    let dataTesto = formatoData(dataPrelievo);
 
 
 
@@ -395,29 +344,33 @@ function generaEventi(){
 
     let titoloReport =
 
-    "Report calcestruzzo - "
-    +
-    impianto;
+    "REPORT calcestruzzo - " + impianto;
 
 
 
     let descrizioneReport =
 
+    "Report calcestruzzo\n\n"
+
+    +
+
     "Impianto: "
+
     +
+
     impianto
+
     +
-    "\n"
+
+    "\nData prelievo: "
+
     +
-    "Data prelievo: "
-    +
+
     dataTesto;
 
 
 
-    let linkReport =
-
-    creaEventoGoogle(
+    let linkReport = creaLinkGoogle(
 
         titoloReport,
 
@@ -433,49 +386,61 @@ function generaEventi(){
 
     html +=
 
-    "<b>Report calcestruzzo</b><br>"
+    "<b>REPORT calcestruzzo</b><br>"
+
     +
+
     dataTesto
+
     +
+
     "<a class='link' target='_blank' href='"
+
     +
+
     linkReport
+
     +
-    "'>Apri evento report</a>";
+
+    "'>Importa nel Calendario Google</a>";
 
     
 
-    // EVENTI ROTTURE CUBETTI
+    // EVENTI ROTTURA CUBETTI
 
 
     prove.forEach(function(giorni){
 
 
-        let dataRottura =
-
-        aggiungiGiorni(
-
+        let dataRottura = aggiungiGiorni(
             dataPrelievo,
-
             giorni
-
         );
 
 
 
         let titoloRottura =
 
-
         "Rottura cubetti "
+
         +
+
         giorni
+
         +
+
         " giorni - Prelievo "
+
         +
+
         dataTesto
+
         +
+
         " - "
+
         +
+
         impianto;
 
 
@@ -483,34 +448,49 @@ function generaEventi(){
 
         let descrizioneRottura =
 
+        "Prova compressione cubetti\n\n"
 
-        "Prova compressione cubetti\n"
         +
+
         "Impianto: "
+
         +
+
         impianto
+
         +
-        "\n"
+
+        "\nData prelievo: "
+
         +
-        "Data prelievo: "
-        +
+
         dataTesto
+
         +
-        "\n"
+
+        "\nData rottura: "
+
         +
-        "Età provino: "
+
+        formatoData(dataRottura)
+
         +
+
+        "\nEtà provino: "
+
+        +
+
         giorni
+
         +
+
         " giorni";
 
 
 
 
-        let linkRottura =
 
-
-        creaEventoGoogle(
+        let linkRottura = creaLinkGoogle(
 
             titoloRottura,
 
@@ -525,16 +505,26 @@ function generaEventi(){
 
 
 
+
         html +=
 
 
+
         "<br><br><b>Rottura "
+
         +
+
         giorni
+
         +
+
         " giorni</b><br>"
+
         +
+
         formatoData(dataRottura)
+
+
 
         +
 
@@ -546,12 +536,11 @@ function generaEventi(){
 
         +
 
-        "'>Apri evento rottura</a>";
+        "'>Importa nel Calendario Google</a>";
 
 
 
     });
-
 
 
 
@@ -561,7 +550,6 @@ function generaEventi(){
 
 
 }
-
 
 
     
