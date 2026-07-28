@@ -13,11 +13,12 @@
 
 <style>
 
+
 body{
 
 font-family:Arial,sans-serif;
 
-background:#5b5b5b;
+background:#555;
 
 margin:0;
 
@@ -26,6 +27,7 @@ padding:15px;
 color:white;
 
 }
+
 
 
 .container{
@@ -45,6 +47,7 @@ box-shadow:0 0 20px #222;
 }
 
 
+
 h1{
 
 text-align:center;
@@ -56,12 +59,6 @@ font-size:30px;
 }
 
 
-h3{
-
-font-size:22px;
-
-}
-
 
 label{
 
@@ -70,6 +67,7 @@ font-size:18px;
 font-weight:bold;
 
 }
+
 
 
 input{
@@ -100,13 +98,14 @@ font-size:20px;
 
 display:flex;
 
-justify-content:center;
-
 align-items:center;
+
+justify-content:center;
 
 gap:15px;
 
 }
+
 
 
 .contatore input{
@@ -122,6 +121,7 @@ font-weight:bold;
 }
 
 
+
 .contatore button{
 
 width:75px;
@@ -134,7 +134,6 @@ font-size:35px;
 
 
 
-
 /* BOTTONI */
 
 
@@ -144,7 +143,7 @@ width:100%;
 
 height:70px;
 
-margin-top:15px;
+margin-top:20px;
 
 border:0;
 
@@ -162,31 +161,7 @@ font-weight:bold;
 
 
 
-button:active{
-
-transform:scale(.96);
-
-}
-
-
-.nuovo{
-
-background:#16a34a;
-
-}
-
-
-.reset{
-
-background:#dc2626;
-
-}
-
-
-
-
-/* GIORNI TOUCH */
-
+/* GIORNI */
 
 .prova{
 
@@ -198,7 +173,7 @@ align-items:center;
 
 justify-content:center;
 
-background:#3f3f3f;
+background:#444;
 
 border-radius:15px;
 
@@ -210,9 +185,9 @@ font-weight:bold;
 
 cursor:pointer;
 
-border:2px solid transparent;
-
 transition:.2s;
+
+border:2px solid transparent;
 
 }
 
@@ -232,13 +207,14 @@ background:#f59e0b;
 
 color:#111;
 
-box-shadow:0 0 18px #f59e0b;
+border-color:white;
 
-border:2px solid white;
+box-shadow:0 0 20px #f59e0b;
 
 transform:scale(1.03);
 
 }
+
 
 
 
@@ -275,8 +251,6 @@ margin:15px 0;
 
 
 
-/* LINK GOOGLE */
-
 .link{
 
 display:block;
@@ -308,6 +282,7 @@ background:#16a34a !important;
 }
 
 
+
 </style>
 
 
@@ -320,8 +295,11 @@ background:#16a34a !important;
 <div class="container">
 
 
+
 <h1>
-🧱 Prove Calcestruzzo
+
+Prove Calcestruzzo
+
 </h1>
 
 
@@ -367,12 +345,13 @@ Numero miscele
 </label>
 
 
+
 <div class="contatore">
 
 
 <button onclick="cambiaMiscele(-1)">
 
-−
+-
 
 </button>
 
@@ -430,7 +409,7 @@ Giorni rottura
 
 <input class="giorno" type="checkbox" value="1">
 
-Rottura a 1 giorno
+Rottura 1 giorno
 
 </div>
 
@@ -442,7 +421,7 @@ Rottura a 1 giorno
 
 <input class="giorno" type="checkbox" value="3">
 
-Rottura a 3 giorni
+Rottura 3 giorni
 
 </div>
 
@@ -454,7 +433,7 @@ Rottura a 3 giorni
 
 <input class="giorno" type="checkbox" value="4">
 
-Rottura a 4 giorni
+Rottura 4 giorni
 
 </div>
 
@@ -466,7 +445,7 @@ Rottura a 4 giorni
 
 <input class="giorno" type="checkbox" value="7" checked>
 
-Rottura a 7 giorni
+Rottura 7 giorni
 
 </div>
 
@@ -478,7 +457,7 @@ Rottura a 7 giorni
 
 <input class="giorno" type="checkbox" value="14">
 
-Rottura a 14 giorni
+Rottura 14 giorni
 
 </div>
 
@@ -490,7 +469,7 @@ Rottura a 14 giorni
 
 <input class="giorno" type="checkbox" value="28" checked>
 
-Rottura a 28 giorni
+Rottura 28 giorni
 
 </div>
 
@@ -502,7 +481,7 @@ Rottura a 28 giorni
 
 <input class="giorno" type="checkbox" value="60" checked>
 
-Rottura a 60 giorni
+Rottura 60 giorni
 
 </div>
 
@@ -512,27 +491,7 @@ Rottura a 60 giorni
 
 <button onclick="genera()">
 
-🚀 CREA CALENDARIO
-
-</button>
-
-
-
-
-
-<button class="nuovo" onclick="nuovoPrelievo()">
-
-➕ NUOVO PRELIEVO
-
-</button>
-
-
-
-
-
-<button class="reset" onclick="resetStato()">
-
-🗑 RESET IMPORTAZIONI
+CREA CALENDARIO
 
 </button>
 
@@ -548,18 +507,14 @@ Nessun evento creato
 
 
 
-</div>
-<script>
+</div><script>
 
-
-// Imposta data di oggi
 
 document.getElementById("data").valueAsDate=new Date();
 
 
 
-
-// + e - miscele
+// CONTATORE MISCELE
 
 function cambiaMiscele(valore){
 
@@ -582,7 +537,8 @@ campo.value=numero;
 
 
 
-// Attiva/disattiva rotture
+
+// PULSANTI ROTTURA
 
 function selezionaGiorno(elemento){
 
@@ -607,7 +563,8 @@ check.checked
 
 
 
-// Aggiunge giorni
+
+// AGGIUNGE GIORNI
 
 function aggiungiGiorni(data,giorni){
 
@@ -667,7 +624,7 @@ return lista;
 
 
 
-// formato Google Calendar
+// FORMATO GOOGLE
 
 function formatoGoogle(data,ora){
 
@@ -681,12 +638,13 @@ let giorno=String(data.getDate()).padStart(2,"0");
 
 return anno+mese+giorno+"T"+ora;
 
-
 }
 
 
 
 
+
+// LINK CALENDARIO
 
 function creaLinkGoogle(titolo,inizio,fine,descrizione){
 
@@ -740,68 +698,7 @@ encodeURIComponent(descrizione)
 
 
 
-function importato(id){
-
-
-return localStorage.getItem(id)==="si";
-
-
-}
-
-
-
-
-
-function segnaImportato(id,bottone){
-
-
-localStorage.setItem(id,"si");
-
-
-bottone.innerHTML="✓ Inserito";
-
-
-bottone.classList.add("fatto");
-
-
-}
-
-
-
-
-
-function creaBottone(link,id){
-
-
-return `
-
-
-<a
-
-class="${importato(id) ? "link fatto":"link"}"
-
-href="${link}"
-
-target="_blank"
-
-onclick="segnaImportato('${id}',this)">
-
-
-${importato(id) ? "✓ Inserito":"Apri calendario Google"}
-
-
-</a>
-
-
-`;
-
-}
-
-
-
-
-
-// GENERAZIONE CALENDARIO
+// CREA EVENTI
 
 function genera(){
 
@@ -844,23 +741,22 @@ return;
 
 
 
-
 let cubi=miscele*2;
 
 
 
 
-let p=valoreData.split("-");
+let parti=valoreData.split("-");
 
 
 
 let dataPrelievo=new Date(
 
-Number(p[0]),
+Number(parti[0]),
 
-Number(p[1])-1,
+Number(parti[1])-1,
 
-Number(p[2])
+Number(parti[2])
 
 );
 
@@ -869,6 +765,8 @@ Number(p[2])
 
 
 let giorni=getGiorni();
+
+
 
 
 
@@ -911,7 +809,7 @@ Impianto:
 <br><br>
 
 
-Miscele:
+Numero miscele:
 
 <b>${miscele}</b>
 
@@ -924,27 +822,6 @@ Cubi per rottura:
 <b>${cubi}</b>
 
 `;
-
-
-
-
-
-if(verbale!=""){
-
-
-html+=`
-
-<br>
-
-Verbale:
-
-<b>${verbale}</b>
-
-`;
-
-}
-
-
 
 
 
@@ -967,7 +844,7 @@ giorno
 
 
 
-let testoData=
+let dataTesto=
 
 formatoData(dataRottura);
 
@@ -975,21 +852,29 @@ formatoData(dataRottura);
 
 
 
+// TITOLO EVENTO GOOGLE
+
 let titolo=
 
-"Rottura "
+cubi
 
 +
 
-giorno
+" cubi - "
 
 +
 
-" giorni - "
+impianto
 
 +
 
-impianto;
+" - Prelievo "
+
++
+
+formatoData(dataPrelievo);
+
+
 
 
 
@@ -997,7 +882,7 @@ impianto;
 
 let descrizione=
 
-"PROVA DI COMPRESSIONE\n\n"
+"PROVA CALCESTRUZZO\n\n"
 
 +
 
@@ -1006,6 +891,18 @@ let descrizione=
 +
 
 impianto
+
++
+
+"\n"
+
++
+
+"Data prelievo: "
+
++
+
+formatoData(dataPrelievo)
 
 +
 
@@ -1025,7 +922,7 @@ verbale
 
 +
 
-"Miscele: "
+"Numero miscele: "
 
 +
 
@@ -1037,7 +934,7 @@ miscele
 
 +
 
-"Cubi: "
+"Cubi da rompere: "
 
 +
 
@@ -1045,15 +942,22 @@ cubi
 
 +
 
-"\n\n"
+"\n"
 
 +
 
-"Data rottura: "
+"Età provino: "
 
 +
 
-testoData;
+giorno
+
++
+
+" giorni"
+
+;
+
 
 
 
@@ -1077,60 +981,41 @@ descrizione
 
 
 
-let id=
-
-"rottura_"
-
-+
-
-impianto
-
-+
-
-"_"
-
-+
-
-valoreData
-
-+
-
-"_"
-
-+
-
-giorno;
-
-
-
-
-
 
 
 html+=`
-
 
 <hr>
 
 
 <b style="font-size:22px">
 
-Rottura ${giorno} giorni
+${giorno} giorni
 
 </b>
 
 
 <div class="dataGrande">
 
-${testoData}
+${dataTesto}
 
 </div>
 
 
-${creaBottone(link,id)}
+<a class="link"
+
+href="${link}"
+
+target="_blank">
+
+Inserisci evento calendario
+
+</a>
 
 
 `;
+
+
 
 
 
@@ -1148,56 +1033,7 @@ document.getElementById("risultato").innerHTML=html;
 
 
 
-
-
-
-// NUOVO PRELIEVO
-
-function nuovoPrelievo(){
-
-
-document.getElementById("verbale").value="";
-
-
-document.getElementById("miscele").value=1;
-
-
-document.getElementById("data").valueAsDate=new Date();
-
-
-document.getElementById("risultato").innerHTML=
-
-"Nessun evento creato";
-
-
-}
-
-
-
-
-
-// RESET MEMORIA
-
-function resetStato(){
-
-
-if(confirm("Cancellare stato importazioni?")){
-
-
-localStorage.clear();
-
-
-alert("Reset completato");
-
-
-}
-
-
-}
-
-
 </script>
-
 
 
 </body>
