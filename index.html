@@ -4,118 +4,211 @@
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Gestione Prove Calcestruzzo</title>
+<title>Prove Calcestruzzo</title>
+
 
 <style>
 
 body{
+
 font-family:Arial,sans-serif;
+
 background:#5b5b5b;
-padding:20px;
+
 margin:0;
+
+padding:20px;
+
 color:white;
+
 }
+
+
 
 .container{
-max-width:560px;
+
+max-width:520px;
+
 margin:auto;
+
 background:#292929;
+
 padding:25px;
+
 border-radius:15px;
+
 box-shadow:0 0 15px #222;
+
 }
+
+
 
 h1{
+
 text-align:center;
+
 color:#f59e0b;
+
 }
+
+
 
 label{
+
 font-weight:bold;
+
 }
+
+
+
+small{
+
+color:#aaa;
+
+}
+
+
 
 input{
+
 width:100%;
+
 padding:12px;
+
 margin:8px 0 15px;
-border-radius:8px;
+
 border:0;
-box-sizing:border-box;
+
+border-radius:8px;
+
 font-size:16px;
+
+box-sizing:border-box;
+
 }
+
+
 
 .prova{
+
 background:#3f3f3f;
+
 padding:12px;
+
 border-radius:8px;
+
 margin:8px 0;
+
 }
+
+
 
 .prova input{
+
 width:auto;
+
+margin-right:10px;
+
 }
+
+
 
 button{
+
 width:100%;
-padding:13px;
+
+padding:14px;
+
 margin-top:15px;
+
 border:0;
+
 border-radius:10px;
+
 background:#d97706;
+
 color:white;
+
 font-size:16px;
-cursor:pointer;
+
 }
+
+
 
 .reset{
+
 background:#dc2626;
+
 }
+
+
 
 .risultato{
-margin-top:20px;
+
 background:#111;
+
+margin-top:20px;
+
 padding:15px;
+
 border-radius:10px;
+
 }
+
+
 
 .link{
+
 display:block;
+
 background:#2563eb;
+
 color:white;
+
 padding:12px;
-margin-top:10px;
+
 border-radius:8px;
+
+margin-top:10px;
+
 text-align:center;
+
 text-decoration:none;
+
 }
+
+
 
 .fatto{
+
 background:#16a34a !important;
+
 }
+
+
 
 .dataGrande{
-font-size:34px;
+
+font-size:32px;
+
 font-weight:bold;
+
 color:#f59e0b;
+
 margin:10px 0;
+
 }
 
-.info{
-font-size:18px;
-line-height:1.5;
-}
 
-hr{
-border:0;
-border-top:1px solid #555;
-margin:20px 0;
-}
 
 </style>
 
+
 </head>
+
 
 
 <body>
@@ -124,105 +217,229 @@ margin:20px 0;
 <div class="container">
 
 
+
 <h1>
-Gestione Prove Calcestruzzo
+
+Prove Calcestruzzo
+
 </h1>
 
 
-<label>Nome impianto</label>
 
-<input id="impianto" placeholder="Nome impianto">
+<label>
 
+Impianto
 
-<label>Cliente / Cantiere</label>
-
-<input id="cliente" placeholder="Cliente o cantiere">
+</label>
 
 
-<label>Classe calcestruzzo</label>
+<input
 
-<input id="classe" placeholder="Es. C25/30">
+id="impianto"
 
-
-<label>Numero verbale prelievo</label>
-
-<input id="verbale" placeholder="Numero verbale">
+placeholder="Nome impianto">
 
 
-<label>Data prelievo</label>
-
-<input type="date" id="data">
 
 
-<label>Numero prelievi</label>
 
-<input 
+<label>
+
+Data prelievo
+
+</label>
+
+
+<input
+
+type="date"
+
+id="data">
+
+
+
+
+
+<label>
+
+Numero miscele <small>*</small>
+
+</label>
+
+
+<input
+
 type="number"
-id="prelievi"
+
+id="miscele"
+
+min="1"
+
 value="1"
-min="1">
+
+placeholder="Numero miscele">
+
+
+
+
+
+<label>
+
+Numero verbale <small>*</small>
+
+</label>
+
+
+<input
+
+id="verbale"
+
+placeholder="Numero verbale">
+
+
+
 
 
 <h3>
-Seleziona rotture
+
+Giorni rottura
+
 </h3>
 
 
+
 <div class="prova">
-<input type="checkbox" class="giorno" value="1">
+
+<input
+
+type="checkbox"
+
+class="giorno"
+
+value="1">
+
 Rottura a 1 giorno
+
 </div>
 
 
+
 <div class="prova">
-<input type="checkbox" class="giorno" value="3">
+
+<input
+
+type="checkbox"
+
+class="giorno"
+
+value="3">
+
 Rottura a 3 giorni
+
 </div>
 
 
+
 <div class="prova">
-<input type="checkbox" class="giorno" value="4">
+
+<input
+
+type="checkbox"
+
+class="giorno"
+
+value="4">
+
 Rottura a 4 giorni
+
 </div>
 
 
+
 <div class="prova">
-<input type="checkbox" class="giorno" value="7" checked>
+
+<input
+
+type="checkbox"
+
+class="giorno"
+
+value="7"
+
+checked>
+
 Rottura a 7 giorni
+
 </div>
 
 
+
 <div class="prova">
-<input type="checkbox" class="giorno" value="14">
+
+<input
+
+type="checkbox"
+
+class="giorno"
+
+value="14">
+
 Rottura a 14 giorni
+
 </div>
 
 
+
 <div class="prova">
-<input type="checkbox" class="giorno" value="28" checked>
+
+<input
+
+type="checkbox"
+
+class="giorno"
+
+value="28"
+
+checked>
+
 Rottura a 28 giorni
+
 </div>
+
 
 
 <div class="prova">
-<input type="checkbox" class="giorno" value="60" checked>
+
+<input
+
+type="checkbox"
+
+class="giorno"
+
+value="60"
+
+checked>
+
 Rottura a 60 giorni
+
 </div>
+
 
 
 <button onclick="genera()">
+
 Genera calendario
+
 </button>
+
 
 
 <button class="reset" onclick="resetStato()">
+
 Reset importazioni
+
 </button>
 
-
-<button onclick="nuovoPrelievo()">
-Nuovo prelievo
-</button>
 
 
 <div id="risultato" class="risultato">
@@ -232,72 +449,88 @@ Nessun evento creato
 </div>
 
 
+
 <script>
 
 
-if(localStorage.getItem("ultima_data")){
-
-caricaDati();
-
-}
-else{
 
 document.getElementById("data").valueAsDate=new Date();
 
-}
 
 
 function aggiungiGiorni(data,giorni){
 
+
 let nuova=new Date(data);
 
+
 nuova.setDate(
+
 nuova.getDate()+giorni
+
 );
+
 
 return nuova;
 
+
 }
+
 
 
 function formatoData(data){
 
+
 return data.toLocaleDateString("it-IT");
+
 
 }
 
 
-function getProve(){
+
+function getGiorni(){
+
 
 let lista=[];
 
+
 document.querySelectorAll(".giorno:checked")
+
 .forEach(function(x){
+
 
 lista.push(Number(x.value));
 
+
 });
 
-return lista.sort((a,b)=>a-b);
+
+return lista;
+
 
 }
+
 
 
 function formatoGoogle(data,ora){
 
+
 let anno=data.getFullYear();
 
-let mese=String(data.getMonth()+1)
-.padStart(2,"0");
 
-let giorno=String(data.getDate())
-.padStart(2,"0");
+let mese=String(data.getMonth()+1).padStart(2,"0");
+
+
+let giorno=String(data.getDate()).padStart(2,"0");
+
 
 return anno+mese+giorno+"T"+ora;
+
 
 }
     
 function creaLinkGoogle(titolo,inizio,fine,descrizione){
+
 
 return(
 
@@ -341,35 +574,48 @@ encodeURIComponent(descrizione)
 
 );
 
+
 }
 
 
 
-function eventoImportato(id){
+
+function importato(id){
+
 
 return localStorage.getItem(id)==="si";
 
+
 }
+
+
 
 
 
 function segnaImportato(id,bottone){
 
+
 localStorage.setItem(id,"si");
 
-bottone.innerHTML="✓ Inserito nel calendario";
+
+bottone.innerHTML="✓ Inserito";
+
 
 bottone.classList.add("fatto");
+
 
 }
 
 
 
-function creaBottone(link,id,testo){
+
+
+function creaBottone(link,id){
+
 
 let classe=
 
-eventoImportato(id)
+importato(id)
 
 ?
 
@@ -380,127 +626,46 @@ eventoImportato(id)
 "link";
 
 
-let scritta=
 
-eventoImportato(id)
+let testo=
+
+importato(id)
 
 ?
 
-"✓ Inserito nel calendario"
+"✓ Inserito"
 
 :
 
-testo;
+"Apri calendario Google";
+
 
 
 return `
+
 
 <a
 
 class="${classe}"
 
-target="_blank"
-
-rel="noopener noreferrer"
-
 href="${link}"
+
+target="_blank"
 
 onclick="segnaImportato('${id}',this)">
 
-${scritta}
+
+${testo}
+
 
 </a>
 
+
 `;
 
-}
-
-
-
-
-
-function salvaDati(){
-
-
-localStorage.setItem(
-"ultimo_impianto",
-document.getElementById("impianto").value
-);
-
-
-localStorage.setItem(
-"ultimo_cliente",
-document.getElementById("cliente").value
-);
-
-
-localStorage.setItem(
-"ultima_classe",
-document.getElementById("classe").value
-);
-
-
-localStorage.setItem(
-"ultimo_verbale",
-document.getElementById("verbale").value
-);
-
-
-localStorage.setItem(
-"ultima_data",
-document.getElementById("data").value
-);
-
-
-localStorage.setItem(
-"ultimi_prelievi",
-document.getElementById("prelievi").value
-);
-
 
 }
 
-
-
-function caricaDati(){
-
-
-document.getElementById("impianto").value=
-
-localStorage.getItem("ultimo_impianto") || "";
-
-
-
-document.getElementById("cliente").value=
-
-localStorage.getItem("ultimo_cliente") || "";
-
-
-
-document.getElementById("classe").value=
-
-localStorage.getItem("ultima_classe") || "";
-
-
-
-document.getElementById("verbale").value=
-
-localStorage.getItem("ultimo_verbale") || "";
-
-
-
-document.getElementById("data").value=
-
-localStorage.getItem("ultima_data") || "";
-
-
-
-document.getElementById("prelievi").value=
-
-localStorage.getItem("ultimi_prelievi") || "1";
-
-
-}
 
 
 
@@ -510,66 +675,78 @@ localStorage.getItem("ultimi_prelievi") || "1";
 function genera(){
 
 
+
 let impianto=
 
 document.getElementById("impianto")
-.value
-.trim();
 
+.value.trim();
 
-
-let cliente=
-
-document.getElementById("cliente")
-.value
-.trim();
-
-
-
-let classe=
-
-document.getElementById("classe")
-.value
-.trim();
-
-
-
-let verbale=
-
-document.getElementById("verbale")
-.value
-.trim();
 
 
 
 let valoreData=
 
 document.getElementById("data")
+
 .value;
 
 
 
-let prelievi=
+let miscele=
 
 Number(
-document.getElementById("prelievi").value
+
+document.getElementById("miscele")
+
+.value
+
 );
 
 
 
-let cubi=
 
-prelievi*6;
+let verbale=
+
+document.getElementById("verbale")
+
+.value.trim();
+
+
 
 
 
 if(!impianto || !valoreData){
 
+
 alert("Inserire impianto e data prelievo");
+
 
 return;
 
+
 }
+
+
+
+
+
+if(!miscele || miscele<1){
+
+
+miscele=1;
+
+
+}
+
+
+
+
+let cubi=
+
+miscele*2;
+
+
 
 
 
@@ -593,19 +770,28 @@ Number(parti[2])
 
 
 
-let prove=
-
-getProve();
 
 
+let giorni=
 
-if(prove.length===0){
+getGiorni();
+
+
+
+
+
+if(giorni.length===0){
+
 
 alert("Selezionare almeno una rottura");
 
+
 return;
 
+
 }
+
+
 
 
 
@@ -613,181 +799,23 @@ let html="";
 
 
 
-let dataTesto=
-
-formatoData(dataPrelievo);
-
-
-
-
-let titoloReport=
-
-"REPORT Calcestruzzo - "
-
-+
-
-impianto;
-
-
-
-let descrizioneReport=
-
-"REPORT PRELIEVO CALCESTRUZZO\n\n"
-
-+
-
-"Impianto: "
-
-+
-
-impianto
-
-+
-
-"\nCliente/Cantiere: "
-
-+
-
-cliente
-
-+
-
-"\nClasse calcestruzzo: "
-
-+
-
-classe
-
-+
-
-"\nNumero verbale: "
-
-+
-
-verbale
-
-+
-
-"\n\nData prelievo: "
-
-+
-
-dataTesto
-
-+
-
-"\nNumero prelievi: "
-
-+
-
-prelievi
-
-+
-
-"\nTotale cubi confezionati: "
-
-+
-
-cubi
-
-+
-
-"\n\nRotture programmate:\n";
-
-
-
-prove.forEach(function(giorni){
-
-
-let data=
-
-aggiungiGiorni(
-dataPrelievo,
-giorni
-);
-
-
-
-descrizioneReport+=
-
-"• "
-
-+
-
-giorni
-
-+
-
-" giorni → "
-
-+
-
-formatoData(data)
-
-+
-
-"\n";
-
-
-});
-
-
-
-descrizioneReport+=
-
-"\nNote:\n________________________";
-
-let linkReport=
-
-creaLinkGoogle(
-
-titoloReport,
-
-formatoGoogle(dataPrelievo,"080000"),
-
-formatoGoogle(dataPrelievo,"170000"),
-
-descrizioneReport
-
-);
-
-
-
-let idReport=
-
-"report_"
-
-+
-
-impianto
-
-+
-
-"_"
-
-+
-
-valoreData;
-
 
 
 html+=`
 
 <b style="font-size:22px;color:#f59e0b">
 
-REPORT CALCESTRUZZO
+PRELIEVO
 
 </b>
 
 
 <div class="dataGrande">
 
-${dataTesto}
+${formatoData(dataPrelievo)}
 
 </div>
 
-
-<div class="info">
 
 Impianto:
 
@@ -795,15 +823,28 @@ Impianto:
 
 <br>
 
-Cliente:
 
-<b>${cliente}</b>
+Miscele:
+
+<b>${miscele}</b>
+
 
 <br>
 
-Classe:
 
-<b>${classe}</b>
+Cubi per ogni rottura:
+
+<b>${cubi}</b>
+
+
+`;
+
+
+
+if(verbale!=""){
+
+
+html+=`
 
 <br>
 
@@ -811,40 +852,13 @@ Verbale:
 
 <b>${verbale}</b>
 
-<br>
-
-Prelievi:
-
-<b>${prelievi}</b>
-
-<br>
-
-Totale cubi:
-
-<b>${cubi}</b>
-
-</div>
-
 `;
 
-
-
-html+=creaBottone(
-
-linkReport,
-
-idReport,
-
-"Importa REPORT nel Calendario Google"
-
-);
+}
 
 
 
-
-
-
-prove.forEach(function(giorni){
+giorni.forEach(function(giorno){
 
 
 
@@ -854,16 +868,17 @@ aggiungiGiorni(
 
 dataPrelievo,
 
-giorni
+giorno
 
 );
 
 
 
-let dataRotturaTesto=
+
+
+let dataTesto=
 
 formatoData(dataRottura);
-
 
 
 
@@ -873,7 +888,7 @@ let titolo=
 
 +
 
-giorni
+giorno
 
 +
 
@@ -881,19 +896,8 @@ giorni
 
 +
 
-impianto
+impianto;
 
-+
-
-" ("
-
-+
-
-cubi
-
-+
-
-" cubi)";
 
 
 
@@ -912,23 +916,17 @@ impianto
 
 +
 
-"\nCliente/Cantiere: "
+"\n";
 
-+
 
-cliente
 
-+
 
-"\nClasse calcestruzzo: "
+if(verbale!=""){
 
-+
 
-classe
+descrizione+=
 
-+
-
-"\nNumero verbale: "
+"Verbale: "
 
 +
 
@@ -936,43 +934,29 @@ verbale
 
 +
 
-"\n\nData prelievo: "
+"\n";
+
+
+}
+
+
+
+
+descrizione+=
+
+"Miscele: "
 
 +
 
-dataTesto
+miscele
 
 +
 
-"\nData rottura: "
+"\n"
 
 +
 
-dataRotturaTesto
-
-+
-
-"\nEtà provini: "
-
-+
-
-giorni
-
-+
-
-" giorni"
-
-+
-
-"\n\nNumero prelievi: "
-
-+
-
-prelievi
-
-+
-
-"\nCubi da rompere: "
+"Cubi da rompere: "
 
 +
 
@@ -980,12 +964,43 @@ cubi
 
 +
 
-"\n\nOperazione prevista:"
+"\n\n"
 
 +
 
-"\nEseguire la prova di compressione dei provini.";
+"Data prelievo: "
 
++
+
+formatoData(dataPrelievo)
+
++
+
+"\n"
+
++
+
+"Data rottura: "
+
++
+
+dataTesto
+
++
+
+"\n"
+
++
+
+"Età provino: "
+
++
+
+giorno
+
++
+
+" giorni";
 
 
 
@@ -1027,12 +1042,9 @@ valoreData
 
 +
 
-giorni;
+giorno;
 
-
-
-
-
+               
 html+=`
 
 <hr>
@@ -1040,25 +1052,29 @@ html+=`
 
 <b style="font-size:22px">
 
-Rottura a ${giorni} giorni
+Rottura a ${giorno} giorni
 
 </b>
 
 
 <div class="dataGrande">
 
-${dataRotturaTesto}
+${dataTesto}
 
 </div>
 
 
-<div class="info">
+Miscele:
 
-${cubi} cubi
+<b>${miscele}</b>
 
-(${prelievi} prelievi)
 
-</div>
+<br>
+
+
+Cubi da rompere:
+
+<b>${cubi}</b>
 
 
 `;
@@ -1069,9 +1085,7 @@ html+=creaBottone(
 
 link,
 
-id,
-
-"Importa nel Calendario Google"
+id
 
 );
 
@@ -1085,94 +1099,41 @@ document.getElementById("risultato").innerHTML=html;
 
 
 
-salvaDati();
-
-
-
 }
+
 
 
 
 function resetStato(){
 
 
-if(confirm("Cancellare lo stato delle importazioni?")){
+
+if(confirm("Cancellare stato importazioni?")){
 
 
-Object.keys(localStorage).forEach(function(key){
+
+localStorage.clear();
 
 
-if(
 
-key.startsWith("report_")
+alert("Stato cancellato");
 
-||
-
-key.startsWith("rottura_")
-
-){
-
-
-localStorage.removeItem(key);
-
-
-}
-
-
-});
-
-
-alert("Stato importazioni azzerato");
 
 
 genera();
 
 
-}
-
-
-}
-
-
-
-
-
-
-function nuovoPrelievo(){
-
-
-if(confirm("Creare un nuovo prelievo?")){
-
-
-document.getElementById("impianto").value="";
-
-
-document.getElementById("cliente").value="";
-
-
-document.getElementById("classe").value="";
-
-
-document.getElementById("verbale").value="";
-
-
-document.getElementById("prelievi").value="1";
-
-
-document.getElementById("data").valueAsDate=new Date();
-
-
-
-document.getElementById("risultato").innerHTML=
-
-"Nessun evento creato";
-
 
 }
 
 
 }
 
+<button onclick="nuovoPrelievo()">
+
+Nuovo prelievo
+
+</button>
 
 
 </script>
@@ -1185,5 +1146,3 @@ document.getElementById("risultato").innerHTML=
 
 
 </html>
-
-
