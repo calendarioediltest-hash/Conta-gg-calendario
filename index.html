@@ -8,24 +8,30 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Prove Calcestruzzo</title>
+<title>Ediltest 2.0</title>
 
 
 <style>
+
+*{
+box-sizing:border-box;
+}
+
 
 body{
 
 font-family:Arial,sans-serif;
 
-background:#555;
+background:#e5e7eb;
 
 margin:0;
 
 padding:15px;
 
-color:white;
+color:#1f2937;
 
 }
+
 
 
 .container{
@@ -34,13 +40,41 @@ max-width:520px;
 
 margin:auto;
 
-background:#292929;
+}
 
-padding:20px;
+
+
+.header{
+
+background:white;
 
 border-radius:20px;
 
-box-shadow:0 0 20px #222;
+padding:20px;
+
+text-align:center;
+
+box-shadow:0 3px 12px #bbb;
+
+}
+
+
+
+.logo{
+
+height:55px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-size:22px;
+
+font-weight:bold;
+
+color:#d97706;
 
 }
 
@@ -48,13 +82,9 @@ box-shadow:0 0 20px #222;
 
 h1{
 
-text-align:center;
-
-color:#f59e0b;
+margin:5px 0;
 
 font-size:30px;
-
-margin-bottom:5px;
 
 }
 
@@ -62,13 +92,39 @@ margin-bottom:5px;
 
 .sottotitolo{
 
-text-align:center;
+color:#666;
 
 font-size:14px;
 
-color:#aaa;
+}
 
-margin-bottom:20px;
+
+
+.card{
+
+background:white;
+
+border-radius:20px;
+
+padding:20px;
+
+margin-top:15px;
+
+box-shadow:0 3px 12px #ccc;
+
+}
+
+
+
+.titolo{
+
+font-size:20px;
+
+font-weight:bold;
+
+color:#d97706;
+
+margin-bottom:15px;
 
 }
 
@@ -76,11 +132,11 @@ margin-bottom:20px;
 
 label{
 
+display:block;
+
 font-size:18px;
 
 font-weight:bold;
-
-display:block;
 
 margin-top:15px;
 
@@ -90,11 +146,11 @@ margin-top:15px;
 
 .info{
 
-font-size:13px;
-
-color:#aaa;
+font-size:12px;
 
 font-weight:normal;
+
+color:#777;
 
 }
 
@@ -104,19 +160,17 @@ input{
 
 width:100%;
 
-height:60px;
-
-box-sizing:border-box;
-
-padding:12px;
-
-margin-top:8px;
-
-border:0;
+height:55px;
 
 border-radius:12px;
 
-font-size:20px;
+border:1px solid #ccc;
+
+padding:12px;
+
+font-size:18px;
+
+margin-top:6px;
 
 }
 
@@ -126,13 +180,33 @@ font-size:20px;
 
 display:flex;
 
-align-items:center;
-
 justify-content:center;
+
+align-items:center;
 
 gap:15px;
 
 margin-top:10px;
+
+}
+
+
+
+.contatore button{
+
+width:60px;
+
+height:55px;
+
+border:0;
+
+border-radius:12px;
+
+background:#d97706;
+
+color:white;
+
+font-size:30px;
 
 }
 
@@ -144,7 +218,7 @@ width:90px;
 
 text-align:center;
 
-font-size:30px;
+font-size:25px;
 
 font-weight:bold;
 
@@ -152,33 +226,77 @@ font-weight:bold;
 
 
 
-.contatore button{
+.prove{
 
-width:70px;
-
-height:60px;
-
-font-size:35px;
-
-margin:0;
+margin-top:15px;
 
 }
 
 
 
-button{
+.giorno{
+
+height:60px;
+
+background:#f3f4f6;
+
+border-radius:15px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-size:20px;
+
+font-weight:bold;
+
+margin:10px 0;
+
+cursor:pointer;
+
+border:2px solid transparent;
+
+}
+
+
+
+.giorno input{
+
+display:none;
+
+}
+
+
+
+.giorno.attivo{
+
+background:#d97706;
+
+color:white;
+
+border-color:white;
+
+box-shadow:0 0 15px #d97706;
+
+}
+
+
+
+button.principale{
 
 width:100%;
 
-height:70px;
+height:75px;
 
 margin-top:20px;
 
 border:0;
 
-border-radius:15px;
+border-radius:18px;
 
-background:#d97706;
+background:#ea580c;
 
 color:white;
 
@@ -190,107 +308,43 @@ font-weight:bold;
 
 
 
-button:active{
-
-transform:scale(.97);
-
-}
-
-
-
 .spiegazione{
 
 text-align:center;
 
 font-size:13px;
 
-color:#aaa;
+color:#666;
 
-margin-top:8px;
+margin-top:10px;
 
 }
 
 
 
-.prova{
+.riepilogo{
 
-height:65px;
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-background:#444;
+background:#fff7ed;
 
 border-radius:15px;
-
-margin:12px 0;
-
-font-size:20px;
-
-font-weight:bold;
-
-border:2px solid transparent;
-
-transition:.2s;
-
-}
-
-
-
-.prova input{
-
-display:none;
-
-}
-
-
-
-.prova.attivo{
-
-background:#f59e0b;
-
-color:#111;
-
-border-color:white;
-
-box-shadow:0 0 18px #f59e0b;
-
-transform:scale(1.03);
-
-}
-
-
-
-
-
-/* RISULTATI */
-
-.risultato{
-
-background:#111;
-
-margin-top:25px;
 
 padding:15px;
 
-border-radius:15px;
+margin-top:15px;
+
+border-left:6px solid #d97706;
 
 }
 
 
 
-.dataGrande{
+.riga{
 
-font-size:34px;
+font-size:18px;
+
+padding:8px 0;
 
 font-weight:bold;
-
-color:#f59e0b;
-
-margin:10px 0;
 
 }
 
@@ -306,15 +360,15 @@ color:white;
 
 padding:18px;
 
-border-radius:12px;
-
-margin-top:15px;
+border-radius:15px;
 
 text-align:center;
 
+margin-top:15px;
+
 text-decoration:none;
 
-font-size:17px;
+font-weight:bold;
 
 }
 
@@ -333,20 +387,44 @@ font-size:17px;
 
 
 
+<div class="header">
+
+
+<div class="logo">
+
+EDILTEST
+
+</div>
+
+
 <h1>
 
-Prove Calcestruzzo
+EDILTEST 2.0
 
 </h1>
 
 
 <div class="sottotitolo">
 
-Compila i dati e tocca i pulsanti per inserire gli eventi nel calendario Google
+Gestione prove calcestruzzo<br>
+
+Prelievi - Rotture - Calendario prove
 
 </div>
 
 
+</div>
+
+
+
+<div class="card">
+
+
+<div class="titolo">
+
+DATI PRELIEVO
+
+</div>
 
 
 
@@ -354,18 +432,16 @@ Compila i dati e tocca i pulsanti per inserire gli eventi nel calendario Google
 
 Impianto
 
-<span class="info">(obbligatorio)</span>
+<span class="info">
+
+(obbligatorio)
+
+</span>
 
 </label>
 
 
-<input
-
-id="impianto"
-
-placeholder="Nome impianto">
-
-
+<input id="impianto" placeholder="Nome impianto">
 
 
 
@@ -373,18 +449,16 @@ placeholder="Nome impianto">
 
 Data prelievo
 
-<span class="info">(obbligatorio)</span>
+<span class="info">
+
+(obbligatorio)
+
+</span>
 
 </label>
 
 
-<input
-
-type="date"
-
-id="data">
-
-
+<input type="date" id="data">
 
 
 
@@ -392,7 +466,11 @@ id="data">
 
 Numero miscele
 
-<span class="info">(obbligatorio)</span>
+<span class="info">
+
+(obbligatorio)
+
+</span>
 
 </label>
 
@@ -407,13 +485,7 @@ Numero miscele
 </button>
 
 
-<input
-
-id="miscele"
-
-value="1"
-
-readonly>
+<input id="miscele" value="1" readonly>
 
 
 <button onclick="cambiaMiscele(1)">
@@ -427,177 +499,178 @@ readonly>
 
 
 
-
-
 <label>
 
 Numero verbale
 
-<span class="info">(opzionale)</span>
+<span class="info">
+
+(opzionale)
+
+</span>
 
 </label>
 
 
-<input
+<input id="verbale" placeholder="Inserire se disponibile">
 
-id="verbale"
-
-placeholder="Lasciare vuoto se non presente">
-
-
-
-
-
-
-<h3>
-
-Giorni rottura
-
-</h3>
-
-
-
-
-
-<div class="prova attivo" onclick="selezionaGiorno(this)">
-
-<input class="giorno" type="checkbox" value="1" checked>
-
-Rottura 1 giorno
 
 </div>
 
+<div class="card">
 
 
+<div class="titolo">
 
-
-<div class="prova" onclick="selezionaGiorno(this)">
-
-<input class="giorno" type="checkbox" value="3">
-
-Rottura 3 giorni
+PROGRAMMA ROTTURE
 
 </div>
-
-
-
-
-
-<div class="prova" onclick="selezionaGiorno(this)">
-
-<input class="giorno" type="checkbox" value="4">
-
-Rottura 4 giorni
-
-</div>
-
-
-
-
-
-<div class="prova attivo" onclick="selezionaGiorno(this)">
-
-<input class="giorno" type="checkbox" value="7" checked>
-
-Rottura 7 giorni
-
-</div>
-
-
-
-
-
-<div class="prova" onclick="selezionaGiorno(this)">
-
-<input class="giorno" type="checkbox" value="14">
-
-Rottura 14 giorni
-
-</div>
-
-
-
-
-
-<div class="prova attivo" onclick="selezionaGiorno(this)">
-
-<input class="giorno" type="checkbox" value="28" checked>
-
-Rottura 28 giorni
-
-</div>
-
-
-
-
-
-<div class="prova attivo" onclick="selezionaGiorno(this)">
-
-<input class="giorno" type="checkbox" value="60" checked>
-
-Rottura 60 giorni
-
-</div>
-
-
-
-
-
-<button onclick="creaReport()">
-
-CREA EVENTO PRELIEVO
-
-</button>
 
 
 <div class="spiegazione">
 
-Tocca per inserire il prelievo nel calendario Google (08:00 - 17:00)
+Seleziona i giorni delle prove da calcolare
 
 </div>
 
 
 
+<div class="prove">
 
 
-<button onclick="genera()">
 
-CREA EVENTI ROTTURA
+<div class="giorno attivo" onclick="selezionaGiorno(this)">
+
+<input class="giornoCheck" type="checkbox" value="7" checked>
+
+7 GIORNI
+
+</div>
+
+
+
+<div class="giorno attivo" onclick="selezionaGiorno(this)">
+
+<input class="giornoCheck" type="checkbox" value="28" checked>
+
+28 GIORNI
+
+</div>
+
+
+
+<div class="giorno attivo" onclick="selezionaGiorno(this)">
+
+<input class="giornoCheck" type="checkbox" value="60" checked>
+
+60 GIORNI
+
+</div>
+
+
+
+<div class="giorno" onclick="selezionaGiorno(this)">
+
+<input class="giornoCheck" type="checkbox" value="1">
+
+1 GIORNO
+
+</div>
+
+
+
+<div class="giorno" onclick="selezionaGiorno(this)">
+
+<input class="giornoCheck" type="checkbox" value="3">
+
+3 GIORNI
+
+</div>
+
+
+
+<div class="giorno" onclick="selezionaGiorno(this)">
+
+<input class="giornoCheck" type="checkbox" value="4">
+
+4 GIORNI
+
+</div>
+
+
+
+<div class="giorno" onclick="selezionaGiorno(this)">
+
+<input class="giornoCheck" type="checkbox" value="14">
+
+14 GIORNI
+
+</div>
+
+
+
+</div>
+
+
+
+<button class="principale" onclick="generaProgramma()">
+
+CALCOLA PROGRAMMA ROTTURE
 
 </button>
 
 
+
 <div class="spiegazione">
 
-Tocca ogni evento per inserirlo nel calendario Google
+Calcola automaticamente le date e crea gli eventi nel calendario Google
 
 </div>
 
 
 
+<div id="programma" class="riepilogo">
 
 
-<div id="risultato" class="risultato">
+<div class="riga">
 
-Nessun evento creato
+PROGRAMMA NON CALCOLATO
+
+</div>
+
 
 </div>
 
 
+
 </div>
+
+
+
+<div id="risultato"></div>
+
+
+
+</div>
+
 
 <script>
+  
 
+
+// DATA AUTOMATICA
 
 document.getElementById("data").valueAsDate=new Date();
 
 
 
-// CONTATORE MISCELE
+
 
 function cambiaMiscele(valore){
 
+
 let campo=document.getElementById("miscele");
+
 
 let numero=parseInt(campo.value)+valore;
 
@@ -611,29 +684,34 @@ numero=1;
 
 campo.value=numero;
 
+
 }
 
 
 
 
-// SELEZIONE GIORNI
+
 
 function selezionaGiorno(elemento){
 
 
-let check=elemento.querySelector(".giorno");
+let check=elemento.querySelector(".giornoCheck");
 
 
 check.checked=!check.checked;
 
 
-elemento.classList.toggle(
+if(check.checked){
 
-"attivo",
+elemento.classList.add("attivo");
 
-check.checked
+}
 
-);
+else{
+
+elemento.classList.remove("attivo");
+
+}
 
 
 }
@@ -648,7 +726,7 @@ function getGiorni(){
 let lista=[];
 
 
-document.querySelectorAll(".giorno:checked")
+document.querySelectorAll(".giornoCheck:checked")
 
 .forEach(function(x){
 
@@ -661,12 +739,12 @@ lista.push(Number(x.value));
 
 return lista;
 
+
 }
 
 
 
 
-// AGGIUNGE GIORNI
 
 function aggiungiGiorni(data,giorni){
 
@@ -683,7 +761,9 @@ nuova.getDate()+giorni
 
 return nuova;
 
+
 }
+
 
 
 
@@ -699,27 +779,27 @@ return data.toLocaleDateString("it-IT");
 
 
 
-// FORMATO GOOGLE
 
 function formatoGoogle(data,ora){
 
 
 let anno=data.getFullYear();
 
+
 let mese=String(data.getMonth()+1).padStart(2,"0");
+
 
 let giorno=String(data.getDate()).padStart(2,"0");
 
 
 return anno+mese+giorno+"T"+ora;
 
+
 }
 
 
 
 
-
-// LINK GOOGLE CALENDAR
 
 function creaLinkGoogle(titolo,inizio,fine,descrizione){
 
@@ -773,33 +853,23 @@ encodeURIComponent(descrizione)
 
 
 
-// CREA EVENTO PRELIEVO 08-17
-
-function creaReport(){
-
-
-let impianto=document
-.getElementById("impianto")
-.value.trim();
 
 
 
-let valoreData=document
-.getElementById("data")
-.value;
+function generaProgramma(){
 
 
 
-let miscele=Number(
-document.getElementById("miscele").value
-);
+let impianto=document.getElementById("impianto").value.trim();
 
 
+let valoreData=document.getElementById("data").value;
 
-let verbale=document
-.getElementById("verbale")
-.value.trim();
 
+let miscele=Number(document.getElementById("miscele").value);
+
+
+let verbale=document.getElementById("verbale").value.trim();
 
 
 
@@ -808,25 +878,152 @@ if(!impianto || !valoreData){
 
 alert("Inserire impianto e data prelievo");
 
+
 return;
+
 
 }
 
 
 
 
-let p=valoreData.split("-");
+
+let parti=valoreData.split("-");
+
 
 
 let data=new Date(
 
-Number(p[0]),
+Number(parti[0]),
 
-Number(p[1])-1,
+Number(parti[1])-1,
 
-Number(p[2])
+Number(parti[2])
 
 );
+
+
+
+
+let giorni=getGiorni();
+
+
+if(giorni.length===0){
+
+
+alert("Selezionare almeno un giorno di rottura");
+
+
+return;
+
+
+}
+
+
+
+
+
+let html="";
+
+
+
+html+="<div class='riga'>PROGRAMMA CALCOLATO</div>";
+
+
+
+html+="<div>Prelievo: <b>"+formatoData(data)+"</b></div>";
+
+
+
+
+
+giorni.forEach(function(g){
+
+
+
+let dataRottura=aggiungiGiorni(data,g);
+
+
+
+html+=`
+
+<div class="riga">
+
+ROTTURA ${g} GIORNI
+
+</div>
+
+<div>
+
+${formatoData(dataRottura)}
+
+</div>
+
+`;
+
+
+
+});
+
+
+
+html+=`
+
+<button class="principale" onclick="creaEventi()">
+
+INSERISCI NEL CALENDARIO GOOGLE
+
+</button>
+
+`;
+
+
+
+document.getElementById("programma").innerHTML=html;
+
+
+
+}
+
+
+
+
+
+
+
+
+function creaEventi(){
+
+
+
+let impianto=document.getElementById("impianto").value.trim();
+
+
+let valoreData=document.getElementById("data").value;
+
+
+let miscele=Number(document.getElementById("miscele").value);
+
+
+let verbale=document.getElementById("verbale").value.trim();
+
+
+
+
+let parti=valoreData.split("-");
+
+
+
+let data=new Date(
+
+Number(parti[0]),
+
+Number(parti[1])-1,
+
+Number(parti[2])
+
+);
+
 
 
 
@@ -838,65 +1035,15 @@ let giorni=getGiorni();
 
 
 
-let programma="";
 
 
+let descrizionePrelievo=
 
-giorni.forEach(function(g){
-
-
-let dataRottura=
-
-aggiungiGiorni(data,g);
-
-
-programma+=
-
-"\n"
+"EDILTEST 2.0\n\n"
 
 +
 
-g
-
-+
-
-" giorni - "
-
-+
-
-formatoData(dataRottura);
-
-
-});
-
-
-
-
-
-
-let titolo=
-
-"PRELIEVO - "
-
-+
-
-impianto
-
-+
-
-" - "
-
-+
-
-formatoData(data);
-
-
-
-
-
-let descrizione=
-
-"REPORT PROVA CALCESTRUZZO\n\n"
+"REPORT PRELIEVO\n\n"
 
 +
 
@@ -924,7 +1071,7 @@ formatoData(data)
 
 +
 
-"Numero verbale: "
+"Verbale: "
 
 +
 
@@ -956,54 +1103,69 @@ cubi
 
 +
 
-"\n"
-
-+
-
-"Cubetti per rottura: "
-
-+
-
-cubi
-
-+
-
 "\n\n"
 
 +
 
-"PROGRAMMA ROTTURE"
+"Programma rotture:\n";
+
+
+
+
+
+
+giorni.forEach(function(g){
+
+
+descrizionePrelievo+=
+
+g
 
 +
 
-programma;
+" giorni\n";
+
+
+});
 
 
 
 
 
-let link=
 
-creaLinkGoogle(
 
-titolo,
+let linkPrelievo=creaLinkGoogle(
+
+
+"PRELIEVO - "
+
++
+
+impianto
+
++
+
+" - "
+
++
+
+formatoData(data),
+
 
 formatoGoogle(data,"080000"),
 
+
 formatoGoogle(data,"170000"),
 
-descrizione
+
+descrizionePrelievo
+
 
 );
 
 
 
-
-
-window.open(link,"_blank");
-
-
-}
+window.open(linkPrelievo,"_blank");
 
 
 
@@ -1011,75 +1173,7 @@ window.open(link,"_blank");
 
 
 
-// CREA EVENTI ROTTURA
-
-function genera(){
-
-
-
-let impianto=document
-.getElementById("impianto")
-.value.trim();
-
-
-
-let valoreData=document
-.getElementById("data")
-.value;
-
-
-
-let miscele=Number(
-document.getElementById("miscele").value
-);
-
-
-
-let verbale=document
-.getElementById("verbale")
-.value.trim();
-
-
-
-
-if(!impianto || !valoreData){
-
-
-alert("Inserire impianto e data prelievo");
-
-return;
-
-}
-
-
-
-
-
-let p=valoreData.split("-");
-
-
-let data=new Date(
-
-Number(p[0]),
-
-Number(p[1])-1,
-
-Number(p[2])
-
-);
-
-
-
-let cubi=miscele*2;
-
-
-let giorni=getGiorni();
-
-
-
-
-
-let html="";
+let risultato="";
 
 
 
@@ -1089,40 +1183,45 @@ giorni.forEach(function(g){
 
 
 
-let dataRottura=
-
-aggiungiGiorni(data,g);
+let dataRottura=aggiungiGiorni(data,g);
 
 
 
 
 let titolo=
 
+"ROTTURA "
+
++
+
+g
+
++
+
+" GIORNI - "
+
++
+
 cubi
 
 +
 
-" cubi - "
+" CUBI - "
 
 +
 
-impianto
-
-+
-
-" - Prelievo "
-
-+
-
-formatoData(data);
-
+impianto;
 
 
 
 
 let descrizione=
 
-"PROVA CALCESTRUZZO\n\n"
+"EDILTEST 2.0\n\n"
+
++
+
+"PROVA COMPRESSIONE\n\n"
 
 +
 
@@ -1200,17 +1299,20 @@ g
 
 
 
-let link=
+let link=creaLinkGoogle(
 
-creaLinkGoogle(
 
 titolo,
 
+
 formatoGoogle(dataRottura,"090000"),
+
 
 formatoGoogle(dataRottura,"100000"),
 
+
 descrizione
+
 
 );
 
@@ -1218,35 +1320,32 @@ descrizione
 
 
 
-html+=`
+risultato+=`
 
-<hr>
+<div class="card">
+
+<div class="riga">
+
+ROTTURA ${g} GIORNI
+
+</div>
 
 
-<b>
-
-Rottura ${g} giorni
-
-</b>
-
-
-<div class="dataGrande">
+<div>
 
 ${formatoData(dataRottura)}
 
 </div>
 
 
-<a class="link"
-
-href="${link}"
-
-target="_blank">
+<a class="link" href="${link}" target="_blank">
 
 TOCCA PER INSERIRE IN GOOGLE CALENDAR
 
 </a>
 
+
+</div>
 
 `;
 
@@ -1258,7 +1357,7 @@ TOCCA PER INSERIRE IN GOOGLE CALENDAR
 
 
 
-document.getElementById("risultato").innerHTML=html;
+document.getElementById("risultato").innerHTML=risultato;
 
 
 
@@ -1270,6 +1369,5 @@ document.getElementById("risultato").innerHTML=html;
 
 
 </body>
-
 
 </html>
