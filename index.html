@@ -27,10 +27,9 @@ margin:0;
 
 padding:15px;
 
-font-family:'Inter',Arial,sans-serif;
+font-family:'Inter',sans-serif;
 
-background:
-linear-gradient(135deg,#cbd5e1,#f1f5f9);
+background:linear-gradient(135deg,#cbd5e1,#f8fafc);
 
 color:#16324f;
 
@@ -50,9 +49,7 @@ margin:auto;
 
 .app{
 
-background:
-
-rgba(255,255,255,0.65);
+background:rgba(255,255,255,0.70);
 
 backdrop-filter:blur(18px);
 
@@ -60,9 +57,7 @@ border-radius:32px;
 
 padding:20px;
 
-box-shadow:
-
-0 15px 40px rgba(0,0,0,0.15);
+box-shadow:0 15px 40px rgba(0,0,0,0.15);
 
 }
 
@@ -74,13 +69,11 @@ font-family:'Montserrat',sans-serif;
 
 text-align:center;
 
-font-size:26px;
+font-size:25px;
 
 font-weight:700;
 
 color:#0b416b;
-
-margin-bottom:5px;
 
 }
 
@@ -90,11 +83,11 @@ margin-bottom:5px;
 
 text-align:center;
 
-font-size:13px;
+font-size:12px;
 
 color:#64748b;
 
-margin-bottom:22px;
+margin-bottom:20px;
 
 }
 
@@ -120,11 +113,11 @@ label{
 
 display:block;
 
-font-weight:600;
-
 font-size:15px;
 
-margin-top:14px;
+font-weight:600;
+
+margin-top:12px;
 
 }
 
@@ -134,9 +127,9 @@ margin-top:14px;
 
 font-size:11px;
 
-font-weight:400;
-
 color:#64748b;
+
+font-weight:400;
 
 }
 
@@ -146,23 +139,19 @@ input{
 
 width:100%;
 
-height:52px;
+height:50px;
 
 border:0;
 
 border-radius:15px;
 
-padding:12px;
+padding:10px;
 
 font-size:16px;
 
 margin-top:5px;
 
 background:white;
-
-box-shadow:
-
-0 3px 10px rgba(0,0,0,0.08);
 
 }
 
@@ -172,13 +161,11 @@ box-shadow:
 
 display:flex;
 
-align-items:center;
-
 justify-content:center;
 
-gap:15px;
+align-items:center;
 
-margin-top:8px;
+gap:15px;
 
 }
 
@@ -186,13 +173,13 @@ margin-top:8px;
 
 .contatore button{
 
-width:58px;
+width:55px;
 
-height:52px;
+height:50px;
 
 border:0;
 
-border-radius:16px;
+border-radius:15px;
 
 background:#0b416b;
 
@@ -217,9 +204,7 @@ font-weight:bold;
 }
 
 
-
 </style>
-
 
 </head>
 
@@ -233,13 +218,11 @@ font-weight:bold;
 <div class="app">
 
 
-
 <div class="titolo">
 
 EDILTEST 2.0
 
 </div>
-
 
 
 <div class="sottotitolo">
@@ -249,7 +232,6 @@ Gestione prove calcestruzzo<br>
 Prelievi • Rotture • Calendario
 
 </div>
-
 
 
 <div class="sezione">
@@ -264,11 +246,7 @@ DATI PRELIEVO
 
 Cantiere
 
-<span class="info">
-
-(obbligatorio)
-
-</span>
+<span class="info">(obbligatorio)</span>
 
 </label>
 
@@ -281,11 +259,7 @@ Cantiere
 
 Data prelievo
 
-<span class="info">
-
-(obbligatorio)
-
-</span>
+<span class="info">(automatica)</span>
 
 </label>
 
@@ -298,40 +272,28 @@ Data prelievo
 
 Numero miscele
 
-<span class="info">
-
-(obbligatorio)
-
-</span>
+<span class="info">(obbligatorio)</span>
 
 </label>
-
 
 
 <div class="contatore">
 
 
 <button onclick="modificaMiscele(-1)">
-
 −
-
 </button>
-
 
 
 <input id="miscele" value="1" readonly>
 
 
-
 <button onclick="modificaMiscele(1)">
-
 +
-
 </button>
 
 
 </div>
-
 
 
 
@@ -339,20 +301,15 @@ Numero miscele
 
 Numero verbale
 
-<span class="info">
-
-(opzionale)
-
-</span>
+<span class="info">(opzionale)</span>
 
 </label>
 
 
 <input id="verbale" placeholder="Numero verbale">
 
-<!-- PROGRAMMA ROTTURE -->
 
-
+  
 <div class="sezione">
 
 PROGRAMMA ROTTURE
@@ -360,10 +317,9 @@ PROGRAMMA ROTTURE
 </div>
 
 
+<div style="font-size:12px;color:#64748b">
 
-<div style="font-size:12px;color:#64748b;margin-top:5px">
-
-Seleziona solo le prove necessarie
+Seleziona solo le prove da programmare
 
 </div>
 
@@ -388,7 +344,7 @@ margin-top:15px;
 
 .giorno{
 
-height:52px;
+height:50px;
 
 border:0;
 
@@ -402,9 +358,7 @@ font-size:16px;
 
 font-weight:700;
 
-box-shadow:
-
-0 4px 12px rgba(0,0,0,0.08);
+box-shadow:0 4px 12px rgba(0,0,0,0.08);
 
 }
 
@@ -416,16 +370,6 @@ background:#0b416b;
 
 color:white;
 
-transform:scale(1.03);
-
-}
-
-
-
-#risultato{
-
-margin-top:18px;
-
 }
 
 
@@ -436,23 +380,19 @@ width:100%;
 
 height:65px;
 
+margin-top:20px;
+
 border:0;
 
 border-radius:20px;
-
-margin-top:20px;
 
 background:#0b416b;
 
 color:white;
 
-font-size:18px;
+font-size:17px;
 
 font-weight:700;
-
-box-shadow:
-
-0 10px 25px rgba(11,65,107,0.3);
 
 }
 
@@ -468,9 +408,7 @@ padding:15px;
 
 margin-top:12px;
 
-box-shadow:
-
-0 5px 15px rgba(0,0,0,0.08);
+box-shadow:0 5px 15px rgba(0,0,0,0.08);
 
 }
 
@@ -478,11 +416,11 @@ box-shadow:
 
 .titoloEvento{
 
+font-size:16px;
+
 font-weight:700;
 
 color:#0b416b;
-
-font-size:16px;
 
 }
 
@@ -492,11 +430,11 @@ font-size:16px;
 
 display:block;
 
-width:100%;
-
 margin-top:12px;
 
 padding:15px;
+
+width:100%;
 
 border-radius:15px;
 
@@ -508,7 +446,7 @@ text-align:center;
 
 text-decoration:none;
 
-font-size:15px;
+font-size:14px;
 
 font-weight:700;
 
@@ -524,65 +462,47 @@ font-weight:700;
 <div class="giorni">
 
 
-
 <button class="giorno" onclick="selezionaGiorno(this,1)">
-
 1
-
 </button>
 
 
 <button class="giorno" onclick="selezionaGiorno(this,2)">
-
 2
-
 </button>
 
 
 <button class="giorno" onclick="selezionaGiorno(this,3)">
-
 3
-
 </button>
 
 
 <button class="giorno" onclick="selezionaGiorno(this,4)">
-
 4
-
 </button>
 
 
 <button class="giorno attivo" onclick="selezionaGiorno(this,7)">
-
 7
-
 </button>
 
 
 <button class="giorno" onclick="selezionaGiorno(this,14)">
-
 14
-
 </button>
 
 
 <button class="giorno attivo" onclick="selezionaGiorno(this,28)">
-
 28
-
 </button>
 
 
 <button class="giorno attivo" onclick="selezionaGiorno(this,60)">
-
 60
-
 </button>
 
 
 </div>
-
 
 
 
@@ -594,13 +514,16 @@ GENERA PROGRAMMA ROTTURE
 
 
 
-<div id="risultato"></div>
+<div id="risultato">
+
+</div>
 
 
 
 </div>
 
 </div>
+
 <script>
 
 
@@ -609,12 +532,9 @@ let giorniSelezionati=[7,28,60];
 
 
 
-// imposta data odierna
+// data automatica
 
-let campoData=document.getElementById("data");
-
-
-campoData.valueAsDate=new Date();
+document.getElementById("data").valueAsDate=new Date();
 
 
 
@@ -645,7 +565,9 @@ campo.value=numero;
 
 
 
-function selezionaGiorno(pulsante,giorno){
+
+
+function selezionaGiorno(button,giorno){
 
 
 
@@ -653,13 +575,13 @@ let posizione=giorniSelezionati.indexOf(giorno);
 
 
 
-if(posizione>-1){
+if(posizione>=0){
 
 
 giorniSelezionati.splice(posizione,1);
 
 
-pulsante.classList.remove("attivo");
+button.classList.remove("attivo");
 
 
 }
@@ -670,21 +592,18 @@ else{
 giorniSelezionati.push(giorno);
 
 
-pulsante.classList.add("attivo");
+button.classList.add("attivo");
 
 
 }
 
 
 
-giorniSelezionati.sort(function(a,b){
-
-return a-b;
-
-});
+giorniSelezionati.sort((a,b)=>a-b);
 
 
 }
+
 
 
 
@@ -698,11 +617,7 @@ function aggiungiGiorni(data,giorni){
 let nuova=new Date(data);
 
 
-nuova.setDate(
-
-nuova.getDate()+giorni
-
-);
+nuova.setDate(nuova.getDate()+giorni);
 
 
 return nuova;
@@ -729,20 +644,21 @@ return data.toLocaleDateString("it-IT");
 
 
 
+
+
 function formatoGoogle(data,ora){
 
 
-let anno=data.getFullYear();
+let a=data.getFullYear();
 
 
-let mese=String(data.getMonth()+1).padStart(2,"0");
+let m=String(data.getMonth()+1).padStart(2,"0");
 
 
-let giorno=String(data.getDate()).padStart(2,"0");
+let g=String(data.getDate()).padStart(2,"0");
 
 
-
-return anno+mese+giorno+"T"+ora;
+return a+m+g+"T"+ora;
 
 
 }
@@ -753,7 +669,8 @@ return anno+mese+giorno+"T"+ora;
 
 
 
-function creaLinkGoogle(titolo,inizio,fine,descrizione){
+
+function creaLinkGoogle(titolo,inizio,fine,descrizione,colore=""){
 
 
 return (
@@ -796,10 +713,15 @@ fine
 
 encodeURIComponent(descrizione)
 
++
+
+(colore ? "&colorId="+colore : "")
+
 );
 
-
 }
+
+
 
 
 
@@ -814,27 +736,27 @@ function generaProgramma(){
 let cantiere=document.getElementById("impianto").value.trim();
 
 
-let dataValore=document.getElementById("data").value;
+let dataCampo=document.getElementById("data");
+
+
+if(!dataCampo.value){
+
+
+dataCampo.valueAsDate=new Date();
+
+
+}
+
+
+
+let valoreData=dataCampo.value;
 
 
 let miscele=document.getElementById("miscele").value;
 
 
-let verbale=document.getElementById("verbale").value.trim();
+let verbale=document.getElementById("verbale").value || "non inserito";
 
-
-
-
-if(!dataValore){
-
-
-document.getElementById("data").valueAsDate=new Date();
-
-
-dataValore=document.getElementById("data").value;
-
-
-}
 
 
 
@@ -854,7 +776,7 @@ return;
 if(giorniSelezionati.length===0){
 
 
-alert("Selezionare almeno una rottura");
+alert("Selezionare almeno un giorno di rottura");
 
 
 return;
@@ -865,21 +787,18 @@ return;
 
 
 
-
-let parti=dataValore.split("-");
+let p=valoreData.split("-");
 
 
 let data=new Date(
 
-Number(parti[0]),
+Number(p[0]),
 
-Number(parti[1])-1,
+Number(p[1])-1,
 
-Number(parti[2])
+Number(p[2])
 
 );
-
-
 
 
 
@@ -893,7 +812,8 @@ let risultato="";
 
 
 
-// REPORT PRELIEVO
+
+// REPORT
 
 
 let descrizioneReport=
@@ -906,67 +826,27 @@ let descrizioneReport=
 
 +
 
-"Cantiere: "
+"Cantiere: "+cantiere+"\n"
 
 +
 
-cantiere
+"Data prelievo: "+formatoData(data)+"\n"
 
 +
 
-"\n"
+"Numero miscele: "+miscele+"\n"
 
 +
 
-"Data prelievo: "
+"Cubetti totali: "+cubetti+"\n"
 
 +
 
-formatoData(data)
+"Verbale: "+verbale+"\n\n"
 
 +
 
-"\n"
-
-+
-
-"Numero miscele: "
-
-+
-
-miscele
-
-+
-
-"\n"
-
-+
-
-"Cubetti totali: "
-
-+
-
-cubetti
-
-+
-
-"\n"
-
-+
-
-"Verbale: "
-
-+
-
-(verbale || "non inserito")
-
-+
-
-"\n\n"
-
-+
-
-"Programma rotture:\n";
+"PROGRAMMA ROTTURE\n";
 
 
 
@@ -974,9 +854,23 @@ cubetti
 
 giorniSelezionati.forEach(function(g){
 
-descrizioneReport+=g+" giorni\n";
+
+
+let prova=aggiungiGiorni(data,g);
+
+
+let testo=g===1 ? "giorno" : "giorni";
+
+
+descrizioneReport+=
+
+g+" "+testo+": "+formatoData(prova)+"\n";
+
+
 
 });
+
+
 
 
 
@@ -1042,13 +936,11 @@ INSERISCI IN GOOGLE CALENDAR
 // ROTTURE
 
 
-
 giorniSelezionati.forEach(function(giorno){
 
 
 
 let dataRottura=aggiungiGiorni(data,giorno);
-
 
 
 
@@ -1062,63 +954,23 @@ let descrizione=
 
 +
 
-"Cantiere: "
+"Cantiere: "+cantiere+"\n"
 
 +
 
-cantiere
+"Data prelievo: "+formatoData(data)+"\n"
 
 +
 
-"\n"
+"Numero miscele: "+miscele+"\n"
 
 +
 
-"Data prelievo: "
+"Cubetti da rompere: "+cubetti+"\n"
 
 +
 
-formatoData(data)
-
-+
-
-"\n"
-
-+
-
-"Numero miscele: "
-
-+
-
-miscele
-
-+
-
-"\n"
-
-+
-
-"Cubetti da rompere: "
-
-+
-
-cubetti
-
-+
-
-"\n"
-
-+
-
-"Verbale: "
-
-+
-
-(verbale || "non inserito")
-
-+
-
-"\n"
+"Verbale: "+verbale+"\n"
 
 +
 
@@ -1130,7 +982,11 @@ giorno
 
 +
 
-" giorni";
+" "
+
++
+
+(giorno===1 ? "giorno" : "giorni");
 
 
 
@@ -1140,20 +996,18 @@ giorno
 
 let link=creaLinkGoogle(
 
-
 cubetti+" CUBETTI - "+cantiere,
-
 
 formatoGoogle(dataRottura,"090000"),
 
-
 formatoGoogle(dataRottura,"100000"),
 
+descrizione,
 
-descrizione
-
+"11"
 
 );
+
 
 
 
@@ -1167,7 +1021,7 @@ risultato+=`
 
 <div class="titoloEvento">
 
-ROTTURA ${giorno} GIORNI
+ROTTURA ${giorno} ${giorno===1 ? "GIORNO" : "GIORNI"}
 
 </div>
 
@@ -1196,7 +1050,6 @@ INSERISCI IN GOOGLE CALENDAR
 
 
 
-
 });
 
 
@@ -1212,6 +1065,7 @@ document.getElementById("risultato").innerHTML=risultato;
 
 
 </script>
+
 
 </body>
 
