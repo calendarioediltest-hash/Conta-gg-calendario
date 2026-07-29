@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="it">
 
 <head>
@@ -9,7 +8,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>EDILTEST 2.0</title>
-
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
 
@@ -24,262 +22,290 @@ box-sizing:border-box;
 body{
 
 margin:0;
-
 padding:15px;
-
 font-family:'Inter',sans-serif;
-
 background:linear-gradient(135deg,#cbd5e1,#f8fafc);
-
 color:#16324f;
 
 }
 
 
-
 .container{
 
 max-width:520px;
-
 margin:auto;
 
 }
 
 
-
 .app{
 
 background:rgba(255,255,255,0.70);
-
 backdrop-filter:blur(18px);
-
 border-radius:32px;
-
 padding:20px;
-
 box-shadow:0 15px 40px rgba(0,0,0,0.15);
 
 }
 
 
-
 .titolo{
 
 font-family:'Montserrat',sans-serif;
-
 text-align:center;
-
 font-size:25px;
-
 font-weight:700;
-
 color:#0b416b;
 
 }
-
 
 
 .sottotitolo{
 
 text-align:center;
-
 font-size:12px;
-
 color:#64748b;
-
 margin-bottom:20px;
 
 }
 
 
-
 .sezione{
 
 font-family:'Montserrat',sans-serif;
-
 font-size:17px;
-
 font-weight:700;
-
 color:#0b416b;
-
 margin-top:18px;
 
 }
 
 
-
 label{
 
 display:block;
-
 font-size:15px;
-
 font-weight:600;
-
 margin-top:12px;
 
 }
 
 
-
 .info{
 
 font-size:11px;
-
 color:#64748b;
-
 font-weight:400;
 
 }
 
 
-
 input{
 
 width:100%;
-
 height:50px;
-
 border:0;
-
 border-radius:15px;
-
 padding:10px;
-
 font-size:16px;
-
 margin-top:5px;
-
 background:white;
 
 }
 
 
-
 .contatore{
 
 display:flex;
-
 justify-content:center;
-
 align-items:center;
-
 gap:15px;
 
 }
 
 
-
 .contatore button{
 
 width:55px;
-
 height:50px;
-
 border:0;
-
 border-radius:15px;
-
 background:#0b416b;
-
 color:white;
-
 font-size:28px;
 
 }
 
 
-
 .contatore input{
 
 width:80px;
-
 text-align:center;
-
 font-size:22px;
-
 font-weight:bold;
 
 }
 
 
+.giorni{
+
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:8px;
+margin-top:15px;
+
+}
+
+
+.giorno{
+
+height:50px;
+border:0;
+border-radius:16px;
+background:white;
+color:#0b416b;
+font-size:16px;
+font-weight:700;
+box-shadow:0 4px 12px rgba(0,0,0,0.08);
+
+}
+
+
+.giorno.attivo{
+
+background:#0b416b;
+color:white;
+
+}
+
+
+.bottonePrincipale{
+
+width:100%;
+height:65px;
+margin-top:20px;
+border:0;
+border-radius:20px;
+background:#0b416b;
+color:white;
+font-size:17px;
+font-weight:700;
+
+}
+
+
+.evento{
+
+background:rgba(255,255,255,0.75);
+border-radius:18px;
+padding:15px;
+margin-top:12px;
+box-shadow:0 5px 15px rgba(0,0,0,0.08);
+
+}
+
+
+.titoloEvento{
+
+font-size:16px;
+font-weight:700;
+color:#0b416b;
+
+}
+
+
+.bottoneGoogle{
+
+display:block;
+margin-top:12px;
+padding:15px;
+width:100%;
+border-radius:15px;
+background:#2563eb;
+color:white;
+text-align:center;
+text-decoration:none;
+font-size:14px;
+font-weight:700;
+
+}
+
+
+.bottonePosizione{
+
+display:block;
+width:100%;
+height:55px;
+margin-top:12px;
+border:0;
+border-radius:15px;
+background:#16a34a;
+color:white;
+font-size:15px;
+font-weight:700;
+cursor:pointer;
+
+}
+
 </style>
-
-</head>
-
-
 <body>
 
 
 <div class="container">
 
-
 <div class="app">
 
 
 <div class="titolo">
-
 EDILTEST 2.0
-
 </div>
 
 
 <div class="sottotitolo">
-
 Gestione prove calcestruzzo<br>
-
 Prelievi • Rotture • Calendario
-
 </div>
+
 
 
 <div class="sezione">
-
 DATI PRELIEVO
-
 </div>
 
 
 
 <label>
-
 Cantiere
-
 <span class="info">(obbligatorio)</span>
-
 </label>
 
+<input id="cantiere" placeholder="Nome cantiere">
 
-<input id="impianto" placeholder="Nome cantiere">
-<label>
+
+
 <input type="hidden" id="posizione">
+
 
 <button class="bottonePosizione" onclick="acquisisciPosizione()">
 📍 RILEVA POSIZIONE CANTIERE
 </button>
 
 
+
 <label>
-
 Data prelievo
-
 <span class="info">(automatica)</span>
-
 </label>
-
 
 <input type="date" id="data">
 
 
 
 <label>
-
 Numero miscele
-
 <span class="info">(obbligatorio)</span>
-
 </label>
+
 
 
 <div class="contatore">
@@ -302,24 +328,22 @@ Numero miscele
 
 
 
+
 <label>
-
 Numero verbale
-
 <span class="info">(opzionale)</span>
-
 </label>
-
 
 <input id="verbale" placeholder="Numero verbale">
 
 
-  
+
+
+
 <div class="sezione">
-
 PROGRAMMA ROTTURE
-
 </div>
+
 
 
 <div style="font-size:12px;color:#64748b">
@@ -330,165 +354,9 @@ Seleziona solo le prove da programmare
 
 
 
-<style>
-
-
-.giorni{
-
-display:grid;
-
-grid-template-columns:repeat(4,1fr);
-
-gap:8px;
-
-margin-top:15px;
-
-}
-
-
-
-.giorno{
-
-height:50px;
-
-border:0;
-
-border-radius:16px;
-
-background:white;
-
-color:#0b416b;
-
-font-size:16px;
-
-font-weight:700;
-
-box-shadow:0 4px 12px rgba(0,0,0,0.08);
-
-}
-
-
-
-.giorno.attivo{
-
-background:#0b416b;
-
-color:white;
-
-}
-
-
-
-.bottonePrincipale{
-
-width:100%;
-
-height:65px;
-
-margin-top:20px;
-
-border:0;
-
-border-radius:20px;
-
-background:#0b416b;
-
-color:white;
-
-font-size:17px;
-
-font-weight:700;
-
-}
-
-
-
-.evento{
-
-background:rgba(255,255,255,0.75);
-
-border-radius:18px;
-
-padding:15px;
-
-margin-top:12px;
-
-box-shadow:0 5px 15px rgba(0,0,0,0.08);
-
-}
-
-
-
-.titoloEvento{
-
-font-size:16px;
-
-font-weight:700;
-
-color:#0b416b;
-
-}
-
-
-
-.bottoneGoogle{
-
-display:block;
-
-margin-top:12px;
-
-padding:15px;
-
-width:100%;
-
-border-radius:15px;
-
-background:#2563eb;
-
-color:white;
-
-text-align:center;
-
-text-decoration:none;
-
-font-size:14px;
-
-font-weight:700;
-
-}
-
-.bottonePosizione{
-
-display:block;
-
-width:100%;
-
-height:55px;
-
-margin-top:12px;
-
-border:0;
-
-border-radius:15px;
-
-background:#16a34a;
-
-color:white;
-
-font-size:15px;
-
-font-weight:700;
-
-cursor:pointer;
-
-}
-
-</style>
-
-
-
 
 <div class="giorni">
+
 
 
 <button class="giorno" onclick="selezionaGiorno(this,1)">
@@ -531,7 +399,9 @@ cursor:pointer;
 </button>
 
 
+
 </div>
+
 
 
 
@@ -543,16 +413,13 @@ GENERA PROGRAMMA ROTTURE
 
 
 
-<div id="risultato">
-
-</div>
+<div id="risultato"></div>
 
 
 
 </div>
 
 </div>
-
 <script>
 
 
@@ -560,20 +427,22 @@ let giorniSelezionati=[7,28,60];
 
 
 
+// DATA AUTOMATICA
 
-// data automatica
+let oggi=new Date();
 
-document.getElementById("data").valueAsDate=new Date();
+oggi.setMinutes(oggi.getMinutes()-oggi.getTimezoneOffset());
+
+document.getElementById("data").value=oggi.toISOString().split("T")[0];
 
 
 
 
+// CONTATORE MISCELE
 
 function modificaMiscele(valore){
 
-
 let campo=document.getElementById("miscele");
-
 
 let numero=parseInt(campo.value)+valore;
 
@@ -587,228 +456,134 @@ numero=1;
 
 campo.value=numero;
 
-
 }
 
 
 
 
-
-
+// SELEZIONE GIORNI
 
 function selezionaGiorno(button,giorno){
-
 
 
 let posizione=giorniSelezionati.indexOf(giorno);
 
 
-
 if(posizione>=0){
-
 
 giorniSelezionati.splice(posizione,1);
 
-
 button.classList.remove("attivo");
-
 
 }
 
 else{
 
-
 giorniSelezionati.push(giorno);
-
 
 button.classList.add("attivo");
 
-
 }
-
 
 
 giorniSelezionati.sort((a,b)=>a-b);
 
-
 }
 
 
 
 
-
-
-
+// AGGIUNGE GIORNI ALLA DATA
 
 function aggiungiGiorni(data,giorni){
 
-
 let nuova=new Date(data);
-
 
 nuova.setDate(nuova.getDate()+giorni);
 
-
 return nuova;
 
-
 }
-
-
-
 
 
 
 
 function formatoData(data){
 
-
 return data.toLocaleDateString("it-IT");
-
 
 }
 
 
 
 
-
-
-
+// FORMATO GOOGLE CALENDAR
 
 function formatoGoogle(data,ora){
 
+let anno=data.getFullYear();
 
-let a=data.getFullYear();
+let mese=String(data.getMonth()+1).padStart(2,"0");
 
-
-let m=String(data.getMonth()+1).padStart(2,"0");
-
-
-let g=String(data.getDate()).padStart(2,"0");
+let giorno=String(data.getDate()).padStart(2,"0");
 
 
-return a+m+g+"T"+ora;
-
+return anno+mese+giorno+"T"+ora;
 
 }
 
 
 
 
+// CREA LINK GOOGLE CALENDAR
 
-function creaLinkGoogle(titolo,inizio,fine,descrizione,posizione="",colore=""){
+function creaLinkGoogle(titolo,inizio,fine,descrizione,posizione=""){
 
-return(
 
-"https://calendar.google.com/calendar/render"
-
-+
-
-"?action=TEMPLATE"
-
-+
-
-"&text="
-
-+
-
-encodeURIComponent(titolo)
-
-+
-
-"&dates="
-
-+
-
-inizio
-
-+
-
-"%2F"
-
-+
-
-fine
-
-+
-
-"&details="
-
-+
-
-encodeURIComponent(descrizione)
-
-+
-
-(posizione ? "&location="+encodeURIComponent(posizione) : "")
-
-+
-
-(colore ? "&colorId="+colore : "");
-
-}
 return (
 
-"https://calendar.google.com/calendar/render"
+"https://calendar.google.com/calendar/render" +
 
-+
+"?action=TEMPLATE" +
 
-"?action=TEMPLATE"
+"&text=" + encodeURIComponent(titolo) +
 
-+
+"&dates=" + inizio + "%2F" + fine +
 
-"&text="
+"&details=" + encodeURIComponent(descrizione) +
 
-+
-
-encodeURIComponent(titolo)
-
-+
-
-"&dates="
-
-+
-
-inizio
-
-+
-
-"%2F"
-
-+
-
-fine
-
-+
-
-"&details="
-
-+
-
-encodeURIComponent(descrizione)
-
-+
-
-(posizione ? "&location="+encodeURIComponent(posizione) : "")
-
-+
-
-(colore ? "&colorId="+colore : "")
+(posizione ? "&location=" + encodeURIComponent(posizione) : "")
 
 );
 
+
 }
+
+
+
+
+// CAMBIA PULSANTE DOPO INSERIMENTO
 
 function eventoInserito(button){
 
 button.style.background="#16a34a";
+
 button.innerHTML="✓ GIÀ INSERITO";
+
 button.style.pointerEvents="none";
+
 button.style.cursor="default";
 
 }
 
+
+
+
+
+// POSIZIONE GPS
+
 function acquisisciPosizione(){
+
 
 if(!navigator.geolocation){
 
@@ -818,25 +593,36 @@ return;
 
 }
 
+
+
 navigator.geolocation.getCurrentPosition(
 
+
 function(pos){
+
 
 const lat=pos.coords.latitude;
 
 const lon=pos.coords.longitude;
 
+
 const link="https://maps.google.com/?q="+lat+","+lon;
+
 
 document.getElementById("posizione").value=link;
 
+
 const bottone=document.querySelector(".bottonePosizione");
+
 
 bottone.innerHTML="✓ POSIZIONE ACQUISITA";
 
 bottone.style.background="#16a34a";
 
+
 },
+
+
 
 function(){
 
@@ -844,7 +630,9 @@ alert("Impossibile rilevare la posizione.");
 
 }
 
+
 );
+
 
 }
 
@@ -852,27 +640,20 @@ alert("Impossibile rilevare la posizione.");
 
 
 
+
+// GENERAZIONE PROGRAMMA
+
 function generaProgramma(){
 
 
 
-let cantiere=document.getElementById("impianto").value.trim();
+let cantiere=document.getElementById("cantiere").value.trim();
 
 
 let posizione=document.getElementById("posizione").value.trim();
 
 
 let dataCampo=document.getElementById("data");
-
-
-if(!dataCampo.value){
-
-
-dataCampo.valueAsDate=new Date();
-
-
-}
-
 
 
 let valoreData=dataCampo.value;
@@ -888,12 +669,9 @@ let verbale=document.getElementById("verbale").value || "non inserito";
 
 if(!cantiere){
 
-
 alert("Inserire il cantiere");
 
-
 return;
-
 
 }
 
@@ -901,37 +679,37 @@ return;
 
 if(giorniSelezionati.length===0){
 
-
 alert("Selezionare almeno un giorno di rottura");
 
-
 return;
-
 
 }
 
 
 
 
-let p=valoreData.split("-");
+let parti=valoreData.split("-");
 
 
 let data=new Date(
 
-Number(p[0]),
+Number(parti[0]),
 
-Number(p[1])-1,
+Number(parti[1])-1,
 
-Number(p[2])
+Number(parti[2])
 
 );
 
 
-const numeroProve = giorniSelezionati.length;
 
-const cubettiPerProva = Number(miscele) * 2;
 
-const cubettiTotali = cubettiPerProva * numeroProve;
+const numeroProve=giorniSelezionati.length;
+
+const cubettiPerProva=Number(miscele)*2;
+
+const cubettiTotali=cubettiPerProva*numeroProve;
+
 
 
 let risultato="";
@@ -939,43 +717,26 @@ let risultato="";
 
 
 
-
-
-// REPORT
+// REPORT PRELIEVO
 
 
 let descrizioneReport=
 
-"EDILTEST 2.0\n\n"
+"EDILTEST 2.0\n\n"+
 
-+
+"REPORT PRELIEVO\n\n"+
 
-"REPORT PRELIEVO\n\n"
+"Cantiere: "+cantiere+"\n"+
 
-+
+"Data prelievo: "+formatoData(data)+"\n"+
 
-"Cantiere: "+cantiere+"\n"
+"Numero miscele: "+miscele+"\n"+
 
-+
+"Cubetti per prova: "+cubettiPerProva+"\n"+
 
-"Data prelievo: "+formatoData(data)+"\n"
+"Cubetti totali: "+cubettiTotali+"\n"+
 
-+
-
-"Numero miscele: "+miscele+"\n"
-
-+
-
-"Cubetti per prova: "+cubettiPerProva+"\n"
-
-+
-
-"Cubetti totali: "+cubettiTotali+"\n"
-+
-
-"Verbale: "+verbale+"\n\n"
-
-+
+"Verbale: "+verbale+"\n\n"+
 
 "PROGRAMMA ROTTURE\n";
 
@@ -986,17 +747,12 @@ let descrizioneReport=
 giorniSelezionati.forEach(function(g){
 
 
-
 let prova=aggiungiGiorni(data,g);
-
-
-let testo=g===1 ? "giorno" : "giorni";
 
 
 descrizioneReport+=
 
-g+" "+testo+": "+formatoData(prova)+"\n";
-
+g+" giorni: "+formatoData(prova)+"\n";
 
 
 });
@@ -1004,9 +760,10 @@ g+" "+testo+": "+formatoData(prova)+"\n";
 
 
 
+
 let linkReport=creaLinkGoogle(
 
-cantiere+" - "+formatoData(data),
+cantiere+" - Report Prelievo",
 
 formatoGoogle(data,"080000"),
 
@@ -1019,10 +776,10 @@ posizione
 );
 
 
+
 risultato+=`
 
 <div class="evento">
-
 
 <div class="titoloEvento">
 
@@ -1050,7 +807,6 @@ INSERISCI IN GOOGLE CALENDAR
 
 </a>
 
-
 </div>
 
 `;
@@ -1059,10 +815,7 @@ INSERISCI IN GOOGLE CALENDAR
 
 
 
-
-
-
-// ROTTURE
+// EVENTI ROTTURA
 
 
 giorniSelezionati.forEach(function(giorno){
@@ -1075,49 +828,21 @@ let dataRottura=aggiungiGiorni(data,giorno);
 
 let descrizione=
 
-"EDILTEST 2.0\n\n"
+"EDILTEST 2.0\n\n"+
 
-+
+"PROVA COMPRESSIONE\n\n"+
 
-"PROVA COMPRESSIONE\n\n"
+"Cantiere: "+cantiere+"\n"+
 
-+
+"Data prelievo: "+formatoData(data)+"\n"+
 
-"Cantiere: "+cantiere+"\n"
+"Numero miscele: "+miscele+"\n"+
 
-+
+"Cubetti da rompere: "+cubettiPerProva+"\n"+
 
-"Data prelievo: "+formatoData(data)+"\n"
+"Verbale: "+verbale+"\n"+
 
-+
-
-"Numero miscele: "+miscele+"\n"
-
-+
-
-"Cubetti da rompere: "+cubettiPerProva+"\n"
-
-+
-
-"Verbale: "+verbale+"\n"
-
-+
-
-"Età provino: "
-
-+
-
-giorno
-
-+
-
-" "
-
-+
-
-(giorno===1 ? "giorno" : "giorni");
-
-
+"Età provino: "+giorno+" giorni";
 
 
 
@@ -1125,7 +850,7 @@ giorno
 
 let link=creaLinkGoogle(
 
-titolo,
+cantiere+" - Rottura "+giorno+" giorni",
 
 formatoGoogle(dataRottura,"090000"),
 
@@ -1133,12 +858,9 @@ formatoGoogle(dataRottura,"100000"),
 
 descrizione,
 
-posizione,
-
-"11"
+posizione
 
 );
-
 
 
 
@@ -1151,7 +873,7 @@ risultato+=`
 
 <div class="titoloEvento">
 
-${giorno===1 ? "ROTTURA" : "ROTTURE"} ${giorno} ${giorno===1 ? "GIORNO" : "GIORNI"}
+ROTTURA ${giorno} GIORNI
 
 </div>
 
@@ -1163,17 +885,21 @@ ${formatoData(dataRottura)}
 </div>
 
 
+
 <a class="bottoneGoogle"
 
 href="${link}"
 
 target="_blank"
+
 rel="noopener noreferrer"
+
 onclick="eventoInserito(this)">
 
 INSERISCI IN GOOGLE CALENDAR
 
 </a>
+
 
 
 </div>
@@ -1187,7 +913,6 @@ INSERISCI IN GOOGLE CALENDAR
 
 
 
-
 document.getElementById("risultato").innerHTML=risultato;
 
 
@@ -1196,9 +921,6 @@ document.getElementById("risultato").innerHTML=risultato;
 
 
 
-</script>
-
-
-</body>
+</script></body>
 
 </html>
