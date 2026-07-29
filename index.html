@@ -808,9 +808,11 @@ Number(p[2])
 );
 
 
+const numeroProve = giorniSelezionati.length;
 
-let cubetti=Number(miscele)*2;
+const cubettiPerProva = Number(miscele) * 2;
 
+const cubettiTotali = cubettiPerProva * numeroProve;
 
 
 let risultato="";
@@ -845,8 +847,11 @@ let descrizioneReport=
 
 +
 
-"Cubetti totali: "+cubetti+"\n"
+"Cubetti per prova: "+cubettiPerProva+"\n"
 
++
+
+"Cubetti totali: "+cubettiTotali+"\n"
 +
 
 "Verbale: "+verbale+"\n\n"
@@ -1005,8 +1010,30 @@ giorno
 
 let link=creaLinkGoogle(
 
-giorno+" "+(giorno===1 ? "GIORNO" : "GIORNI")+" - "+cantiere+" - "+formatoData(data),
+giorno+" "+(giorno===1 ? "GIORNO" : "GIORNI")
++
 
+" - "
+
++
+
+(cubettiPerProva+" CUBETTI")
+
++
+
+" - "
+
++
+
+cantiere
+
++
+
+" - "
+
++
+
+formatoData(data)
 formatoGoogle(dataRottura,"090000"),
 
 formatoGoogle(dataRottura,"100000"),
