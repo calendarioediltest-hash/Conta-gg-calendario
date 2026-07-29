@@ -8,7 +8,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>EDILTEST 2.0 PRO</title>
+<title>EDILTEST 2.0</title>
 
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
@@ -22,7 +22,6 @@
 box-sizing:border-box;
 
 }
-
 
 
 body{
@@ -41,7 +40,6 @@ color:#16324f;
 
 
 
-
 .container{
 
 max-width:540px;
@@ -49,7 +47,6 @@ max-width:540px;
 margin:auto;
 
 }
-
 
 
 
@@ -69,8 +66,6 @@ box-shadow:0 15px 40px rgba(0,0,0,0.15);
 
 
 
-
-
 .titolo{
 
 font-family:'Montserrat',sans-serif;
@@ -84,8 +79,6 @@ font-weight:700;
 color:#0b416b;
 
 }
-
-
 
 
 
@@ -103,7 +96,6 @@ margin-bottom:20px;
 
 
 
-
 .sezione{
 
 font-family:'Montserrat',sans-serif;
@@ -112,12 +104,11 @@ font-size:17px;
 
 font-weight:700;
 
-margin-top:20px;
-
 color:#0b416b;
 
-}
+margin-top:20px;
 
+}
 
 
 
@@ -135,7 +126,6 @@ font-weight:600;
 
 
 
-
 .info{
 
 font-size:11px;
@@ -145,7 +135,6 @@ color:#64748b;
 font-weight:400;
 
 }
-
 
 
 
@@ -163,14 +152,13 @@ padding:10px;
 
 margin-top:5px;
 
-background:white;
-
 font-size:16px;
+
+background:white;
 
 transition:0.2s;
 
 }
-
 
 
 
@@ -183,8 +171,6 @@ transform:scale(1.02);
 box-shadow:0 0 0 3px rgba(11,65,107,0.20);
 
 }
-
-
 
 
 
@@ -214,19 +200,17 @@ transform:scale(0.97);
 
 
 
-
-
 .bottone{
 
 width:100%;
 
 height:55px;
 
-margin-top:12px;
-
 border:0;
 
 border-radius:16px;
+
+margin-top:12px;
 
 font-size:15px;
 
@@ -235,8 +219,6 @@ font-weight:700;
 color:white;
 
 }
-
-
 
 
 
@@ -260,8 +242,6 @@ font-size:17px;
 
 
 
-
-
 .contatore{
 
 display:flex;
@@ -273,7 +253,6 @@ align-items:center;
 gap:15px;
 
 }
-
 
 
 
@@ -297,8 +276,6 @@ font-size:28px;
 
 
 
-
-
 .contatore input{
 
 width:80px;
@@ -313,8 +290,6 @@ font-weight:bold;
 
 
 
-
-
 .giorni{
 
 display:grid;
@@ -326,7 +301,6 @@ gap:8px;
 margin-top:15px;
 
 }
-
 
 
 
@@ -350,8 +324,6 @@ font-weight:700;
 
 
 
-
-
 .giorno.attivo{
 
 background:#0b416b;
@@ -359,8 +331,6 @@ background:#0b416b;
 color:white;
 
 }
-
-
 
 
 
@@ -380,8 +350,6 @@ box-shadow:0 5px 15px rgba(0,0,0,0.08);
 
 
 
-
-
 .bottoneGoogle{
 
 display:block;
@@ -392,9 +360,9 @@ padding:15px;
 
 background:#2563eb;
 
-color:white;
-
 border-radius:15px;
+
+color:white;
 
 text-align:center;
 
@@ -403,7 +371,6 @@ text-decoration:none;
 font-weight:700;
 
 }
-
 
 
 
@@ -417,9 +384,9 @@ padding:15px;
 
 background:#16a34a;
 
-color:white;
-
 border-radius:15px;
+
+color:white;
 
 text-align:center;
 
@@ -429,10 +396,7 @@ font-weight:700;
 
 }
 
-
-
-</style>
-</head>
+  </head>
 
 
 <body>
@@ -447,7 +411,7 @@ font-weight:700;
 
 <div class="titolo">
 
-EDILTEST 2.0 PRO
+EDILTEST 2.0
 
 </div>
 
@@ -473,6 +437,7 @@ DATI PRELIEVO
 
 
 
+
 <label>
 
 Cantiere
@@ -490,29 +455,14 @@ Cantiere
 
 <label>
 
-Cliente
-
-<span class="info">(opzionale)</span>
-
-</label>
-
-
-<input id="cliente" placeholder="Nome cliente">
-
-
-
-
-
-<label>
-
 Posizione cantiere
 
-<span class="info">(GPS automatica o inserimento manuale)</span>
+<span class="info">(indirizzo o link Maps)</span>
 
 </label>
 
 
-<input id="posizione" placeholder="Posizione cantiere (link o indirizzo)">
+<input id="posizione" placeholder="Indirizzo cantiere o link Maps">
 
 
 
@@ -541,7 +491,6 @@ Data prelievo
 
 
 
-
 <label>
 
 Numero miscele
@@ -549,6 +498,7 @@ Numero miscele
 <span class="info">(obbligatorio)</span>
 
 </label>
+
 
 
 
@@ -564,9 +514,7 @@ Numero miscele
 
 
 
-
 <input id="miscele" value="1" readonly>
-
 
 
 
@@ -618,6 +566,7 @@ PROGRAMMA ROTTURE
 Seleziona i giorni di prova da programmare
 
 </div>
+
 
 
 
@@ -720,50 +669,71 @@ GENERA PROGRAMMA ROTTURE
 </div>
 
 
-</div>
-<script>
+</div><script>
 
 
 let giorniSelezionati=[7,28,60];
 
 
 
-// DATA AUTOMATICA
+
+// AVVIO APP
 
 window.onload=function(){
 
+
 let oggi=new Date();
 
-oggi.setMinutes(oggi.getMinutes()-oggi.getTimezoneOffset());
 
-document.getElementById("data").value=oggi.toISOString().split("T")[0];
+oggi.setMinutes(
+oggi.getMinutes()-oggi.getTimezoneOffset()
+);
+
+
+document.getElementById("data").value=
+oggi.toISOString().split("T")[0];
 
 
 
 // recupero ultimo utilizzo
 
-let salvato=localStorage.getItem("ediltest_dati");
+let salvato=
+localStorage.getItem("ediltest_dati");
+
 
 
 if(salvato){
 
+
 let dati=JSON.parse(salvato);
 
 
-document.getElementById("cantiere").value=dati.cantiere || "";
 
-document.getElementById("cliente").value=dati.cliente || "";
+document.getElementById("cantiere").value=
+dati.cantiere || "";
 
-document.getElementById("posizione").value=dati.posizione || "";
 
-document.getElementById("miscele").value=dati.miscele || 1;
 
-document.getElementById("verbale").value=dati.verbale || "";
+document.getElementById("posizione").value=
+dati.posizione || "";
+
+
+
+document.getElementById("miscele").value=
+dati.miscele || 1;
+
+
+
+document.getElementById("verbale").value=
+dati.verbale || "";
+
 
 }
 
 
+
 };
+
 
 
 
@@ -774,21 +744,29 @@ document.getElementById("verbale").value=dati.verbale || "";
 function salvaDati(){
 
 
+
 let dati={
 
 
-cantiere:document.getElementById("cantiere").value,
+cantiere:
+document.getElementById("cantiere").value,
 
-cliente:document.getElementById("cliente").value,
 
-posizione:document.getElementById("posizione").value,
+posizione:
+document.getElementById("posizione").value,
 
-miscele:document.getElementById("miscele").value,
 
-verbale:document.getElementById("verbale").value
+miscele:
+document.getElementById("miscele").value,
+
+
+verbale:
+document.getElementById("verbale").value
+
 
 
 };
+
 
 
 localStorage.setItem(
@@ -800,7 +778,9 @@ JSON.stringify(dati)
 );
 
 
+
 }
+
 
 
 
@@ -812,10 +792,13 @@ JSON.stringify(dati)
 function modificaMiscele(valore){
 
 
-let campo=document.getElementById("miscele");
+let campo=
+document.getElementById("miscele");
 
 
-let numero=parseInt(campo.value)+valore;
+
+let numero=
+parseInt(campo.value)+valore;
 
 
 
@@ -833,6 +816,7 @@ campo.value=numero;
 salvaDati();
 
 
+
 }
 
 
@@ -847,7 +831,9 @@ function selezionaGiorno(button,giorno){
 
 
 
-let posizione=giorniSelezionati.indexOf(giorno);
+let posizione=
+giorniSelezionati.indexOf(giorno);
+
 
 
 
@@ -858,6 +844,7 @@ giorniSelezionati.splice(posizione,1);
 
 
 button.classList.remove("attivo");
+
 
 
 }
@@ -871,7 +858,9 @@ giorniSelezionati.push(giorno);
 button.classList.add("attivo");
 
 
+
 }
+
 
 
 
@@ -880,6 +869,7 @@ giorniSelezionati.sort(function(a,b){
 return a-b;
 
 });
+
 
 
 }
@@ -895,17 +885,20 @@ return a-b;
 function aggiungiGiorni(data,giorni){
 
 
-let nuova=new Date(data);
+
+let nuova=
+new Date(data);
+
 
 
 nuova.setDate(
-
 nuova.getDate()+giorni
-
 );
 
 
+
 return nuova;
+
 
 
 }
@@ -921,7 +914,9 @@ return nuova;
 function formatoData(data){
 
 
+
 return data.toLocaleDateString("it-IT");
+
 
 
 }
@@ -937,17 +932,24 @@ return data.toLocaleDateString("it-IT");
 function formatoGoogle(data,ora){
 
 
-let anno=data.getFullYear();
+
+let anno=
+data.getFullYear();
 
 
-let mese=String(data.getMonth()+1).padStart(2,"0");
+
+let mese=
+String(data.getMonth()+1).padStart(2,"0");
 
 
-let giorno=String(data.getDate()).padStart(2,"0");
+
+let giorno=
+String(data.getDate()).padStart(2,"0");
 
 
 
 return anno+mese+giorno+"T"+ora;
+
 
 
 }
@@ -986,10 +988,14 @@ function(pos){
 
 
 
-let lat=pos.coords.latitude;
+let lat=
+pos.coords.latitude;
 
 
-let lon=pos.coords.longitude;
+
+let lon=
+pos.coords.longitude;
+
 
 
 
@@ -999,7 +1005,9 @@ let link=
 
 
 
-document.getElementById("posizione").value=link;
+
+document.getElementById("posizione").value=
+link;
 
 
 
@@ -1007,11 +1015,14 @@ salvaDati();
 
 
 
-let bottone=document.querySelector(".gps");
+
+let bottone=
+document.querySelector(".gps");
 
 
 
-bottone.innerHTML="POSIZIONE ACQUISITA";
+bottone.innerHTML=
+"POSIZIONE ACQUISITA";
 
 
 
@@ -1019,10 +1030,13 @@ bottone.innerHTML="POSIZIONE ACQUISITA";
 
 
 
+
 function(){
 
 
+
 alert("Impossibile rilevare la posizione");
+
 
 
 }
@@ -1034,6 +1048,7 @@ alert("Impossibile rilevare la posizione");
 
 
 }
+
 
 
 
@@ -1076,45 +1091,66 @@ return(
 
 "")
 
+
+
 );
 
 
+
 }
+function generaProgramma(){
 
-  function generaProgramma(){
+
+let cantiere=
+document.getElementById("cantiere").value.trim();
 
 
-let cantiere=document.getElementById("cantiere").value.trim();
 
-let cliente=document.getElementById("cliente").value.trim();
+let posizione=
+document.getElementById("posizione").value.trim();
 
-let posizione=document.getElementById("posizione").value.trim();
 
-let valoreData=document.getElementById("data").value;
 
-let miscele=document.getElementById("miscele").value;
+let valoreData=
+document.getElementById("data").value;
 
-let verbale=document.getElementById("verbale").value || "non inserito";
+
+
+let miscele=
+document.getElementById("miscele").value;
+
+
+
+let verbale=
+document.getElementById("verbale").value || "non inserito";
+
 
 
 
 
 if(!cantiere){
 
+
 alert("Inserire il cantiere");
 
+
 return;
+
 
 }
 
 
 
 
+
 if(giorniSelezionati.length===0){
+
 
 alert("Selezionare almeno un giorno di rottura");
 
+
 return;
+
 
 }
 
@@ -1127,11 +1163,13 @@ salvaDati();
 
 
 
-let p=valoreData.split("-");
+let p=
+valoreData.split("-");
 
 
 
-let data=new Date(
+let data=
+new Date(
 
 Number(p[0]),
 
@@ -1145,10 +1183,16 @@ Number(p[2])
 
 
 
-let cubettiPerProva=Number(miscele)*2;
+
+let cubettiPerProva=
+Number(miscele)*2;
 
 
-let cubettiTotali=cubettiPerProva*giorniSelezionati.length;
+
+let cubettiTotali=
+cubettiPerProva*giorniSelezionati.length;
+
+
 
 
 
@@ -1156,36 +1200,39 @@ let cubettiTotali=cubettiPerProva*giorniSelezionati.length;
 
 let messaggioWhatsApp=
 
-"EDILTEST 2.0 PRO\n\n"+
 
-"Cantiere: "+cantiere+"\n";
-
+"EDILTEST 2.0\n\n"+
 
 
+"Cantiere: "+cantiere+"\n"+
 
-if(cliente){
-
-messaggioWhatsApp+=
-
-"Cliente: "+cliente+"\n";
-
-}
-
-
-
-messaggioWhatsApp+=
 
 "Data prelievo: "+formatoData(data)+"\n"+
 
+
 "Numero miscele: "+miscele+"\n"+
+
 
 "Cubetti per prova: "+cubettiPerProva+"\n"+
 
+
 "Cubetti totali: "+cubettiTotali+"\n"+
+
 
 "Verbale: "+verbale+"\n\n"+
 
+
+(posizione ?
+
+"Posizione cantiere:\n"+posizione+"\n\n"
+
+:
+
+"")+
+
+
 "PROGRAMMA ROTTURE\n";
+
 
 
 
@@ -1200,31 +1247,37 @@ let risultato="";
 
 
 
-// REPORT GENERALE
-
-
-
 let descrizioneReport=
 
-"EDILTEST 2.0 PRO\n\n"+
+
+"EDILTEST 2.0\n\n"+
+
 
 "REPORT PRELIEVO\n\n"+
 
+
 "Cantiere: "+cantiere+"\n"+
 
-(cliente ? "Cliente: "+cliente+"\n":"")+
 
 "Data prelievo: "+formatoData(data)+"\n"+
 
+
 "Numero miscele: "+miscele+"\n"+
+
 
 "Cubetti per prova: "+cubettiPerProva+"\n"+
 
+
 "Cubetti totali: "+cubettiTotali+"\n"+
+
 
 "Verbale: "+verbale+"\n\n"+
 
+
 "PROGRAMMA ROTTURE\n";
+
+
+
 
 
 
@@ -1234,17 +1287,22 @@ let descrizioneReport=
 giorniSelezionati.forEach(function(g){
 
 
-let prova=aggiungiGiorni(data,g);
+
+let prova=
+aggiungiGiorni(data,g);
 
 
 
-let testo=g===1 ? "giorno" : "giorni";
+let testo=
+g===1 ? "giorno" : "giorni";
+
 
 
 
 descrizioneReport+=
 
 g+" "+testo+": "+formatoData(prova)+"\n";
+
 
 
 
@@ -1261,16 +1319,26 @@ g+" "+testo+": "+formatoData(prova)+"\n";
 
 
 
+
+
+
 let linkWhatsApp=
 
-"https://wa.me/?text="+encodeURIComponent(messaggioWhatsApp);
+"https://wa.me/?text="+
+
+encodeURIComponent(messaggioWhatsApp);
 
 
 
 
 
 
-let linkReport=creaLinkGoogle(
+
+
+
+let linkReport=
+
+creaLinkGoogle(
 
 cantiere+" - Report Prelievo",
 
@@ -1290,7 +1358,10 @@ posizione
 
 
 
+
+
 risultato+=`
+
 
 <div class="evento">
 
@@ -1312,6 +1383,8 @@ ${formatoData(data)}
 
 
 
+
+
 <a class="bottoneGoogle"
 
 href="${linkReport}"
@@ -1321,6 +1394,8 @@ target="_blank">
 INSERISCI IN GOOGLE CALENDAR
 
 </a>
+
+
 
 
 
@@ -1335,7 +1410,9 @@ INVIA PROGRAMMA WHATSAPP
 </a>
 
 
+
 </div>
+
 
 `;
 
@@ -1345,39 +1422,61 @@ INVIA PROGRAMMA WHATSAPP
 
 
 
-// EVENTI ROTTURE SINGOLI
-
 
 
 giorniSelezionati.forEach(function(giorno){
 
 
 
-let dataRottura=aggiungiGiorni(data,giorno);
+
+
+let dataRottura=
+
+aggiungiGiorni(data,giorno);
+
+
+
+
 
 
 
 let descrizione=
 
-"EDILTEST 2.0 PRO\n\n"+
+
+"EDILTEST 2.0\n\n"+
+
 
 "PROVA COMPRESSIONE\n\n"+
 
+
 "Cantiere: "+cantiere+"\n"+
 
-(cliente ? "Cliente: "+cliente+"\n":"")+
 
 "Data prelievo: "+formatoData(data)+"\n"+
 
+
 "Numero miscele: "+miscele+"\n"+
+
 
 "Cubetti da rompere: "+cubettiPerProva+"\n"+
 
-"Verbale: "+verbale+"\n"+
+
+"Verbale: "+verbale+"\n\n"+
+
+
+(posizione ?
+
+"Posizione cantiere:\n"+posizione+"\n\n"
+
+:
+
+"")+
+
 
 "Età provino: "+giorno+" "+
 
-(giorno===1 ? "giorno":"giorni");
+(giorno===1 ? "giorno" : "giorni");
+
 
 
 
@@ -1386,20 +1485,25 @@ let descrizione=
 
 let titolo=
 
+
 cantiere+
 
 " - Rottura "+
 
 giorno+" "+
 
-(giorno===1 ? "giorno":"giorni");
+(giorno===1 ? "giorno" : "giorni");
 
 
 
 
 
 
-let link=creaLinkGoogle(
+
+let link=
+
+
+creaLinkGoogle(
 
 titolo,
 
@@ -1417,16 +1521,22 @@ posizione
 
 
 
+
+
+
+
 risultato+=`
+
 
 <div class="evento">
 
 
 <div class="titoloEvento">
 
-ROTTURA ${giorno} ${giorno===1 ? "GIORNO":"GIORNI"}
+ROTTURA ${giorno} ${giorno===1 ? "GIORNO" : "GIORNI"}
 
 </div>
+
 
 
 <div>
@@ -1434,6 +1544,8 @@ ROTTURA ${giorno} ${giorno===1 ? "GIORNO":"GIORNI"}
 ${formatoData(dataRottura)}
 
 </div>
+
+
 
 
 
@@ -1451,7 +1563,9 @@ INSERISCI IN GOOGLE CALENDAR
 
 </div>
 
+
 `;
+
 
 
 
@@ -1463,64 +1577,17 @@ INSERISCI IN GOOGLE CALENDAR
 
 
 
-document.getElementById("risultato").innerHTML=risultato;
+
+document.getElementById("risultato").innerHTML=
+
+risultato;
 
 
 
-}
-  function resetDati(){
-
-
-if(confirm("Cancellare tutti i dati inseriti?")){
-
-
-document.getElementById("cantiere").value="";
-
-document.getElementById("cliente").value="";
-
-document.getElementById("posizione").value="";
-
-document.getElementById("miscele").value=1;
-
-document.getElementById("verbale").value="";
-
-
-localStorage.removeItem("ediltest_dati");
-
-
-document.getElementById("risultato").innerHTML="";
-
-
-}
-
-
-
-}
-
-
-
-
-
-
-</script>
-
-
-
-
-
-<button 
-class="bottone"
-style="background:#64748b;margin-top:15px;"
-onclick="resetDati()">
-
-NUOVO PRELIEVO / RESET
-
-</button>
-
-
-
+}</script>
 
 
 </body>
+
 
 </html>
