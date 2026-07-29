@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="it">
 
 <head>
@@ -7,7 +8,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>EDILTEST 2.0</title>
+<title>EDILTEST 2.0 PRO</title>
 
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
@@ -15,14 +16,19 @@
 
 <style>
 
+
 *{
+
 box-sizing:border-box;
+
 }
+
 
 
 body{
 
 margin:0;
+
 padding:15px;
 
 font-family:'Inter',sans-serif;
@@ -35,9 +41,10 @@ color:#16324f;
 
 
 
+
 .container{
 
-max-width:520px;
+max-width:540px;
 
 margin:auto;
 
@@ -45,19 +52,22 @@ margin:auto;
 
 
 
+
 .app{
 
-background:rgba(255,255,255,0.70);
+background:rgba(255,255,255,0.75);
 
 backdrop-filter:blur(18px);
 
-border-radius:32px;
+border-radius:30px;
 
-padding:20px;
+padding:22px;
 
 box-shadow:0 15px 40px rgba(0,0,0,0.15);
 
 }
+
+
 
 
 
@@ -67,13 +77,15 @@ font-family:'Montserrat',sans-serif;
 
 text-align:center;
 
-font-size:25px;
+font-size:28px;
 
 font-weight:700;
 
 color:#0b416b;
 
 }
+
+
 
 
 
@@ -91,6 +103,7 @@ margin-bottom:20px;
 
 
 
+
 .sezione{
 
 font-family:'Montserrat',sans-serif;
@@ -99,11 +112,12 @@ font-size:17px;
 
 font-weight:700;
 
+margin-top:20px;
+
 color:#0b416b;
 
-margin-top:18px;
-
 }
+
 
 
 
@@ -111,13 +125,14 @@ label{
 
 display:block;
 
-font-size:15px;
+margin-top:12px;
+
+font-size:14px;
 
 font-weight:600;
 
-margin-top:12px;
-
 }
+
 
 
 
@@ -133,6 +148,7 @@ font-weight:400;
 
 
 
+
 input{
 
 width:100%;
@@ -145,13 +161,104 @@ border-radius:15px;
 
 padding:10px;
 
-font-size:16px;
-
 margin-top:5px;
 
 background:white;
 
+font-size:16px;
+
+transition:0.2s;
+
 }
+
+
+
+
+input:focus{
+
+outline:none;
+
+transform:scale(1.02);
+
+box-shadow:0 0 0 3px rgba(11,65,107,0.20);
+
+}
+
+
+
+
+
+button{
+
+cursor:pointer;
+
+transition:0.2s;
+
+}
+
+
+
+button:hover{
+
+transform:scale(1.03);
+
+}
+
+
+
+button:active{
+
+transform:scale(0.97);
+
+}
+
+
+
+
+
+.bottone{
+
+width:100%;
+
+height:55px;
+
+margin-top:12px;
+
+border:0;
+
+border-radius:16px;
+
+font-size:15px;
+
+font-weight:700;
+
+color:white;
+
+}
+
+
+
+
+
+.gps{
+
+background:#16a34a;
+
+}
+
+
+
+.genera{
+
+height:65px;
+
+background:#0b416b;
+
+font-size:17px;
+
+}
+
+
 
 
 
@@ -166,6 +273,7 @@ align-items:center;
 gap:15px;
 
 }
+
 
 
 
@@ -189,6 +297,8 @@ font-size:28px;
 
 
 
+
+
 .contatore input{
 
 width:80px;
@@ -200,6 +310,8 @@ font-size:22px;
 font-weight:bold;
 
 }
+
+
 
 
 
@@ -217,13 +329,14 @@ margin-top:15px;
 
 
 
+
 .giorno{
 
 height:50px;
 
 border:0;
 
-border-radius:16px;
+border-radius:15px;
 
 background:white;
 
@@ -233,9 +346,9 @@ font-size:16px;
 
 font-weight:700;
 
-box-shadow:0 4px 12px rgba(0,0,0,0.08);
-
 }
+
+
 
 
 
@@ -249,39 +362,17 @@ color:white;
 
 
 
-.bottonePrincipale{
-
-width:100%;
-
-height:65px;
-
-margin-top:20px;
-
-border:0;
-
-border-radius:20px;
-
-background:#0b416b;
-
-color:white;
-
-font-size:17px;
-
-font-weight:700;
-
-}
-
 
 
 .evento{
 
-background:rgba(255,255,255,0.75);
+background:white;
 
 border-radius:18px;
 
 padding:15px;
 
-margin-top:12px;
+margin-top:15px;
 
 box-shadow:0 5px 15px rgba(0,0,0,0.08);
 
@@ -289,16 +380,6 @@ box-shadow:0 5px 15px rgba(0,0,0,0.08);
 
 
 
-.titoloEvento{
-
-font-size:16px;
-
-font-weight:700;
-
-color:#0b416b;
-
-}
-
 
 
 .bottoneGoogle{
@@ -309,139 +390,77 @@ margin-top:12px;
 
 padding:15px;
 
-width:100%;
-
-border-radius:15px;
-
 background:#2563eb;
 
 color:white;
+
+border-radius:15px;
 
 text-align:center;
 
 text-decoration:none;
 
-font-size:14px;
-
 font-weight:700;
 
 }
 
 
 
-.bottonePosizione{
+
+.bottoneWhatsApp{
 
 display:block;
 
-width:100%;
-
-height:55px;
-
 margin-top:12px;
 
-border:0;
-
-border-radius:15px;
+padding:15px;
 
 background:#16a34a;
 
 color:white;
 
-font-size:15px;
+border-radius:15px;
+
+text-align:center;
+
+text-decoration:none;
 
 font-weight:700;
 
-cursor:pointer;
-
-}
-/* CURSORE A MANINA SU TUTTI I COMANDI */
-
-button{
-cursor:pointer;
 }
 
 
-.bottoneGoogle{
-cursor:pointer;
-}
 
-
-.giorno{
-cursor:pointer;
-}
-
-
-/* EFFETTO PASSAGGIO SOPRA */
-
-button:hover{
-
-transform:scale(1.03);
-
-transition:0.2s;
-
-}
-button:active{
-
-transform:scale(0.97);
-
-}
-
-
-.bottoneGoogle:active{
-
-transform:scale(0.97);
-
-}
-/* FEEDBACK CAMPI */
-
-input{
-
-cursor:pointer;
-
-transition:0.2s;
-
-}
-
-
-input:focus{
-
-transform:scale(1.02);
-
-outline:none;
-
-box-shadow:0 0 0 3px rgba(11,65,107,0.20);
-
-}
-
-
-input:active{
-
-transform:scale(0.97);
-
-}
 </style>
+</head>
+
+
 <body>
 
 
 <div class="container">
 
+
 <div class="app">
+
 
 
 <div class="titolo">
 
-EDILTEST 2.0
+EDILTEST 2.0 PRO
 
 </div>
+
 
 
 <div class="sottotitolo">
 
 Gestione prove calcestruzzo<br>
 
-Prelievi • Rotture • Calendario
+Prelievi • Rotture • Calendario • Comunicazioni
 
 </div>
+
 
 
 
@@ -450,6 +469,7 @@ Prelievi • Rotture • Calendario
 DATI PRELIEVO
 
 </div>
+
 
 
 
@@ -466,11 +486,28 @@ Cantiere
 
 
 
+
+
+<label>
+
+Cliente
+
+<span class="info">(opzionale)</span>
+
+</label>
+
+
+<input id="cliente" placeholder="Nome cliente">
+
+
+
+
+
 <label>
 
 Posizione cantiere
 
-<span class="info">(GPS automatica o manuale)</span>
+<span class="info">(GPS automatica o inserimento manuale)</span>
 
 </label>
 
@@ -479,11 +516,12 @@ Posizione cantiere
 
 
 
-<button class="bottonePosizione" onclick="acquisisciPosizione()">
+<button class="bottone gps" onclick="acquisisciPosizione()">
 
-📍 RILEVA POSIZIONE CANTIERE
+RILEVA POSIZIONE CANTIERE
 
 </button>
+
 
 
 
@@ -503,6 +541,7 @@ Data prelievo
 
 
 
+
 <label>
 
 Numero miscele
@@ -516,6 +555,7 @@ Numero miscele
 <div class="contatore">
 
 
+
 <button onclick="modificaMiscele(-1)">
 
 −
@@ -523,7 +563,11 @@ Numero miscele
 </button>
 
 
+
+
 <input id="miscele" value="1" readonly>
+
+
 
 
 <button onclick="modificaMiscele(1)">
@@ -533,7 +577,10 @@ Numero miscele
 </button>
 
 
+
 </div>
+
+
 
 
 
@@ -548,7 +595,9 @@ Numero verbale
 </label>
 
 
+
 <input id="verbale" placeholder="Numero verbale">
+
 
 
 
@@ -563,9 +612,10 @@ PROGRAMMA ROTTURE
 
 
 
-<div style="font-size:12px;color:#64748b">
 
-Seleziona solo le prove da programmare
+<div class="info">
+
+Seleziona i giorni di prova da programmare
 
 </div>
 
@@ -576,11 +626,13 @@ Seleziona solo le prove da programmare
 <div class="giorni">
 
 
+
 <button class="giorno" onclick="selezionaGiorno(this,1)">
 
 1
 
 </button>
+
 
 
 <button class="giorno" onclick="selezionaGiorno(this,2)">
@@ -590,11 +642,13 @@ Seleziona solo le prove da programmare
 </button>
 
 
+
 <button class="giorno" onclick="selezionaGiorno(this,3)">
 
 3
 
 </button>
+
 
 
 <button class="giorno" onclick="selezionaGiorno(this,4)">
@@ -604,11 +658,13 @@ Seleziona solo le prove da programmare
 </button>
 
 
+
 <button class="giorno attivo" onclick="selezionaGiorno(this,7)">
 
 7
 
 </button>
+
 
 
 <button class="giorno" onclick="selezionaGiorno(this,14)">
@@ -618,11 +674,13 @@ Seleziona solo le prove da programmare
 </button>
 
 
+
 <button class="giorno attivo" onclick="selezionaGiorno(this,28)">
 
 28
 
 </button>
+
 
 
 <button class="giorno attivo" onclick="selezionaGiorno(this,60)">
@@ -632,13 +690,16 @@ Seleziona solo le prove da programmare
 </button>
 
 
+
 </div>
 
 
 
 
 
-<button class="bottonePrincipale" onclick="generaProgramma()">
+
+
+<button class="bottone genera" onclick="generaProgramma()">
 
 GENERA PROGRAMMA ROTTURE
 
@@ -647,11 +708,17 @@ GENERA PROGRAMMA ROTTURE
 
 
 
-<div id="risultato"></div>
+
+
+<div id="risultato">
+
+</div>
+
 
 
 
 </div>
+
 
 </div>
 <script>
@@ -663,6 +730,8 @@ let giorniSelezionati=[7,28,60];
 
 // DATA AUTOMATICA
 
+window.onload=function(){
+
 let oggi=new Date();
 
 oggi.setMinutes(oggi.getMinutes()-oggi.getTimezoneOffset());
@@ -671,13 +740,83 @@ document.getElementById("data").value=oggi.toISOString().split("T")[0];
 
 
 
+// recupero ultimo utilizzo
+
+let salvato=localStorage.getItem("ediltest_dati");
+
+
+if(salvato){
+
+let dati=JSON.parse(salvato);
+
+
+document.getElementById("cantiere").value=dati.cantiere || "";
+
+document.getElementById("cliente").value=dati.cliente || "";
+
+document.getElementById("posizione").value=dati.posizione || "";
+
+document.getElementById("miscele").value=dati.miscele || 1;
+
+document.getElementById("verbale").value=dati.verbale || "";
+
+}
+
+
+};
+
+
+
+
+
+
+
+function salvaDati(){
+
+
+let dati={
+
+
+cantiere:document.getElementById("cantiere").value,
+
+cliente:document.getElementById("cliente").value,
+
+posizione:document.getElementById("posizione").value,
+
+miscele:document.getElementById("miscele").value,
+
+verbale:document.getElementById("verbale").value
+
+
+};
+
+
+localStorage.setItem(
+
+"ediltest_dati",
+
+JSON.stringify(dati)
+
+);
+
+
+}
+
+
+
+
+
+
 
 
 function modificaMiscele(valore){
 
+
 let campo=document.getElementById("miscele");
 
+
 let numero=parseInt(campo.value)+valore;
+
 
 
 if(numero<1){
@@ -687,9 +826,18 @@ numero=1;
 }
 
 
+
 campo.value=numero;
 
+
+salvaDati();
+
+
 }
+
+
+
+
 
 
 
@@ -698,31 +846,47 @@ campo.value=numero;
 function selezionaGiorno(button,giorno){
 
 
+
 let posizione=giorniSelezionati.indexOf(giorno);
 
 
 
 if(posizione>=0){
 
+
 giorniSelezionati.splice(posizione,1);
 
+
 button.classList.remove("attivo");
+
 
 }
 
 else{
 
+
 giorniSelezionati.push(giorno);
+
 
 button.classList.add("attivo");
 
+
+}
+
+
+
+giorniSelezionati.sort(function(a,b){
+
+return a-b;
+
+});
+
+
 }
 
 
-giorniSelezionati.sort((a,b)=>a-b);
 
 
-}
 
 
 
@@ -733,7 +897,13 @@ function aggiungiGiorni(data,giorni){
 
 let nuova=new Date(data);
 
-nuova.setDate(nuova.getDate()+giorni);
+
+nuova.setDate(
+
+nuova.getDate()+giorni
+
+);
+
 
 return nuova;
 
@@ -743,11 +913,22 @@ return nuova;
 
 
 
+
+
+
+
+
 function formatoData(data){
+
 
 return data.toLocaleDateString("it-IT");
 
+
 }
+
+
+
+
 
 
 
@@ -758,9 +939,12 @@ function formatoGoogle(data,ora){
 
 let anno=data.getFullYear();
 
+
 let mese=String(data.getMonth()+1).padStart(2,"0");
 
+
 let giorno=String(data.getDate()).padStart(2,"0");
+
 
 
 return anno+mese+giorno+"T"+ora;
@@ -773,90 +957,62 @@ return anno+mese+giorno+"T"+ora;
 
 
 
-function creaLinkGoogle(titolo,inizio,fine,descrizione,posizione=""){
-
-
-return (
-
-"https://calendar.google.com/calendar/render" +
-
-"?action=TEMPLATE" +
-
-"&text=" + encodeURIComponent(titolo) +
-
-"&dates=" + inizio + "%2F" + fine +
-
-"&details=" + encodeURIComponent(descrizione) +
-
-(posizione ? "&location=" + encodeURIComponent(posizione) : "")
-
-);
-
-
-}
-
-
-
-
-
-
-
-function eventoInserito(button){
-
-
-button.style.background="#16a34a";
-
-button.innerHTML="✓ GIÀ INSERITO";
-
-button.style.pointerEvents="none";
-
-button.style.cursor="default";
-
-
-}
-
-
-
-
 
 
 
 function acquisisciPosizione(){
 
 
+
 if(!navigator.geolocation){
 
-alert("Geolocalizzazione non supportata.");
+
+alert("Geolocalizzazione non disponibile");
+
 
 return;
 
+
 }
+
 
 
 
 navigator.geolocation.getCurrentPosition(
 
 
+
 function(pos){
+
 
 
 let lat=pos.coords.latitude;
 
+
 let lon=pos.coords.longitude;
 
 
-let link="https://maps.google.com/?q="+lat+","+lon;
+
+let link=
+
+"https://maps.google.com/?q="+lat+","+lon;
+
 
 
 document.getElementById("posizione").value=link;
 
 
-let bottone=document.querySelector(".bottonePosizione");
+
+salvaDati();
 
 
-bottone.innerHTML="✓ POSIZIONE ACQUISITA";
 
-bottone.style.background="#16a34a";
+let bottone=document.querySelector(".gps");
+
+
+
+bottone.innerHTML="POSIZIONE ACQUISITA";
+
 
 
 },
@@ -865,39 +1021,80 @@ bottone.style.background="#16a34a";
 
 function(){
 
-alert("Impossibile rilevare la posizione.");
+
+alert("Impossibile rilevare la posizione");
+
 
 }
 
+
+
+);
+
+
+
+}
+
+
+
+
+
+
+
+
+function creaLinkGoogle(titolo,inizio,fine,descrizione,posizione){
+
+
+
+return(
+
+"https://calendar.google.com/calendar/render"
+
++
+
+"?action=TEMPLATE"
+
++
+
+"&text="+encodeURIComponent(titolo)
+
++
+
+"&dates="+inizio+"%2F"+fine
+
++
+
+"&details="+encodeURIComponent(descrizione)
+
++
+
+(posizione ?
+
+"&location="+encodeURIComponent(posizione)
+
+:
+
+"")
 
 );
 
 
 }
 
-
-
-
-
-
-function generaProgramma(){
-
+  function generaProgramma(){
 
 
 let cantiere=document.getElementById("cantiere").value.trim();
 
+let cliente=document.getElementById("cliente").value.trim();
 
 let posizione=document.getElementById("posizione").value.trim();
 
-
 let valoreData=document.getElementById("data").value;
-
 
 let miscele=document.getElementById("miscele").value;
 
-
 let verbale=document.getElementById("verbale").value || "non inserito";
-
 
 
 
@@ -920,6 +1117,11 @@ alert("Selezionare almeno un giorno di rottura");
 return;
 
 }
+
+
+
+
+salvaDati();
 
 
 
@@ -950,20 +1152,28 @@ let cubettiTotali=cubettiPerProva*giorniSelezionati.length;
 
 
 
-let risultato="";
+
+
+let messaggioWhatsApp=
+
+"EDILTEST 2.0 PRO\n\n"+
+
+"Cantiere: "+cantiere+"\n";
 
 
 
 
+if(cliente){
+
+messaggioWhatsApp+=
+
+"Cliente: "+cliente+"\n";
+
+}
 
 
-let descrizioneReport=
 
-"EDILTEST 2.0\n\n"+
-
-"REPORT PRELIEVO\n\n"+
-
-"Cantiere: "+cantiere+"\n"+
+messaggioWhatsApp+=
 
 "Data prelievo: "+formatoData(data)+"\n"+
 
@@ -981,18 +1191,80 @@ let descrizioneReport=
 
 
 
+
+let risultato="";
+
+
+
+
+
+
+
+// REPORT GENERALE
+
+
+
+let descrizioneReport=
+
+"EDILTEST 2.0 PRO\n\n"+
+
+"REPORT PRELIEVO\n\n"+
+
+"Cantiere: "+cantiere+"\n"+
+
+(cliente ? "Cliente: "+cliente+"\n":"")+
+
+"Data prelievo: "+formatoData(data)+"\n"+
+
+"Numero miscele: "+miscele+"\n"+
+
+"Cubetti per prova: "+cubettiPerProva+"\n"+
+
+"Cubetti totali: "+cubettiTotali+"\n"+
+
+"Verbale: "+verbale+"\n\n"+
+
+"PROGRAMMA ROTTURE\n";
+
+
+
+
+
+
 giorniSelezionati.forEach(function(g){
 
 
 let prova=aggiungiGiorni(data,g);
 
 
+
+let testo=g===1 ? "giorno" : "giorni";
+
+
+
 descrizioneReport+=
 
-g+" "+(g===1 ? "giorno" : "giorni")+": "+formatoData(prova)+"\n";
+g+" "+testo+": "+formatoData(prova)+"\n";
+
+
+
+messaggioWhatsApp+=
+
+g+" "+testo+": "+formatoData(prova)+"\n";
+
 
 
 });
+
+
+
+
+
+
+let linkWhatsApp=
+
+"https://wa.me/?text="+encodeURIComponent(messaggioWhatsApp);
+
 
 
 
@@ -1016,9 +1288,12 @@ posizione
 
 
 
+
+
 risultato+=`
 
 <div class="evento">
+
 
 <div class="titoloEvento">
 
@@ -1029,20 +1304,33 @@ REPORT PRELIEVO
 
 <div>
 
-${cantiere} - ${formatoData(data)}
+${cantiere}<br>
+
+${formatoData(data)}
 
 </div>
+
 
 
 <a class="bottoneGoogle"
 
 href="${linkReport}"
 
-target="_blank"
-
-onclick="eventoInserito(this)">
+target="_blank">
 
 INSERISCI IN GOOGLE CALENDAR
+
+</a>
+
+
+
+<a class="bottoneWhatsApp"
+
+href="${linkWhatsApp}"
+
+target="_blank">
+
+INVIA PROGRAMMA WHATSAPP
 
 </a>
 
@@ -1052,7 +1340,14 @@ INSERISCI IN GOOGLE CALENDAR
 `;
 
 
-// EVENTI ROTTURA
+
+
+
+
+
+// EVENTI ROTTURE SINGOLI
+
+
 
 giorniSelezionati.forEach(function(giorno){
 
@@ -1064,11 +1359,13 @@ let dataRottura=aggiungiGiorni(data,giorno);
 
 let descrizione=
 
-"EDILTEST 2.0\n\n"+
+"EDILTEST 2.0 PRO\n\n"+
 
 "PROVA COMPRESSIONE\n\n"+
 
 "Cantiere: "+cantiere+"\n"+
+
+(cliente ? "Cliente: "+cliente+"\n":"")+
 
 "Data prelievo: "+formatoData(data)+"\n"+
 
@@ -1078,15 +1375,25 @@ let descrizione=
 
 "Verbale: "+verbale+"\n"+
 
-"Età provino: "+giorno+" "+(giorno===1 ? "giorno" : "giorni");
+"Età provino: "+giorno+" "+
+
+(giorno===1 ? "giorno":"giorni");
 
 
 
 
 
-let titoloEvento=
 
-cantiere+" - Rottura "+giorno+" "+(giorno===1 ? "giorno" : "giorni");
+let titolo=
+
+cantiere+
+
+" - Rottura "+
+
+giorno+" "+
+
+(giorno===1 ? "giorno":"giorni");
+
 
 
 
@@ -1094,7 +1401,7 @@ cantiere+" - Rottura "+giorno+" "+(giorno===1 ? "giorno" : "giorni");
 
 let link=creaLinkGoogle(
 
-titoloEvento,
+titolo,
 
 formatoGoogle(dataRottura,"090000"),
 
@@ -1117,7 +1424,7 @@ risultato+=`
 
 <div class="titoloEvento">
 
-ROTTURA ${giorno} ${giorno===1 ? "GIORNO" : "GIORNI"}
+ROTTURA ${giorno} ${giorno===1 ? "GIORNO":"GIORNI"}
 
 </div>
 
@@ -1134,15 +1441,12 @@ ${formatoData(dataRottura)}
 
 href="${link}"
 
-target="_blank"
-
-rel="noopener noreferrer"
-
-onclick="eventoInserito(this)">
+target="_blank">
 
 INSERISCI IN GOOGLE CALENDAR
 
 </a>
+
 
 
 </div>
@@ -1157,7 +1461,37 @@ INSERISCI IN GOOGLE CALENDAR
 
 
 
+
+
 document.getElementById("risultato").innerHTML=risultato;
+
+
+
+}
+  function resetDati(){
+
+
+if(confirm("Cancellare tutti i dati inseriti?")){
+
+
+document.getElementById("cantiere").value="";
+
+document.getElementById("cliente").value="";
+
+document.getElementById("posizione").value="";
+
+document.getElementById("miscele").value=1;
+
+document.getElementById("verbale").value="";
+
+
+localStorage.removeItem("ediltest_dati");
+
+
+document.getElementById("risultato").innerHTML="";
+
+
+}
 
 
 
@@ -1166,7 +1500,25 @@ document.getElementById("risultato").innerHTML=risultato;
 
 
 
+
+
 </script>
+
+
+
+
+
+<button 
+class="bottone"
+style="background:#64748b;margin-top:15px;"
+onclick="resetDati()">
+
+NUOVO PRELIEVO / RESET
+
+</button>
+
+
+
 
 
 </body>
