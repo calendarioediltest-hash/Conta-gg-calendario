@@ -258,13 +258,6 @@ Cantiere
 <button class="bottonePosizione" onclick="acquisisciPosizione()">
 📍 RILEVA POSIZIONE CANTIERE
 </button>
-Posizione Google Maps
-
-<span class="info">(opzionale)</span>
-
-</label>
-
-<input id="posizione" placeholder="Incolla link Google Maps">
 
 
 <label>
@@ -703,13 +696,57 @@ return a+m+g+"T"+ora;
 
 
 
-
-
-
 function creaLinkGoogle(titolo,inizio,fine,descrizione,posizione="",colore=""){
+
+return(
+
+"https://calendar.google.com/calendar/render"
+
 +
+
+"?action=TEMPLATE"
+
++
+
+"&text="
+
++
+
+encodeURIComponent(titolo)
+
++
+
+"&dates="
+
++
+
+inizio
+
++
+
+"%2F"
+
++
+
+fine
+
++
+
+"&details="
+
++
+
+encodeURIComponent(descrizione)
+
++
+
 (posizione ? "&location="+encodeURIComponent(posizione) : "")
 
++
+
+(colore ? "&colorId="+colore : "");
+
+}
 return (
 
 "https://calendar.google.com/calendar/render"
@@ -820,7 +857,7 @@ function generaProgramma(){
 
 
 let cantiere=document.getElementById("impianto").value.trim();
-let posizione=document.getElementById("posizione").value.trim();
+
 
 let posizione=document.getElementById("posizione").value.trim();
 
@@ -967,7 +1004,6 @@ g+" "+testo+": "+formatoData(prova)+"\n";
 
 
 
-
 let linkReport=creaLinkGoogle(
 
 cantiere+" - "+formatoData(data),
@@ -978,11 +1014,7 @@ formatoGoogle(data,"170000"),
 
 descrizioneReport,
 
-descrizione,
-
-posizione,
-
-"11"
+posizione
 
 );
 
@@ -1093,34 +1125,12 @@ giorno
 
 let link=creaLinkGoogle(
 
-giorno+" "+(giorno===1 ? "GIORNO" : "GIORNI")
-+
-
-" - "
-
-+
-
-(cubettiPerProva+" CUBETTI")
-
-+
-
-" - "
-
-+
-
-cantiere
-
-+
-
-" - "
-
-+
-
-formatoData(data),
+titolo,
 
 formatoGoogle(dataRottura,"090000"),
 
 formatoGoogle(dataRottura,"100000"),
+
 descrizione,
 
 posizione,
@@ -1128,7 +1138,6 @@ posizione,
 "11"
 
 );
-
 
 
 
