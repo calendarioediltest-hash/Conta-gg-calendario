@@ -253,7 +253,11 @@ Cantiere
 
 <input id="impianto" placeholder="Nome cantiere">
 <label>
+<input type="hidden" id="posizione">
 
+<button class="bottonePosizione" onclick="acquisisciPosizione()">
+📍 RILEVA POSIZIONE CANTIERE
+</button>
 Posizione Google Maps
 
 <span class="info">(opzionale)</span>
@@ -460,7 +464,31 @@ font-weight:700;
 
 }
 
+.bottonePosizione{
 
+display:block;
+
+width:100%;
+
+height:55px;
+
+margin-top:12px;
+
+border:0;
+
+border-radius:15px;
+
+background:#16a34a;
+
+color:white;
+
+font-size:15px;
+
+font-weight:700;
+
+cursor:pointer;
+
+}
 
 </style>
 
@@ -679,7 +707,8 @@ return a+m+g+"T"+ora;
 
 
 function creaLinkGoogle(titolo,inizio,fine,descrizione,posizione="",colore=""){
-
++
+(posizione ? "&location="+encodeURIComponent(posizione) : "")
 
 return (
 
@@ -742,7 +771,45 @@ button.style.cursor="default";
 
 }
 
+function acquisisciPosizione(){
 
+if(!navigator.geolocation){
+
+alert("Geolocalizzazione non supportata.");
+
+return;
+
+}
+
+navigator.geolocation.getCurrentPosition(
+
+function(pos){
+
+const lat=pos.coords.latitude;
+
+const lon=pos.coords.longitude;
+
+const link="https://maps.google.com/?q="+lat+","+lon;
+
+document.getElementById("posizione").value=link;
+
+const bottone=document.querySelector(".bottonePosizione");
+
+bottone.innerHTML="✓ POSIZIONE ACQUISITA";
+
+bottone.style.background="#16a34a";
+
+},
+
+function(){
+
+alert("Impossibile rilevare la posizione.");
+
+}
+
+);
+
+}
 
 
 
@@ -753,6 +820,7 @@ function generaProgramma(){
 
 
 let cantiere=document.getElementById("impianto").value.trim();
+let posizione=document.getElementById("posizione").value.trim();
 
 let posizione=document.getElementById("posizione").value.trim();
 
@@ -910,7 +978,11 @@ formatoGoogle(data,"170000"),
 
 descrizioneReport,
 
-posizione
+descrizione,
+
+posizione,
+
+"11"
 
 );
 
