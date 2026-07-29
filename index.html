@@ -721,7 +721,14 @@ encodeURIComponent(descrizione)
 
 }
 
+function eventoInserito(button){
 
+button.style.background="#16a34a";
+button.innerHTML="✓ GIÀ INSERITO";
+button.style.pointerEvents="none";
+button.style.cursor="default";
+
+}
 
 
 
@@ -915,7 +922,9 @@ ${cantiere} - ${formatoData(data)}
 
 href="${linkReport}"
 
-target="_blank">
+target="_blank"
+
+onclick="eventoInserito(this)">
 
 INSERISCI IN GOOGLE CALENDAR
 
@@ -1037,7 +1046,9 @@ ${formatoData(dataRottura)}
 
 href="${link}"
 
-target="_blank">
+target="_blank"
+rel="noopener noreferrer"
+onclick="eventoInserito(this)">
 
 INSERISCI IN GOOGLE CALENDAR
 
