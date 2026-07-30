@@ -847,29 +847,87 @@ let risultato="";
 ************************/
 
 
+let titoloReport =
+
+"EDILTEST - Report Prelievo - "+
+impianto+
+" - "+
+formatoData(data);
+
+
+
+let descrizioneReportGoogle =
+
+"EDILTEST 2.0\n\n"+
+"REPORT PRELIEVO\n\n"+
+"Impianto: "+impianto+
+"\n"+
+(cantiere ? "Cantiere: "+cantiere+"\n":"")+
+"Data prelievo: "+
+formatoData(data)+
+"\nNumero miscele: "+
+miscele+
+"\nCubetti totali: "+
+cubettiTotali+
+"\nVerbale: "+
+verbale;
+
+
+
+let linkReportGoogle =
+
+creaLinkGoogle(
+
+titoloReport,
+
+formatoGoogle(data,"080000"),
+
+formatoGoogle(data,"090000"),
+
+descrizioneReportGoogle,
+
+posizione
+
+);
+
+
+
+
 risultato += `
 
 <div class="evento">
 
 
 <div class="titoloEvento">
+
 REPORT PRELIEVO
+
 </div>
+
 
 
 <div class="evidenza">
+
 ${cubettiTotali} CUBETTI TOTALI
+
 </div>
 
 
+
 <div class="datoEvento">
+
 Impianto: ${impianto}
+
 </div>
+
 
 
 <div class="datoEvento">
+
 Miscele: ${miscele}
+
 </div>
+
 
 
 <a class="bottoneWhatsApp"
@@ -883,10 +941,21 @@ INVIA REPORT WHATSAPP
 </a>
 
 
+
+<a class="bottoneGoogle"
+
+href="${linkReportGoogle}"
+
+target="_blank">
+
+INSERISCI REPORT GOOGLE CALENDAR
+
+</a>
+
+
 </div>
 
 `;
-
 
 
 
@@ -1102,25 +1171,6 @@ INSERISCI RITIRO GOOGLE CALENDAR
 
 
 
-
-/***********************
- WHATSAPP COMPLETO
-************************/
-
-
-risultato += `
-
-<a class="bottoneWhatsApp"
-
-href="${linkWhatsApp}"
-
-target="_blank">
-
-INVIA PROGRAMMA COMPLETO WHATSAPP
-
-</a>
-
-`;
 
 
 
