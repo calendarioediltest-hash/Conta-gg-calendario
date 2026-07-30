@@ -4,7 +4,6 @@
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>EDILTEST 2.0</title>
@@ -14,6 +13,7 @@
 
 
 <style>
+
 
 *{
 box-sizing:border-box;
@@ -29,7 +29,6 @@ background:linear-gradient(135deg,#cbd5e1,#f8fafc);
 color:#16324f;
 
 }
-
 
 
 .container{
@@ -62,26 +61,7 @@ font-weight:700;
 color:#0b416b;
 
 }
-.eventoRitiro{
-background:#dcfce7;
-border-left:8px solid #16a34a;
-}
 
-.eventoRitiro .titoloEvento{
-color:#15803d;
-}
-
-.eventoRitiro .evidenza{
-color:#15803d;
-}
-
-
-.bottoneInserito{
-background:#16a34a !important;
-color:white;
-cursor:default;
-transform:none !important;
-}
 
 
 .sottotitolo{
@@ -122,7 +102,6 @@ font-weight:600;
 
 font-size:11px;
 color:#64748b;
-font-weight:400;
 
 }
 
@@ -146,7 +125,7 @@ background:white;
 input:focus{
 
 outline:none;
-box-shadow:0 0 0 3px rgba(11,65,107,0.20);
+box-shadow:0 0 0 3px rgba(11,65,107,.20);
 
 }
 
@@ -155,7 +134,7 @@ box-shadow:0 0 0 3px rgba(11,65,107,0.20);
 button{
 
 cursor:pointer;
-transition:0.2s;
+transition:.2s;
 
 }
 
@@ -171,7 +150,7 @@ transform:scale(1.03);
 
 button:active{
 
-transform:scale(0.97);
+transform:scale(.97);
 
 }
 
@@ -209,7 +188,8 @@ font-size:17px;
 }
 
 
-  .contatore{
+
+.contatore{
 
 display:flex;
 justify-content:center;
@@ -285,7 +265,34 @@ background:white;
 border-radius:18px;
 padding:15px;
 margin-top:15px;
-box-shadow:0 5px 15px rgba(0,0,0,0.08);
+box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+}
+
+
+
+/* RITIRO DIFFERENZIATO */
+
+.eventoRitiro{
+
+background:#dcfce7;
+border-left:8px solid #16a34a;
+
+}
+
+
+
+.eventoRitiro .titoloEvento{
+
+color:#15803d;
+
+}
+
+
+
+.eventoRitiro .evidenza{
+
+color:#15803d;
 
 }
 
@@ -354,24 +361,24 @@ font-weight:700;
 
 
 
+.bottoneInserito{
+
+background:#16a34a !important;
+
+}
+
+
 </style>
-
-</head>
-
-
 <body>
 
 
 <div class="container">
 
-
 <div class="app">
 
 
 <div class="titolo">
-
 EDILTEST 2.0
-
 </div>
 
 
@@ -384,47 +391,38 @@ Prelievi • Rotture • Calendario • Comunicazioni
 </div>
 
 
+
 <div class="sezione">
-
 DATI PRELIEVO
-
 </div>
 
 
+
 <label>
-
 Impianto
-
 <span class="info">(obbligatorio)</span>
-
 </label>
-
 
 <input id="impianto" placeholder="Nome impianto">
 
 
+
 <label>
-
 Cantiere
-
 <span class="info">(opzionale)</span>
-
 </label>
-
 
 <input id="cantiere" placeholder="Nome cantiere">
 
 
+
 <label>
-
 Posizione cantiere
-
-<span class="info">(indirizzo o link Maps)</span>
-
+<span class="info">(indirizzo o GPS)</span>
 </label>
 
-
 <input id="posizione" placeholder="Indirizzo cantiere o link Maps">
+
 
 
 <button class="bottone gps" onclick="acquisisciPosizione()">
@@ -434,34 +432,30 @@ RILEVA POSIZIONE CANTIERE
 </button>
 
 
+
+
 <label>
-
 Data prelievo
-
 <span class="info">(automatica)</span>
-
 </label>
-
 
 <input type="date" id="data">
 
 
+
+
 <label>
-
 Numero miscele
-
 <span class="info">(obbligatorio)</span>
-
 </label>
+
 
 
 <div class="contatore">
 
 
 <button onclick="modificaMiscele(-1)">
-
 −
-
 </button>
 
 
@@ -469,32 +463,31 @@ Numero miscele
 
 
 <button onclick="modificaMiscele(1)">
-
 +
-
 </button>
 
 
 </div>
 
 
+
+
+
 <label>
-
 Numero verbale
-
 <span class="info">(opzionale)</span>
-
 </label>
-
 
 <input id="verbale" placeholder="Numero verbale">
 
 
+
+
+
 <div class="sezione">
-
 PROGRAMMA ROTTURE
-
 </div>
+
 
 
 <div class="info">
@@ -504,70 +497,63 @@ Seleziona i giorni di prova da programmare
 </div>
 
 
+
+
 <div class="giorni">
 
 
 <button class="giorno" onclick="selezionaGiorno(this,1)">
-
 1
-
 </button>
 
 
 <button class="giorno" onclick="selezionaGiorno(this,2)">
-
 2
-
 </button>
 
 
 <button class="giorno" onclick="selezionaGiorno(this,3)">
-
 3
-
 </button>
 
 
 <button class="giorno" onclick="selezionaGiorno(this,4)">
-
 4
-
 </button>
 
 
 <button class="giorno attivo" onclick="selezionaGiorno(this,7)">
-
 7
-
 </button>
 
 
 <button class="giorno" onclick="selezionaGiorno(this,14)">
-
 14
-
 </button>
 
 
 <button class="giorno attivo" onclick="selezionaGiorno(this,28)">
-
 28
-
 </button>
 
 
 <button class="giorno attivo" onclick="selezionaGiorno(this,60)">
-
 60
-
 </button>
 
 
-</div><button class="bottone genera" onclick="generaProgramma()">
+</div>
+
+
+
+
+<button class="bottone genera" onclick="generaProgramma()">
 
 GENERA PROGRAMMA CUBETTI
 
 </button>
+
+
 
 
 <div id="risultato">
@@ -575,18 +561,20 @@ GENERA PROGRAMMA CUBETTI
 </div>
 
 
-</div>
-
 
 </div>
 
-
+</div>
 <script>
 
 
 let giorniSelezionati=[7,28,60];
 
 
+
+
+
+// impostazione data odierna
 
 window.onload=function(){
 
@@ -599,52 +587,21 @@ oggi.getMinutes()-oggi.getTimezoneOffset()
 );
 
 
-
 document.getElementById("data").value =
 oggi.toISOString().split("T")[0];
 
 
-caricaDati();
+aggiornaGiorni();
 
 
 };
 
-function salvaDati(){
-
-// SALVATAGGIO DISATTIVATO
-// L'app ora parte sempre pulita
-
-
-}
-
-function caricaDati(){
-
-document.getElementById("impianto").value="";
-document.getElementById("cantiere").value="";
-document.getElementById("posizione").value="";
-document.getElementById("verbale").value="";
-document.getElementById("miscele").value="1";
-
-}
 
 
 
-}
 
 
-
-document.querySelectorAll("input").forEach(function(campo){
-
-
-campo.addEventListener(
-"input",
-salvaDati
-);
-
-
-});
-
-
+// gestione miscele
 
 function modificaMiscele(valore){
 
@@ -657,6 +614,7 @@ let numero =
 parseInt(campo.value)+valore;
 
 
+
 if(numero<1){
 
 numero=1;
@@ -664,9 +622,8 @@ numero=1;
 }
 
 
-campo.value=numero;
 
-salvaDati();
+campo.value=numero;
 
 
 }
@@ -674,11 +631,19 @@ salvaDati();
 
 
 
+
+
+
+
+// selezione giorni rottura
+
 function selezionaGiorno(button,giorno){
+
 
 
 let posizione =
 giorniSelezionati.indexOf(giorno);
+
 
 
 
@@ -713,17 +678,59 @@ return a-b;
 });
 
 
-salvaDati();
+}
+
+
+
+
+
+
+
+function aggiornaGiorni(){
+
+
+document.querySelectorAll(".giorno").forEach(function(button){
+
+
+let giorno =
+Number(button.innerText);
+
+
+
+if(giorniSelezionati.includes(giorno)){
+
+
+button.classList.add("attivo");
 
 
 }
-  
+else{
+
+
+button.classList.remove("attivo");
+
+
+}
+
+
+});
+
+
+}
+
+
+
+
+
+
+
+// calcolo date
+
 function aggiungiGiorni(data,giorni){
 
 
 let nuova =
 new Date(data);
-
 
 
 nuova.setDate(
@@ -741,6 +748,8 @@ return nuova;
 
 
 
+
+
 function formatoData(data){
 
 
@@ -748,15 +757,37 @@ return data.toLocaleDateString("it-IT");
 
 
 }
-function testoGiorni(giorni){
 
-return giorni === 1 
-? "1 giorno"
-: giorni + " giorni";
+
+
+
+
+
+// singolare plurale corretto
+
+function testoGiorni(numero){
+
+
+if(numero===1){
+
+return "1 giorno";
 
 }
 
 
+return numero+" giorni";
+
+
+}
+
+
+
+
+
+
+
+
+// formato Google Calendar
 
 function formatoGoogle(data,ora){
 
@@ -782,20 +813,35 @@ return anno+mese+giorno+"T"+ora;
 
 
 
+
+
+
+// POSIZIONE GPS CORRETTA
+
 function acquisisciPosizione(){
+
+
+
+let pulsante =
+document.querySelector(".gps");
 
 
 
 if(!navigator.geolocation){
 
 
-alert("Geolocalizzazione non disponibile");
+alert("GPS non disponibile su questo dispositivo");
 
 
 return;
 
 
 }
+
+
+
+
+pulsante.innerHTML="RICERCA POSIZIONE...";
 
 
 
@@ -823,19 +869,13 @@ let link =
 
 
 
-
 document.getElementById("posizione").value =
 link;
 
 
 
-document.querySelector(".gps").innerHTML =
-
+pulsante.innerHTML =
 "✓ POSIZIONE ACQUISITA";
-
-
-
-salvaDati();
 
 
 
@@ -843,13 +883,58 @@ salvaDati();
 
 
 
-function(){
+
+function(error){
 
 
-alert("Impossibile rilevare la posizione");
+pulsante.innerHTML =
+"RILEVA POSIZIONE CANTIERE";
+
+
+
+if(error.code===1){
+
+
+alert("Permesso GPS negato");
 
 
 }
+
+else if(error.code===2){
+
+
+alert("Posizione non disponibile");
+
+
+}
+
+else{
+
+
+alert("Errore rilevamento posizione");
+
+
+}
+
+
+
+},
+
+
+
+
+{
+
+enableHighAccuracy:true,
+
+timeout:10000,
+
+maximumAge:0
+
+
+}
+
+
 
 
 
@@ -863,11 +948,12 @@ alert("Impossibile rilevare la posizione");
 
 
 
+
 function creaLinkGoogle(titolo,inizio,fine,descrizione,posizione){
 
 
 
-return(
+return (
 
 "https://calendar.google.com/calendar/render"
 
@@ -902,9 +988,7 @@ return(
 );
 
 
-
 }
-  
 function generaProgramma(){
 
 
@@ -928,19 +1012,18 @@ let miscele =
 Number(document.getElementById("miscele").value);
 
 
+
 let verbale =
 document.getElementById("verbale").value.trim() || "non inserito";
 
 
 
-if(!impianto){
 
+if(!impianto){
 
 alert("Inserire l'impianto");
 
-
 return;
-
 
 }
 
@@ -948,141 +1031,62 @@ return;
 
 if(giorniSelezionati.length===0){
 
-
 alert("Selezionare almeno un giorno di rottura");
 
-
 return;
-
 
 }
 
 
 
-let parti =
-valoreData.split("-");
-
 
 
 let data =
-new Date(
+new Date(valoreData);
 
-Number(parti[0]),
-
-Number(parti[1])-1,
-
-Number(parti[2])
-
-);
 
 
 
 
 let cubettiPerGiornata =
-
-miscele * 2;
-
+miscele*2;
 
 
 let cubettiTotali =
-
-cubettiPerGiornata * giorniSelezionati.length;
-
+cubettiPerGiornata*giorniSelezionati.length;
 
 
 
-let testoCantiere =
-
-cantiere ?
-
-"\nCantiere: "+cantiere
-
-:
-
-"";
 
 
+let risultato="";
+
+
+
+
+
+
+// REPORT PRELIEVO
 
 
 let descrizioneReport =
 
-
 "EDILTEST 2.0\n\n"+
-
 "REPORT PRELIEVO\n\n"+
-
-"Impianto: "+impianto+
-
-testoCantiere+
-
-"\n\n"+
-
-(posizione ?
-
-"Posizione cantiere:\n"+posizione+"\n\n"
-
-:
-
-"")+
-
-"Data prelievo: "+formatoData(data)+"\n"+
-
-"Numero miscele: "+miscele+"\n"+
-
-"Cubetti per giornata: "+cubettiPerGiornata+"\n"+
-
-"Cubetti totali previsti: "+cubettiTotali+"\n"+
-
-"Verbale: "+verbale;
-
-
-
-
-let messaggioWhatsApp = descrizioneReport+
-
-"\n\nPROGRAMMA ROTTURE\n";
+"Impianto: "+impianto+"\n"+
+(cantiere ? "Cantiere: "+cantiere+"\n":"")+
+(posizione ? "Posizione:\n"+posizione+"\n":"")+
+"\nData prelievo: "+formatoData(data)+
+"\nMiscele: "+miscele+
+"\nCubetti totali: "+cubettiTotali+
+"\nVerbale: "+verbale;
 
 
 
 
 
-giorniSelezionati.forEach(function(giorno){
 
-
-let dataRottura =
-aggiungiGiorni(data,giorno);
-
-
-
-messaggioWhatsApp +=
-testoGiorni(giorno)+": "+
-
-formatoData(dataRottura)
-
-+"\n";
-
-
-});
-
-
-
-
-
-let linkWhatsApp =
-
-
-"https://wa.me/?text="+
-
-encodeURIComponent(messaggioWhatsApp);
-
-
-
-
-
-let linkReportGoogle =
-
-
-creaLinkGoogle(
+let linkReport = creaLinkGoogle(
 
 "Report prelievo - "+impianto,
 
@@ -1096,11 +1100,6 @@ posizione
 
 );
 
-
-
-
-
-let risultato = "";
 
 
 
@@ -1119,9 +1118,9 @@ REPORT PRELIEVO
 </div>
 
 
+<div class="evidenza">
 
-<div class="titoloEvento">
-ROTTURA ${testoGiorni(giorno)}
+${cubettiTotali} CUBETTI TOTALI
 
 </div>
 
@@ -1134,13 +1133,11 @@ Impianto: ${impianto}
 </div>
 
 
-
 <div class="datoEvento">
 
 Miscele: ${miscele}
 
 </div>
-
 
 
 <div class="datoEvento">
@@ -1151,18 +1148,8 @@ Cubetti per giornata: ${cubettiPerGiornata}
 
 
 
-<div class="datoEvento">
-
-Posizione: ${posizione || "non inserita"}
-
-</div>
-
-
-
 <a class="bottoneGoogle"
-
-href="${linkReportGoogle}"
-
+href="${linkReport}"
 target="_blank">
 
 INSERISCI REPORT GOOGLE CALENDAR
@@ -1171,110 +1158,68 @@ INSERISCI REPORT GOOGLE CALENDAR
 
 
 
-<a class="bottoneWhatsApp"
-
-href="${linkWhatsApp}"
-
-target="_blank">
-
-INVIA REPORT WHATSAPP
-
-</a>
-
-
-
 </div>
-
 
 `;
 
 
 
+
+
+
+
+
+
+// CREAZIONE ROTTURE
+
+
 giorniSelezionati.forEach(function(giorno){
 
 
-let dataRottura =
 
+let dataRottura =
 aggiungiGiorni(data,giorno);
 
 
 
-let titoloRottura =
 
+let titolo =
 
-"Rottura "+
-
-testoGiorni(giorno)+
-
-" - "+
-
-cubettiPerGiornata+
-
-" cubi - "+
-
-impianto+
-
-" - Prelievo "+
-
-formatoData(data);
+"Rottura "+testoGiorni(giorno)+
+" - "+impianto;
 
 
 
 
 
-let descrizioneRottura =
 
+let descrizione =
 
 "EDILTEST 2.0\n\n"+
-
 "ROTTURA PROVINI\n\n"+
-
-"Impianto: "+impianto+"\n"+
-
-(cantiere ?
-
-"Cantiere: "+cantiere+"\n"
-
-:
-
-"")+
-
-(posizione ?
-
-"Posizione cantiere:\n"+posizione+"\n"
-
-:
-
-"")+
-
-"\n"+
-
-"Data prelievo: "+formatoData(data)+"\n"+
-"Età provino: "+testoGiorni(giorno)+"\n"+
-
-"Cubetti previsti: "+cubettiPerGiornata+"\n"+
-
-"Totale cubetti programmati: "+cubettiTotali;
+"Impianto: "+impianto+
+"\nEtà provino: "+testoGiorni(giorno)+
+"\nCubetti previsti: "+cubettiPerGiornata;
 
 
 
 
-let linkRottura =
 
 
-creaLinkGoogle(
+let link = creaLinkGoogle(
 
-titoloRottura,
+titolo,
 
 formatoGoogle(dataRottura,"090000"),
 
 formatoGoogle(dataRottura,"100000"),
 
-descrizioneRottura,
+descrizione,
 
 posizione
 
 );
+
 
 
 
@@ -1288,7 +1233,7 @@ risultato += `
 
 <div class="titoloEvento">
 
-ROTTURA ${giorno} GIORNI
+ROTTURA ${testoGiorni(giorno)}
 
 </div>
 
@@ -1310,25 +1255,9 @@ Data rottura: ${formatoData(dataRottura)}
 
 
 
-<div class="datoEvento">
-
-Data prelievo: ${formatoData(data)}
-
-</div>
-
-
-
-<div class="datoEvento">
-
-Impianto: ${impianto}
-
-</div>
-
-
-
 <a class="bottoneGoogle"
 
-href="${linkRottura}"
+href="${link}"
 
 target="_blank">
 
@@ -1351,30 +1280,22 @@ INSERISCI ROTTURA GOOGLE CALENDAR
 
 
 
-// pulsante ritiro integrato nel programma
+
+
+
+// RITIRO CUBETTI
+
+
 
 let dataRitiro =
-
 aggiungiGiorni(data,1);
-
 
 
 
 
 let titoloRitiro =
 
-
-"Ritiro cubetti - "+
-
-cubettiTotali+
-
-" cubi - "+
-
-impianto+
-
-" - Prelievo "+
-
-formatoData(data);
+"Ritiro cubetti - "+impianto;
 
 
 
@@ -1382,45 +1303,16 @@ formatoData(data);
 
 let descrizioneRitiro =
 
-
 "EDILTEST 2.0\n\n"+
-
 "RITIRO CUBETTI CANTIERE\n\n"+
-
-"Impianto: "+impianto+"\n"+
-
-(cantiere ?
-
-"Cantiere: "+cantiere+"\n"
-
-:
-
-"")+
-
-(posizione ?
-
-"Posizione cantiere:\n"+posizione+"\n"
-
-:
-
-"")+
-
-"\n"+
-
-"Cubetti totali da ritirare: "+cubettiTotali+"\n"+
-
-"Data prelievo: "+formatoData(data)+"\n"+
-
-"Data ritiro: "+formatoData(dataRitiro);
+"Impianto: "+impianto+
+"\nCubetti da ritirare: "+cubettiTotali;
 
 
 
 
 
-let linkRitiro =
-
-
-creaLinkGoogle(
+let linkRitiro = creaLinkGoogle(
 
 titoloRitiro,
 
@@ -1438,9 +1330,12 @@ posizione
 
 
 
+
 risultato += `
 
+
 <div class="evento eventoRitiro">
+
 
 <div class="titoloEvento">
 
@@ -1458,11 +1353,14 @@ ${cubettiTotali} CUBI DA RITIRARE
 
 
 
+
 <div class="datoEvento">
 
 Data ritiro: ${formatoData(dataRitiro)}
 
 </div>
+
+
 
 
 
@@ -1479,6 +1377,7 @@ INSERISCI RITIRO GOOGLE CALENDAR
 </a>
 
 
+
 </div>
 
 
@@ -1488,107 +1387,48 @@ INSERISCI RITIRO GOOGLE CALENDAR
 
 
 
-document.getElementById("risultato").innerHTML =
 
+
+document.getElementById("risultato").innerHTML =
 risultato;
 
 
 
-salvaDati();
-
-
-
-}
-  
-
-
-// controllo automatico compilazione campi
-
-document.querySelectorAll("input").forEach(function(campo){
-
-
-campo.addEventListener("input",function(){
-
-
-salvaDati();
-
-
-});
-
-
-});
-
-
-
-
-
-// aggiorna i giorni selezionati quando si apre l'app
-
-window.addEventListener("load",function(){
-
-
-
-document.querySelectorAll(".giorno").forEach(function(button){
-
-
-
-let giorno =
-
-Number(button.innerText);
-
-
-
-if(giorniSelezionati.includes(giorno)){
-
-
-button.classList.add("attivo");
-
-
 }
 
-else{
 
 
-button.classList.remove("attivo");
+
+
+
+
+function ritiroInserito(pulsante){
+
+
+pulsante.classList.add("bottoneInserito");
+
+
+pulsante.innerHTML="✓ GIÀ INSERITO";
 
 
 }
 
 
-
-});
-
-
-
-});
-
-
-
-
-
-
-// controllo dati prima della generazione
+// controllo finale dati prima della generazione
 
 function controlloDati(){
 
 
-
 let impianto =
-
 document.getElementById("impianto").value.trim();
 
 
-
 let data =
-
 document.getElementById("data").value;
 
 
-
 let miscele =
-
 Number(document.getElementById("miscele").value);
-
 
 
 
@@ -1598,12 +1438,10 @@ if(!impianto){
 
 alert("Inserire il nome impianto");
 
-
 return false;
 
 
 }
-
 
 
 
@@ -1613,12 +1451,10 @@ if(!data){
 
 alert("Inserire la data del prelievo");
 
-
 return false;
 
 
 }
-
 
 
 
@@ -1628,12 +1464,10 @@ if(miscele<1){
 
 alert("Numero miscele non valido");
 
-
 return false;
 
 
 }
-
 
 
 
@@ -1641,8 +1475,7 @@ return false;
 if(giorniSelezionati.length===0){
 
 
-alert("Selezionare almeno una giornata di rottura");
-
+alert("Selezionare almeno un giorno di rottura");
 
 return false;
 
@@ -1652,9 +1485,7 @@ return false;
 
 
 
-
 return true;
-
 
 
 }
@@ -1663,7 +1494,7 @@ return true;
 
 
 
-// blocco sicurezza per generazione programma
+// sostituzione sicura del pulsante genera
 
 let vecchiaGenera = generaProgramma;
 
@@ -1672,19 +1503,14 @@ let vecchiaGenera = generaProgramma;
 generaProgramma=function(){
 
 
-
 if(!controlloDati()){
 
-
 return;
-
 
 }
 
 
-
 vecchiaGenera();
-
 
 
 };
@@ -1693,52 +1519,11 @@ vecchiaGenera();
 
 
 
-
-
-
-
-// evita date non valide
-
-function creaDataSicura(valore){
-
-
-if(!valore){
-
-
-return new Date();
-
-
-}
-
-
-
-let p = valore.split("-");
-
-
-
-return new Date(
-
-Number(p[0]),
-
-Number(p[1])-1,
-
-Number(p[2])
-
-);
-
-
-
-}
-function ritiroInserito(pulsante){
-
-pulsante.classList.add("bottoneInserito");
-
-pulsante.innerHTML="✓ GIÀ INSERITO";
-
-return false;
-
-}
 </script>
 
+
 </body>
+
 </html>
+
+</head>
