@@ -524,16 +524,26 @@ return a-b;
 
 function testoGiorni(giorni){
 
-
 if(giorni===1){
 
 return "1 giorno";
 
 }
 
-
 return giorni+" giorni";
 
+}
+
+
+function titoloRotturaTesto(giorni){
+
+if(giorni===1){
+
+return "Rottura 1 giorno";
+
+}
+
+return "Rotture "+giorni+" giorni";
 
 }
 
@@ -974,9 +984,9 @@ aggiungiGiorni(data,giorno);
 
 
 
-let titoloRottura =
+let titoloRottura=
 
-"EDILTEST - Rottura "+
+(giorno===1 ? "Rottura " : "Rotture ")+
 testoGiorni(giorno)+
 " - "+
 cubettiPerGiornata+
