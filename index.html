@@ -103,7 +103,7 @@ box-shadow:0 0 0 3px rgba(11,65,107,0.20);
 
 button{
 cursor:pointer;
-transition:0.2s;
+transition:.2s;
 }
 
 
@@ -113,7 +113,7 @@ transform:scale(1.03);
 
 
 button:active{
-transform:scale(0.97);
+transform:scale(.97);
 }
 
 
@@ -198,7 +198,7 @@ background:white;
 border-radius:18px;
 padding:15px;
 margin-top:15px;
-box-shadow:0 5px 15px rgba(0,0,0,0.08);
+box-shadow:0 5px 15px rgba(0,0,0,.08);
 }
 
 
@@ -208,17 +208,17 @@ border-left:8px solid #16a34a;
 }
 
 
-.eventoRitiro .titoloEvento,
-.eventoRitiro .evidenza{
-color:#15803d;
-}
-
-
 .titoloEvento{
 font-size:16px;
 font-weight:700;
 color:#0b416b;
 margin-bottom:8px;
+}
+
+
+.eventoRitiro .titoloEvento,
+.eventoRitiro .evidenza{
+color:#15803d;
 }
 
 
@@ -268,7 +268,12 @@ background:#16a34a !important;
 
 
 </style>
+
+</head>
+
+
 <body>
+
 
 <div class="container">
 
@@ -286,11 +291,9 @@ Prelievi • Rotture • Calendario • Comunicazioni
 </div>
 
 
-
 <div class="sezione">
 DATI PRELIEVO
 </div>
-
 
 
 <label>
@@ -301,14 +304,12 @@ Impianto
 <input id="impianto" placeholder="Nome impianto">
 
 
-
 <label>
 Cantiere
 <span class="info">(opzionale)</span>
 </label>
 
 <input id="cantiere" placeholder="Nome cantiere">
-
 
 
 <label>
@@ -319,30 +320,23 @@ Posizione cantiere
 <input id="posizione" placeholder="Indirizzo cantiere o link Maps">
 
 
-
 <button class="bottone gps" onclick="acquisisciPosizione()">
+
 RILEVA POSIZIONE CANTIERE
+
 </button>
-
-
 
 
 <label>
 Data prelievo
-<span class="info">(automatica)</span>
 </label>
 
 <input type="date" id="data">
 
 
-
-
-
 <label>
 Numero miscele
-<span class="info">(obbligatorio)</span>
 </label>
-
 
 
 <div class="contatore">
@@ -362,17 +356,11 @@ Numero miscele
 </div>
 
 
-
-
 <label>
 Numero verbale
-<span class="info">(opzionale)</span>
 </label>
 
 <input id="verbale" placeholder="Numero verbale">
-
-
-
 
 
 <div class="sezione">
@@ -381,57 +369,31 @@ PROGRAMMA ROTTURE
 
 
 <div class="info">
-Seleziona i giorni di prova da programmare
+Seleziona giorni maturazione
 </div>
-
 
 
 <div class="giorni">
 
 
-<button class="giorno" onclick="selezionaGiorno(this,1)">
-1
-</button>
+<button class="giorno" onclick="selezionaGiorno(this,1)">1</button>
 
+<button class="giorno" onclick="selezionaGiorno(this,2)">2</button>
 
-<button class="giorno" onclick="selezionaGiorno(this,2)">
-2
-</button>
+<button class="giorno" onclick="selezionaGiorno(this,3)">3</button>
 
+<button class="giorno" onclick="selezionaGiorno(this,4)">4</button>
 
-<button class="giorno" onclick="selezionaGiorno(this,3)">
-3
-</button>
+<button class="giorno attivo" onclick="selezionaGiorno(this,7)">7</button>
 
+<button class="giorno" onclick="selezionaGiorno(this,14)">14</button>
 
-<button class="giorno" onclick="selezionaGiorno(this,4)">
-4
-</button>
+<button class="giorno attivo" onclick="selezionaGiorno(this,28)">28</button>
 
-
-<button class="giorno attivo" onclick="selezionaGiorno(this,7)">
-7
-</button>
-
-
-<button class="giorno" onclick="selezionaGiorno(this,14)">
-14
-</button>
-
-
-<button class="giorno attivo" onclick="selezionaGiorno(this,28)">
-28
-</button>
-
-
-<button class="giorno attivo" onclick="selezionaGiorno(this,60)">
-60
-</button>
+<button class="giorno attivo" onclick="selezionaGiorno(this,60)">60</button>
 
 
 </div>
-
-
 
 
 <button class="bottone genera" onclick="generaProgramma()">
@@ -441,10 +403,7 @@ GENERA PROGRAMMA CUBETTI
 </button>
 
 
-
-<div id="risultato">
-
-</div>
+<div id="risultato"></div>
 
 
 </div>
@@ -484,9 +443,12 @@ document.getElementById("posizione").value="";
 document.getElementById("verbale").value="";
 document.getElementById("miscele").value="1";
 
+
 giorniSelezionati=[7,28,60];
 
+
 }
+
 
 
 
@@ -507,7 +469,9 @@ numero=1;
 
 campo.value=numero;
 
+
 }
+
 
 
 
@@ -523,17 +487,22 @@ giorniSelezionati.indexOf(giorno);
 
 if(posizione>=0){
 
+
 giorniSelezionati.splice(posizione,1);
+
 
 button.classList.remove("attivo");
 
-}
 
+}
 else{
+
 
 giorniSelezionati.push(giorno);
 
+
 button.classList.add("attivo");
+
 
 }
 
@@ -552,7 +521,9 @@ return a-b;
 
 
 
+
 function testoGiorni(giorni){
+
 
 if(giorni===1){
 
@@ -560,9 +531,12 @@ return "1 giorno";
 
 }
 
+
 return giorni+" giorni";
 
+
 }
+
 
 
 
@@ -570,9 +544,12 @@ return giorni+" giorni";
 
 function formatoData(data){
 
+
 return data.toLocaleDateString("it-IT");
 
+
 }
+
 
 
 
@@ -580,13 +557,17 @@ return data.toLocaleDateString("it-IT");
 
 function aggiungiGiorni(data,giorni){
 
+
 let nuova=new Date(data);
+
 
 nuova.setDate(
 nuova.getDate()+giorni
 );
 
+
 return nuova;
+
 
 }
 
@@ -594,9 +575,12 @@ return nuova;
 
 
 
+
 function formatoGoogle(data,ora){
 
+
 let anno=data.getFullYear();
+
 
 let mese=
 String(data.getMonth()+1).padStart(2,"0");
@@ -606,9 +590,12 @@ let giorno=
 String(data.getDate()).padStart(2,"0");
 
 
+
 return anno+mese+giorno+"T"+ora;
 
+
 }
+
 
 
 
@@ -617,11 +604,15 @@ return anno+mese+giorno+"T"+ora;
 function acquisisciPosizione(){
 
 
+
 if(!navigator.geolocation){
+
 
 alert("Geolocalizzazione non disponibile");
 
+
 return;
+
 
 }
 
@@ -629,10 +620,12 @@ return;
 
 navigator.geolocation.getCurrentPosition(
 
+
 function(pos){
 
 
 let lat=pos.coords.latitude;
+
 
 let lon=pos.coords.longitude;
 
@@ -657,17 +650,26 @@ document.querySelector(".gps").innerHTML=
 
 function(){
 
-alert("Impossibile rilevare la posizione. Controllare permessi GPS.");
+
+alert("Impossibile rilevare posizione GPS");
+
 
 }
+
 
 );
 
 
+
 }
 
 
+
+
+
+
 function creaLinkGoogle(titolo,inizio,fine,descrizione,posizione){
+
 
 
 return(
@@ -686,10 +688,6 @@ return(
 
 
 }
-
-
-
-
 function generaProgramma(){
 
 
@@ -718,7 +716,6 @@ document.getElementById("verbale").value.trim() || "non inserito";
 
 
 
-
 if(!impianto){
 
 alert("Inserire l'impianto");
@@ -727,6 +724,15 @@ return;
 
 }
 
+
+
+if(!valoreData){
+
+alert("Inserire la data prelievo");
+
+return;
+
+}
 
 
 
@@ -745,9 +751,11 @@ let parti=valoreData.split("-");
 
 
 let data=new Date(
+
 Number(parti[0]),
 Number(parti[1])-1,
 Number(parti[2])
+
 );
 
 
@@ -758,32 +766,31 @@ let cubettiPerGiornata =
 miscele*2;
 
 
-
 let cubettiTotali =
-cubettiPerGiornata*giorniSelezionati.length;
+cubettiPerGiornata *
+giorniSelezionati.length;
 
 
 
 
 
-let descrizioneReport =
+
+/***********************
+ REPORT WHATSAPP
+************************/
+
+
+let messaggioWhatsApp =
 
 "EDILTEST 2.0\n\n"+
 "REPORT PRELIEVO\n\n"+
 "Impianto: "+impianto+"\n"+
 (cantiere ? "Cantiere: "+cantiere+"\n":"")+
-(posizione ? "Posizione:\n"+posizione+"\n":"")+
-"\nData prelievo: "+formatoData(data)+
-"\nNumero miscele: "+miscele+
-"\nCubetti totali: "+cubettiTotali+
-"\nVerbale: "+verbale;
-
-
-
-
-
-let messaggioWhatsApp =
-descrizioneReport+
+(posizione ? "Posizione: "+posizione+"\n":"")+
+"Data prelievo: "+formatoData(data)+"\n"+
+"Numero miscele: "+miscele+"\n"+
+"Cubetti totali: "+cubettiTotali+"\n"+
+"Verbale: "+verbale+
 "\n\nPROGRAMMA ROTTURE\n";
 
 
@@ -800,20 +807,31 @@ aggiungiGiorni(data,giorno);
 
 messaggioWhatsApp +=
 
-testoGiorni(giorno)+": "+
+testoGiorni(giorno)+
+" - "+
 formatoData(dataRottura)+
-"\n";
+" - "+
+cubettiPerGiornata+
+" provini\n";
 
 
 });
 
 
 
+messaggioWhatsApp +=
 
-let linkWhatsApp=
+"\nRITIRO CUBETTI: "+
+cubettiTotali;
+
+
+
+let linkWhatsApp =
 
 "https://wa.me/?text="+
 encodeURIComponent(messaggioWhatsApp);
+
+
 
 
 
@@ -824,9 +842,15 @@ let risultato="";
 
 
 
-risultato+=`
+/***********************
+ BOX REPORT
+************************/
+
+
+risultato += `
 
 <div class="evento">
+
 
 <div class="titoloEvento">
 REPORT PRELIEVO
@@ -849,7 +873,9 @@ Miscele: ${miscele}
 
 
 <a class="bottoneWhatsApp"
+
 href="${linkWhatsApp}"
+
 target="_blank">
 
 INVIA REPORT WHATSAPP
@@ -860,6 +886,16 @@ INVIA REPORT WHATSAPP
 </div>
 
 `;
+
+
+
+
+
+/***********************
+ ROTTURE GOOGLE
+************************/
+
+
 giorniSelezionati.forEach(function(giorno){
 
 
@@ -868,9 +904,10 @@ aggiungiGiorni(data,giorno);
 
 
 
-let titoloRottura=
 
-"Rottura "+
+let titoloRottura =
+
+"EDILTEST - Rottura "+
 testoGiorni(giorno)+
 " - "+
 cubettiPerGiornata+
@@ -882,14 +919,18 @@ formatoData(data);
 
 
 
-let descrizioneRottura=
+
+let descrizioneRottura =
 
 "EDILTEST 2.0\n\n"+
 "ROTTURA PROVINI\n\n"+
 "Impianto: "+impianto+
-"\nEtà maturazione: "+testoGiorni(giorno)+
-"\nNumero provini: "+cubettiPerGiornata+
-"\nData prelievo: "+formatoData(data);
+"\nGiorni maturazione: "+
+testoGiorni(giorno)+
+"\nNumero provini: "+
+cubettiPerGiornata+
+"\nData prelievo: "+
+formatoData(data);
 
 
 
@@ -915,15 +956,17 @@ posizione
 
 
 
-risultato+=`
+risultato += `
 
 <div class="evento">
 
+
 <div class="titoloEvento">
 
-ROTTURA ${testoGiorno(giorno)}
+ROTTURA ${testoGiorni(giorno)}
 
 </div>
+
 
 
 <div class="evidenza">
@@ -933,11 +976,13 @@ ${cubettiPerGiornata} PROVINI
 </div>
 
 
+
 <div class="datoEvento">
 
 Data rottura: ${formatoData(dataRottura)}
 
 </div>
+
 
 
 <a class="bottoneGoogle"
@@ -958,21 +1003,19 @@ INSERISCI ROTTURA GOOGLE CALENDAR
 
 
 });
+/***********************
+ RITIRO CUBETTI GOOGLE
+************************/
 
 
-
-
-
-
-let dataRitiro=
+let dataRitiro =
 aggiungiGiorni(data,1);
 
 
 
+let titoloRitiro =
 
-let titoloRitiro=
-
-"Ritiro "+
+"EDILTEST - Ritiro "+
 cubettiTotali+
 " cubetti - "+
 impianto+
@@ -983,7 +1026,22 @@ formatoData(data);
 
 
 
-let linkRitiro=
+let descrizioneRitiro =
+
+"EDILTEST 2.0\n\n"+
+"RITIRO CUBETTI\n\n"+
+"Impianto: "+
+impianto+
+"\nNumero cubetti: "+
+cubettiTotali+
+"\nData prelievo: "+
+formatoData(data);
+
+
+
+
+
+let linkRitiro =
 
 creaLinkGoogle(
 
@@ -993,9 +1051,7 @@ formatoGoogle(dataRitiro,"080000"),
 
 formatoGoogle(dataRitiro,"090000"),
 
-"EDILTEST 2.0\n\nRitiro cubetti\nNumero cubetti: "+cubettiTotali+
-"\nImpianto: "+impianto+
-"\nData prelievo: "+formatoData(data),
+descrizioneRitiro,
 
 posizione
 
@@ -1005,8 +1061,7 @@ posizione
 
 
 
-
-risultato+=`
+risultato += `
 
 <div class="evento eventoRitiro">
 
@@ -1016,6 +1071,7 @@ risultato+=`
 RITIRO CUBETTI
 
 </div>
+
 
 
 <div class="evidenza">
@@ -1046,6 +1102,12 @@ INSERISCI RITIRO GOOGLE CALENDAR
 
 
 
+
+/***********************
+ WHATSAPP COMPLETO
+************************/
+
+
 risultato += `
 
 <a class="bottoneWhatsApp"
@@ -1062,19 +1124,35 @@ INVIA PROGRAMMA COMPLETO WHATSAPP
 
 
 
-document.getElementById("risultato").innerHTML=risultato;
+
+
+document.getElementById("risultato").innerHTML =
+risultato;
 
 
 }
+
+
+
+
 
 
 function ritiroInserito(pulsante){
 
+
 pulsante.classList.add("bottoneInserito");
 
-pulsante.innerHTML="✓ GIÀ INSERITO";
+
+pulsante.innerHTML =
+"✓ GIÀ INSERITO";
+
 
 }
+/***********************
+ CONTROLLO DATI FINALI
+************************/
+
+
 function controlloDati(){
 
 
@@ -1091,45 +1169,53 @@ Number(document.getElementById("miscele").value);
 
 
 
-
 if(!impianto){
+
 
 alert("Inserire il nome impianto");
 
+
 return false;
 
-}
 
+}
 
 
 
 if(!data){
 
+
 alert("Inserire la data del prelievo");
 
+
 return false;
+
 
 }
 
 
 
+if(miscele < 1){
 
-if(miscele<1){
 
 alert("Numero miscele non valido");
 
+
 return false;
 
-}
 
+}
 
 
 
 if(giorniSelezionati.length===0){
 
-alert("Selezionare almeno una giornata di rottura");
+
+alert("Selezionare almeno un giorno di rottura");
+
 
 return false;
+
 
 }
 
@@ -1144,18 +1230,28 @@ return true;
 
 
 
-let vecchiaGenera=generaProgramma;
+
+/***********************
+ BLOCCO GENERAZIONE
+************************/
+
+
+let vecchiaGenera = generaProgramma;
 
 
 
-generaProgramma=function(){
+generaProgramma = function(){
+
 
 
 if(!controlloDati()){
 
+
 return;
 
+
 }
+
 
 
 vecchiaGenera();
@@ -1167,26 +1263,45 @@ vecchiaGenera();
 
 
 
+
+/***********************
+ SISTEMA PULSANTI GIORNI
+************************/
+
+
 window.addEventListener("load",function(){
+
+
 
 document.querySelectorAll(".giorno").forEach(function(button){
 
-let giorno=Number(button.innerText);
+
+
+let giorno =
+Number(button.innerText);
+
 
 
 if(giorniSelezionati.includes(giorno)){
 
+
 button.classList.add("attivo");
+
 
 }
 
 else{
 
+
 button.classList.remove("attivo");
+
 
 }
 
+
+
 });
+
 
 });
 
@@ -1194,7 +1309,8 @@ button.classList.remove("attivo");
 
 </script>
 
+
 </body>
 
+
 </html>
-</head>
