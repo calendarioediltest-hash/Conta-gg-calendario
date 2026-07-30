@@ -62,7 +62,26 @@ font-weight:700;
 color:#0b416b;
 
 }
+.eventoRitiro{
+background:#dcfce7;
+border-left:8px solid #16a34a;
+}
 
+.eventoRitiro .titoloEvento{
+color:#15803d;
+}
+
+.eventoRitiro .evidenza{
+color:#15803d;
+}
+
+
+.bottoneInserito{
+background:#16a34a !important;
+color:white;
+cursor:default;
+transform:none !important;
+}
 
 
 .sottotitolo{
@@ -807,7 +826,13 @@ return data.toLocaleDateString("it-IT");
 
 
 }
+function testoGiorni(giorni){
 
+return giorni === 1 
+? "1 giorno"
+:testoGiorni(giorno)+": "+
+
+}
 
 
 
@@ -1260,9 +1285,9 @@ let titoloRottura =
 
 "Rottura "+
 
-giorno+
+testoGiorni(giorno)+
 
-" giorni - "+
+" - "+
 
 cubettiPerGiornata+
 
@@ -1497,9 +1522,7 @@ posizione
 
 risultato += `
 
-
-<div class="evento">
-
+<div class="evento eventoRitiro">
 
 <div class="titoloEvento">
 
@@ -1529,12 +1552,13 @@ Data ritiro: ${formatoData(dataRitiro)}
 
 href="${linkRitiro}"
 
-target="_blank">
+target="_blank"
+
+onclick="ritiroInserito(this)">
 
 INSERISCI RITIRO GOOGLE CALENDAR
 
 </a>
-
 
 
 </div>
@@ -1848,6 +1872,13 @@ Number(p[2])
 );
 
 
+
+}
+function ritiroInserito(pulsante){
+
+pulsante.classList.add("bottoneInserito");
+
+pulsante.innerHTML="✓ GIÀ INSERITO";
 
 }
 </script>
