@@ -865,22 +865,15 @@ impianto+
 formatoData(data);
 
 
+let descrizioneReport =
 
-let descrizioneReportGoogle =
-
-"EDILTEST 2.0\n\n"+
-"REPORT PRELIEVO\n\n"+
-"Impianto: "+impianto+
-"\n"+
+"Impianto: "+impianto+"\n"+
 (cantiere ? "Cantiere: "+cantiere+"\n":"")+
-"Data prelievo: "+
-formatoData(data)+
-"\nNumero miscele: "+
-miscele+
-"\nCubetti totali: "+
-cubettiTotali+
-"\nVerbale: "+
-verbale;
+(posizione ? "Posizione: "+posizione+"\n":"")+
+"Data prelievo: "+formatoData(data)+"\n"+
+"Numero miscele: "+miscele+"\n"+
+"Cubetti totali: "+cubettiTotali+"\n"+
+"Verbale: "+verbale;
 
 
 
@@ -999,18 +992,13 @@ formatoData(data);
 
 
 
-let descrizioneRottura =
+let descrizioneRottura=
 
-"EDILTEST 2.0\n\n"+
-"ROTTURA PROVINI\n\n"+
 "Impianto: "+impianto+
-"\nGiorni maturazione: "+
-testoGiorni(giorno)+
-"\nNumero provini: "+
-cubettiPerGiornata+
-"\nData prelievo: "+
-formatoData(data);
-
+"\nCantiere: "+cantiere+
+"\nEtà maturazione: "+testoGiorni(giorno)+
+"\nNumero provini: "+cubettiPerGiornata+
+"\nData prelievo: "+formatoData(data);
 
 
 
@@ -1194,18 +1182,17 @@ risultato;
 
 
 
-
-
-
 function ritiroInserito(pulsante){
-
 
 pulsante.classList.add("bottoneInserito");
 
+pulsante.innerHTML="✓ GIÀ INSERITO";
 
-pulsante.innerHTML =
-"✓ GIÀ INSERITO";
+pulsante.style.background="#16a34a";
 
+pulsante.style.boxShadow="0 0 15px rgba(22,163,74,0.8)";
+
+pulsante.style.pointerEvents="none";
 
 }
 /***********************
