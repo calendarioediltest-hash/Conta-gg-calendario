@@ -609,52 +609,10 @@ caricaDati();
 
 };
 
-
 function salvaDati(){
 
-}
-
-
-localStorage.setItem(
-"ediltest_impianto",
-document.getElementById("impianto").value
-);
-
-
-localStorage.setItem(
-"ediltest_cantiere",
-document.getElementById("cantiere").value
-);
-
-
-localStorage.setItem(
-"ediltest_posizione",
-document.getElementById("posizione").value
-);
-
-
-localStorage.setItem(
-"ediltest_miscele",
-document.getElementById("miscele").value
-);
-
-
-localStorage.setItem(
-"ediltest_verbale",
-document.getElementById("verbale").value
-);
-
-
-localStorage.setItem(
-"ediltest_data",
-document.getElementById("data").value
-);
-
-
-localStorage.setItem(
-"ediltest_giorni",
-JSON.stringify(giorniSelezionati)
-);
+// SALVATAGGIO DISATTIVATO
+// L'app ora parte sempre pulita
 
 
 }
@@ -668,48 +626,7 @@ document.getElementById("verbale").value="";
 document.getElementById("miscele").value="1";
 
 }
-document.getElementById("impianto").value =
-localStorage.getItem("ediltest_impianto") || "";
 
-
-document.getElementById("cantiere").value =
-localStorage.getItem("ediltest_cantiere") || "";
-
-
-document.getElementById("posizione").value =
-localStorage.getItem("ediltest_posizione") || "";
-
-
-document.getElementById("miscele").value =
-localStorage.getItem("ediltest_miscele") || "1";
-
-
-document.getElementById("verbale").value =
-localStorage.getItem("ediltest_verbale") || "";
-
-
-let dataSalvata =
-localStorage.getItem("ediltest_data");
-
-
-if(dataSalvata){
-
-document.getElementById("data").value=dataSalvata;
-
-}
-
-
-
-let giorniSalvati =
-localStorage.getItem("ediltest_giorni");
-
-
-if(giorniSalvati){
-
-giorniSelezionati =
-JSON.parse(giorniSalvati);
-
-}
 
 
 }
@@ -1204,7 +1121,6 @@ REPORT PRELIEVO
 
 
 <div class="titoloEvento">
-
 ROTTURA ${testoGiorni(giorno)}
 
 </div>
@@ -1334,7 +1250,6 @@ let descrizioneRottura =
 "\n"+
 
 "Data prelievo: "+formatoData(data)+"\n"+
-
 "Età provino: "+testoGiorni(giorno)+"\n"+
 
 "Cubetti previsti: "+cubettiPerGiornata+"\n"+
@@ -1819,6 +1734,8 @@ function ritiroInserito(pulsante){
 pulsante.classList.add("bottoneInserito");
 
 pulsante.innerHTML="✓ GIÀ INSERITO";
+
+return false;
 
 }
 </script>
