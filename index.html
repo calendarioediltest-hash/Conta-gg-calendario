@@ -887,7 +887,7 @@ formatoGoogle(data,"080000"),
 
 formatoGoogle(data,"090000"),
 
-descrizioneReportGoogle,
+descrizioneReport,
 
 posizione
 
@@ -995,11 +995,10 @@ formatoData(data);
 let descrizioneRottura=
 
 "Impianto: "+impianto+
-"\nCantiere: "+cantiere+
+(cantiere ? "\nCantiere: "+cantiere : "")+
 "\nEtà maturazione: "+testoGiorni(giorno)+
 "\nNumero provini: "+cubettiPerGiornata+
 "\nData prelievo: "+formatoData(data);
-
 
 
 
@@ -1095,8 +1094,6 @@ formatoData(data);
 
 let descrizioneRitiro =
 
-"EDILTEST 2.0\n\n"+
-"RITIRO CUBETTI\n\n"+
 "Impianto: "+
 impianto+
 "\nNumero cubetti: "+
