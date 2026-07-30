@@ -1133,8 +1133,7 @@ aggiungiGiorni(data,giorno);
 
 
 messaggioWhatsApp +=
-
-giorno+" giorni: "+
+testoGiorni(giorno)+": "+
 
 formatoData(dataRottura)
 
@@ -1199,9 +1198,9 @@ REPORT PRELIEVO
 
 
 
-<div class="evidenza">
+<div class="titoloEvento">
 
-${cubettiTotali} CUBETTI TOTALI
+ROTTURA ${testoGiorni(giorno)}
 
 </div>
 
@@ -1331,7 +1330,7 @@ let descrizioneRottura =
 
 "Data prelievo: "+formatoData(data)+"\n"+
 
-"Età provino: "+giorno+" giorni\n"+
+"Età provino: "+testoGiorni(giorno)+"\n"+
 
 "Cubetti previsti: "+cubettiPerGiornata+"\n"+
 
