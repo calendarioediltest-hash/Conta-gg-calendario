@@ -9,7 +9,6 @@
 
 <title>EDILTEST 2.0</title>
 
-
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
 
 
@@ -181,6 +180,14 @@ background:#16a34a;
 
 
 
+.ritiro{
+
+background:#f59e0b;
+
+}
+
+
+
 .genera{
 
 height:65px;
@@ -188,7 +195,6 @@ background:#0b416b;
 font-size:17px;
 
 }
-
 
   .contatore{
 
@@ -314,8 +320,8 @@ font-weight:700;
 }
 
 
-
 </style>
+
 
 </head>
 
@@ -450,7 +456,7 @@ Numero verbale
 
 <input id="verbale" placeholder="Numero verbale">
 
-<div class="sezione">
+  <div class="sezione">
 
 PROGRAMMA ROTTURE
 
@@ -682,7 +688,6 @@ JSON.parse(giorniSalvati);
 }
 
 
-
 document.querySelectorAll("input").forEach(function(campo){
 
 campo.addEventListener(
@@ -690,7 +695,14 @@ campo.addEventListener(
 salvaDati
 );
 
+campo.addEventListener(
+"input",
+salvaDati
+);
+
 });
+
+
 
 function modificaMiscele(valore){
 
@@ -716,6 +728,7 @@ salvaDati();
 
 
 }
+
 
 
 
@@ -767,6 +780,7 @@ salvaDati();
 
 
 
+
 function aggiungiGiorni(data,giorni){
 
 
@@ -776,9 +790,7 @@ new Date(data);
 
 
 nuova.setDate(
-
 nuova.getDate()+giorni
-
 );
 
 
@@ -807,24 +819,19 @@ return data.toLocaleDateString("it-IT");
 function formatoGoogle(data,ora){
 
 
-
 let anno =
 data.getFullYear();
-
 
 
 let mese =
 String(data.getMonth()+1).padStart(2,"0");
 
 
-
 let giorno =
 String(data.getDate()).padStart(2,"0");
 
 
-
 return anno+mese+giorno+"T"+ora;
-
 
 
 }
@@ -847,6 +854,7 @@ return;
 
 
 }
+
 
 
 
@@ -916,6 +924,7 @@ alert("Impossibile rilevare la posizione");
 
 
 
+
 function creaLinkGoogle(titolo,inizio,fine,descrizione,posizione){
 
 
@@ -950,46 +959,31 @@ return(
 
 "")
 
-
-
 );
 
 
-
 }
-
-
-
-
-
 function programmaRitiro(){
-
 
 
 let impianto =
 document.getElementById("impianto").value.trim();
 
 
-
 let cantiere =
 document.getElementById("cantiere").value.trim();
-
 
 
 let posizione =
 document.getElementById("posizione").value.trim();
 
 
-
 let valoreData =
 document.getElementById("data").value;
 
 
-
 let miscele =
 Number(document.getElementById("miscele").value);
-
-
 
 
 
@@ -1006,6 +1000,17 @@ return;
 
 
 
+if(giorniSelezionati.length===0){
+
+
+alert("Selezionare almeno un giorno di rottura");
+
+
+return;
+
+
+}
+
 
 
 let p =
@@ -1013,8 +1018,7 @@ valoreData.split("-");
 
 
 
-let dataPrelievo =
-new Date(
+let dataPrelievo = new Date(
 
 Number(p[0]),
 
@@ -1026,18 +1030,37 @@ Number(p[2])
 
 
 
+/*
+Ogni miscela genera 2 cubetti.
+Il totale viene calcolato considerando
+tutte le età di rottura selezionate.
+*/
 
-let dataRitiro =
-aggiungiGiorni(dataPrelievo,1);
+
+let cubettiPerMiscela = 2;
+
+
+let cubettiPerRottura =
+
+miscele * cubettiPerMiscela;
 
 
 
 let cubettiTotali =
-miscele * 2 * giorniSelezionati.length;
+
+cubettiPerRottura * giorniSelezionati.length;
+
+
+
+let dataRitiro =
+
+aggiungiGiorni(dataPrelievo,1);
+
 
 
 
 let titolo =
+
 
 "Ritiro cubetti - "+impianto+
 
@@ -1051,7 +1074,10 @@ let titolo =
 
 
 
+
+
 let descrizione =
+
 
 "EDILTEST 2.0\n\n"+
 
@@ -1067,13 +1093,30 @@ let descrizione =
 
 "")+
 
-"Cubetti da ritirare: "+cubettiTotali+"\n"+
+(posizione ?
 
-"Data prelievo: "+formatoData(dataPrelievo);
+"Posizione:\n"+posizione+"\n\n"
+
+:
+
+"\n")+
+
+"Numero miscele: "+miscele+"\n"+
+
+"Cubetti per singola rottura: "+cubettiPerRottura+"\n"+
+
+"Cubetti totali previsti: "+cubettiTotali+"\n\n"+
+
+"Data prelievo: "+formatoData(dataPrelievo)+"\n"+
+
+"Data ritiro: "+formatoData(dataRitiro);
 
 
 
-let link =
+
+
+let linkRitiro =
+
 
 creaLinkGoogle(
 
@@ -1091,15 +1134,21 @@ posizione
 
 
 
+
+
 document.getElementById("risultato").innerHTML += `
+
 
 <div class="evento">
 
+
 <div class="titoloEvento">
 
-RITIRO CUBETTI
+RITIRO CUBETTI CANTIERE
 
 </div>
+
+
 
 <div>
 
@@ -1107,16 +1156,27 @@ Data ritiro: ${formatoData(dataRitiro)}
 
 </div>
 
+
+
 <div>
 
-Cubetti da ritirare: ${cubettiTotali}
+Numero miscele: ${miscele}
 
 </div>
 
 
+
+<div>
+
+Cubetti totali da ritirare: ${cubettiTotali}
+
+</div>
+
+
+
 <a class="bottoneGoogle"
 
-href="${link}"
+href="${linkRitiro}"
 
 target="_blank">
 
@@ -1124,15 +1184,16 @@ INSERISCI RITIRO GOOGLE CALENDAR
 
 </a>
 
+
+
 </div>
+
 
 `;
 
 
 
 }
-
-
 function generaProgramma(){
 
 
@@ -1140,20 +1201,16 @@ let impianto =
 document.getElementById("impianto").value.trim();
 
 
-
 let cantiere =
 document.getElementById("cantiere").value.trim();
-
 
 
 let posizione =
 document.getElementById("posizione").value.trim();
 
 
-
 let valoreData =
 document.getElementById("data").value;
-
 
 
 let miscele =
@@ -1163,7 +1220,6 @@ Number(document.getElementById("miscele").value);
 
 let verbale =
 document.getElementById("verbale").value.trim() || "non inserito";
-
 
 
 
@@ -1198,10 +1254,10 @@ return;
 
 
 
-if(miscele<1){
+if(!valoreData){
 
 
-alert("Numero miscele non valido");
+alert("Inserire una data di prelievo");
 
 
 return;
@@ -1218,8 +1274,7 @@ valoreData.split("-");
 
 
 
-let data =
-new Date(
+let data = new Date(
 
 Number(p[0]),
 
@@ -1233,12 +1288,26 @@ Number(p[2])
 
 
 
+
+/*
+
+CALCOLO CUBETTI
+
+1 miscela = 2 cubetti
+
+totale = miscele × 2 × giorni selezionati
+
+*/
+
+
 let cubettiPerRottura =
+
 miscele * 2;
 
 
 
 let cubettiTotali =
+
 cubettiPerRottura * giorniSelezionati.length;
 
 
@@ -1279,6 +1348,7 @@ testoCantiere+
 
 "")+
 
+
 "Data prelievo: "+formatoData(data)+"\n"+
 
 "Numero miscele: "+miscele+"\n"+
@@ -1290,6 +1360,7 @@ testoCantiere+
 "Verbale: "+verbale+"\n\n"+
 
 "PROGRAMMA ROTTURE\n";
+
 
 
 
@@ -1317,23 +1388,23 @@ testoCantiere+
 
 "")+
 
+
 "Data prelievo: "+formatoData(data)+"\n"+
 
 "Numero miscele: "+miscele+"\n"+
+
+"Cubetti per singola rottura: "+cubettiPerRottura+"\n"+
 
 "Cubetti totali previsti: "+cubettiTotali+"\n"+
 
 "Verbale: "+verbale+"\n\n";
 
 
-
-
-
 giorniSelezionati.forEach(function(giorno){
 
 
-
 let dataRottura =
+
 aggiungiGiorni(data,giorno);
 
 
@@ -1385,6 +1456,13 @@ let risultato = "";
 
 
 
+/*
+
+REPORT PRINCIPALE PRELIEVO
+
+*/
+
+
 risultato += `
 
 <div class="evento">
@@ -1397,6 +1475,7 @@ REPORT PRELIEVO
 </div>
 
 
+
 <div>
 
 Impianto: ${impianto}
@@ -1404,11 +1483,29 @@ Impianto: ${impianto}
 </div>
 
 
+
 <div>
 
-Miscele: ${miscele}
+Cantiere: ${cantiere || "non inserito"}
 
 </div>
+
+
+
+<div>
+
+Numero miscele: ${miscele}
+
+</div>
+
+
+
+<div>
+
+Cubetti per singola rottura: ${cubettiPerRottura}
+
+</div>
+
 
 
 <div>
@@ -1416,6 +1513,15 @@ Miscele: ${miscele}
 Cubetti totali previsti: ${cubettiTotali}
 
 </div>
+
+
+
+<div>
+
+Verbale: ${verbale}
+
+</div>
+
 
 
 <a class="bottoneWhatsApp"
@@ -1429,10 +1535,21 @@ INVIA PROGRAMMA WHATSAPP
 </a>
 
 
+
 </div>
 
 `;
 
+
+
+
+
+
+/*
+
+CREAZIONE EVENTI ROTTURA
+
+*/
 
 
 giorniSelezionati.forEach(function(giorno){
@@ -1442,6 +1559,7 @@ giorniSelezionati.forEach(function(giorno){
 let dataRottura =
 
 aggiungiGiorni(data,giorno);
+
 
 
 
@@ -1464,9 +1582,9 @@ let titoloRottura =
 
 "Rottura "+
 
-cubettiTotali+
+cubettiPerRottura+
 
-(cubettiTotali===1 ?
+(cubettiPerRottura===1 ?
 
 " cubo"
 
@@ -1490,15 +1608,11 @@ impianto+
 
 +
 
-" - Prelievo "+
-
-formatoData(data)
-
-+
-
 " - "+
 
 giorno+" "+testoGiorno;
+
+
 
 
 
@@ -1509,9 +1623,10 @@ let descrizioneRottura =
 
 descrizione+
 
-"\nEtà provino: "+
+"\n\nEtà provino: "+
 
 giorno+" "+testoGiorno;
+
 
 
 
@@ -1533,6 +1648,8 @@ descrizioneRottura,
 posizione
 
 );
+
+
 
 
 
@@ -1606,489 +1723,7 @@ salvaDati();
 }
 
 
-
-</script>
-
-
-</body>
-
-
-</html>
-giorniSelezionati.forEach(function(giorno){
-
-
-let dataRottura =
-
-aggiungiGiorni(data,giorno);
-
-
-
-let testoGiorno =
-
-giorno===1 ?
-
-"giorno"
-
-:
-
-"giorni";
-
-
-
-messaggioWhatsApp +=
-
-giorno+" "+testoGiorno+": "+formatoData(dataRottura)+"\n";
-
-
-
-descrizione +=
-
-giorno+" "+testoGiorno+": "+formatoData(dataRottura)+"\n";
-
-
-
-});
-
-
-
-
-let linkWhatsApp =
-
-
-"https://wa.me/?text="+
-
-encodeURIComponent(messaggioWhatsApp);
-
-
-
-
-
-risultato += `
-
-<div class="evento">
-
-
-<div class="titoloEvento">
-
-REPORT PRELIEVO
-
-</div>
-
-
-
-<div>
-
-Impianto: ${impianto}
-
-</div>
-
-
-
-<div>
-
-Numero miscele: ${miscele}
-
-</div>
-
-
-
-<div>
-
-Cubetti per singola rottura: ${cubettiPerRottura}
-
-</div>
-
-
-
-<div>
-
-Cubetti totali previsti: ${cubettiTotali}
-
-</div>
-
-
-
-<div>
-
-Verbale: ${verbale}
-
-</div>
-
-
-
-<a class="bottoneWhatsApp"
-
-href="${linkWhatsApp}"
-
-target="_blank">
-
-INVIA PROGRAMMA WHATSAPP
-
-</a>
-
-
-
-</div>
-
-`;
-
-
-
-
-giorniSelezionati.forEach(function(giorno){
-
-
-let dataRottura =
-
-aggiungiGiorni(data,giorno);
-
-
-
-let titoloRottura =
-
-
-"Rottura "+
-
-cubettiTotali+
-
-(cubettiTotali===1 ?
-
-" cubo"
-
-:
-
-" cubi")
-
-+
-
-" - "+
-
-impianto+
-
-(cantiere ?
-
-" - "+cantiere
-
-:
-
-"");
-
-
-
-
-let descrizioneRottura =
-
-
-descrizione+
-
-"\nEtà provino: "+
-
-giorno+" "+
-
-(giorno===1 ?
-
-"giorno"
-
-:
-
-"giorni");
-
-
-
-
-let linkRottura =
-
-
-creaLinkGoogle(
-
-titoloRottura,
-
-formatoGoogle(dataRottura,"090000"),
-
-formatoGoogle(dataRottura,"100000"),
-
-descrizioneRottura,
-
-posizione
-
-);
-
-
-
-
-risultato += `
-
-<div class="evento">
-
-
-<div class="titoloEvento">
-
-ROTTURA ${giorno} ${giorno===1 ? "GIORNO" : "GIORNI"}
-
-</div>
-
-
-
-<div>
-
-Data rottura: ${formatoData(dataRottura)}
-
-</div>
-
-
-
-<div>
-
-Cubetti previsti: ${cubettiPerRottura}
-
-</div>
-
-
-
-<a class="bottoneGoogle"
-
-href="${linkRottura}"
-
-target="_blank">
-
-INSERISCI ROTTURA GOOGLE CALENDAR
-
-</a>
-
-
-
-</div>
-
-`;
-
-
-
-});
-
-document.getElementById("risultato").innerHTML =
-
-risultato;
-
-
-salvaDati();
-
-
-}
-
-
-
-
-function programmaRitiro(){
-
-
-let impianto =
-document.getElementById("impianto").value.trim();
-
-
-let cantiere =
-document.getElementById("cantiere").value.trim();
-
-
-let posizione =
-document.getElementById("posizione").value.trim();
-
-
-let valoreData =
-document.getElementById("data").value;
-
-
-let miscele =
-Number(document.getElementById("miscele").value);
-
-
-
-if(!impianto){
-
-
-alert("Inserire l'impianto");
-
-
-return;
-
-
-}
-
-
-
-let p =
-valoreData.split("-");
-
-
-
-let dataPrelievo = new Date(
-
-Number(p[0]),
-
-Number(p[1])-1,
-
-Number(p[2])
-
-);
-
-
-
-let dataRitiro =
-
-aggiungiGiorni(dataPrelievo,1);
-
-
-
-let cubettiTotali =
-
-miscele * 2 * giorniSelezionati.length;
-
-
-
-
-let titolo =
-
-"Ritiro cubetti - "+impianto+
-
-(cantiere ?
-
-" - "+cantiere
-
-:
-
-"");
-
-
-
-
-
-let descrizione =
-
-
-"EDILTEST 2.0\n\n"+
-
-"RITIRO CUBETTI CANTIERE\n\n"+
-
-"Impianto: "+impianto+"\n"+
-
-(cantiere ?
-
-"Cantiere: "+cantiere+"\n"
-
-:
-
-"")+
-
-(posizione ?
-
-"Posizione:\n"+posizione+"\n"
-
-:
-
-"")+
-
-"\n"+
-
-"Cubetti da ritirare: "+cubettiTotali+"\n"+
-
-"Data prelievo: "+formatoData(dataPrelievo)+"\n"+
-
-"Data ritiro: "+formatoData(dataRitiro);
-
-
-
-
-
-let linkRitiro =
-
-
-creaLinkGoogle(
-
-titolo,
-
-formatoGoogle(dataRitiro,"080000"),
-
-formatoGoogle(dataRitiro,"090000"),
-
-descrizione,
-
-posizione
-
-);
-
-
-
-
-document.getElementById("risultato").innerHTML += `
-
-
-<div class="evento">
-
-
-<div class="titoloEvento">
-
-RITIRO CUBETTI
-
-</div>
-
-
-
-<div>
-
-Data ritiro: ${formatoData(dataRitiro)}
-
-</div>
-
-
-
-<div>
-
-Cubetti da ritirare: ${cubettiTotali}
-
-</div>
-
-
-
-<a class="bottoneGoogle"
-
-href="${linkRitiro}"
-
-target="_blank">
-
-INSERISCI RITIRO GOOGLE CALENDAR
-
-</a>
-
-
-
-</div>
-
-
-`;
-
-
-
-}
-
-
-// Salvataggio automatico anche durante la compilazione
-
-document.querySelectorAll("input").forEach(function(campo){
-
-
-campo.addEventListener("input",function(){
-
-
-salvaDati();
-
-
-});
-
-
-});
-
-
-
-// Aggiorna stato giorni selezionati al caricamento
+// Aggiorna stato pulsanti giorni al caricamento
 
 window.addEventListener("load",function(){
 
@@ -2096,11 +1731,11 @@ window.addEventListener("load",function(){
 document.querySelectorAll(".giorno").forEach(function(button){
 
 
-let testo = Number(button.innerText);
+let giorno = Number(button.innerText);
 
 
 
-if(giorniSelezionati.includes(testo)){
+if(giorniSelezionati.includes(giorno)){
 
 
 button.classList.add("attivo");
@@ -2118,6 +1753,7 @@ button.classList.remove("attivo");
 
 
 });
+
 
 
 });
