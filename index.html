@@ -610,8 +610,9 @@ caricaDati();
 };
 
 
-
 function salvaDati(){
+
+}
 
 
 localStorage.setItem(
@@ -658,11 +659,15 @@ JSON.stringify(giorniSelezionati)
 
 }
 
-
-
 function caricaDati(){
 
+document.getElementById("impianto").value="";
+document.getElementById("cantiere").value="";
+document.getElementById("posizione").value="";
+document.getElementById("verbale").value="";
+document.getElementById("miscele").value="1";
 
+}
 document.getElementById("impianto").value =
 localStorage.getItem("ediltest_impianto") || "";
 
@@ -1771,69 +1776,6 @@ vecchiaGenera();
 
 
 
-
-
-
-// RIPRISTINO SICURO DATI ALL'AVVIO
-
-window.addEventListener("load",function(){
-
-
-let campi = [
-
-"impianto",
-
-"cantiere",
-
-"posizione",
-
-"verbale"
-
-];
-
-
-
-campi.forEach(function(id){
-
-
-let valore = localStorage.getItem("ediltest_"+id);
-
-
-
-if(valore !== null){
-
-
-document.getElementById(id).value = valore;
-
-
-}
-
-
-});
-
-
-
-
-
-let misceleSalvate =
-
-localStorage.getItem("ediltest_miscele");
-
-
-
-if(misceleSalvate){
-
-
-document.getElementById("miscele").value = misceleSalvate;
-
-
-}
-
-
-
-
-
-});
 
 
 
