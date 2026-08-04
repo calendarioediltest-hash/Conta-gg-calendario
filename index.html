@@ -264,11 +264,11 @@ font-weight:700;
 
 .bottoneInserito{
 background:#16a34a !important;
+box-shadow:0 0 15px rgba(22,163,74,.8);
 }
 
 
 </style>
-
 </head>
 
 
@@ -320,7 +320,7 @@ Posizione cantiere
 <input id="posizione" placeholder="Indirizzo cantiere o link Maps">
 
 
-<button class="bottone gps" onclick="acquisisciPosizione()">
+<button class="bottone gps" onclick="acquisisciPosizione">
 
 RILEVA POSIZIONE CANTIERE
 
@@ -409,6 +409,8 @@ GENERA PROGRAMMA CUBETTI
 </div>
 
 </div>
+
+
 <script>
 
 
@@ -471,12 +473,6 @@ campo.value=numero;
 
 
 }
-
-
-
-
-
-
 function selezionaGiorno(button,giorno){
 
 
@@ -521,7 +517,6 @@ return a-b;
 
 
 
-
 function testoGiorni(giorni){
 
 if(giorni===1){
@@ -533,6 +528,9 @@ return "1 giorno";
 return giorni+" giorni";
 
 }
+
+
+
 
 
 function titoloRotturaTesto(giorni){
@@ -874,9 +872,6 @@ let descrizioneReport =
 "Numero miscele: "+miscele+"\n"+
 "Cubetti totali: "+cubettiTotali+"\n"+
 "Verbale: "+verbale;
-
-
-
 let linkReportGoogle =
 
 creaLinkGoogle(
@@ -949,7 +944,9 @@ INVIA REPORT WHATSAPP
 
 href="${linkReportGoogle}"
 
-target="_blank">
+target="_blank"
+
+onclick="calendarioInserito(this)">
 
 INSERISCI REPORT GOOGLE CALENDAR
 
@@ -979,7 +976,7 @@ aggiungiGiorni(data,giorno);
 
 let titoloRottura=
 
-(giorno===1 ? "Rottura " : "Rotture ")+
+"Rotture "+
 testoGiorni(giorno)+
 " - "+
 cubettiPerGiornata+
@@ -1029,7 +1026,7 @@ risultato += `
 
 <div class="titoloEvento">
 
-${giorno===1 ? "ROTTURA 1 giorno" : "ROTTURE "+giorno+" giorni"}
+ROTTURE ${testoGiorni(giorno)}
 
 </div>
 
@@ -1055,9 +1052,11 @@ Data rottura: ${formatoData(dataRottura)}
 
 href="${linkRottura}"
 
-target="_blank">
+target="_blank"
 
-INSERISCI ROTTURA GOOGLE CALENDAR
+onclick="calendarioInserito(this)">
+
+INSERISCI ROTTURE GOOGLE CALENDAR
 
 </a>
 
@@ -1069,7 +1068,7 @@ INSERISCI ROTTURA GOOGLE CALENDAR
 
 
 });
-/***********************
+ /***********************
  RITIRO CUBETTI GOOGLE
 ************************/
 
@@ -1152,7 +1151,7 @@ href="${linkRitiro}"
 
 target="_blank"
 
-onclick="ritiroInserito(this)">
+onclick="calendarioInserito(this)">
 
 INSERISCI RITIRO GOOGLE CALENDAR
 
@@ -1179,20 +1178,25 @@ risultato;
 
 
 
-function ritiroInserito(pulsante){
+
+
+
+function calendarioInserito(pulsante){
+
 
 pulsante.classList.add("bottoneInserito");
 
+
 pulsante.innerHTML="✓ GIÀ INSERITO";
 
-pulsante.style.background="#16a34a";
-
-pulsante.style.boxShadow="0 0 15px rgba(22,163,74,0.8)";
 
 pulsante.style.pointerEvents="none";
 
+
 }
-/***********************
+
+
+ /***********************
  CONTROLLO DATI FINALI
 ************************/
 
@@ -1306,9 +1310,7 @@ vecchiaGenera();
 
 
 
-
-
-/***********************
+ /***********************
  SISTEMA PULSANTI GIORNI
 ************************/
 
