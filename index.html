@@ -606,51 +606,39 @@ return anno+mese+giorno+"T"+ora;
 
 
 
-
-
-
 function acquisisciPosizione(){
 
+let pulsante=document.querySelector(".gps");
+
+pulsante.innerHTML="⏳ RICERCA GPS...";
 
 
 if(!navigator.geolocation){
 
+alert("GPS non disponibile");
 
-alert("Geolocalizzazione non disponibile");
-
+pulsante.innerHTML="RILEVA POSIZIONE CANTIERE";
 
 return;
-
 
 }
 
 
-
 navigator.geolocation.getCurrentPosition(
-
 
 function(pos){
 
-
 let lat=pos.coords.latitude;
-
-
 let lon=pos.coords.longitude;
-
-
 
 let link=
 "https://maps.google.com/?q="+lat+","+lon;
 
 
-
 document.getElementById("posizione").value=link;
 
 
-
-document.querySelector(".gps").innerHTML=
-"✓ POSIZIONE ACQUISITA";
-
+pulsante.innerHTML="✓ POSIZIONE ACQUISITA";
 
 
 },
@@ -658,24 +646,25 @@ document.querySelector(".gps").innerHTML=
 
 function(){
 
+pulsante.innerHTML="RILEVA POSIZIONE CANTIERE";
 
-alert("Impossibile rilevare posizione GPS");
+alert("Attiva la posizione GPS e riprova");
 
 
+},
+
+
+{
+enableHighAccuracy:false,
+timeout:5000,
+maximumAge:60000
 }
 
 
 );
 
 
-
 }
-
-
-
-
-
-
 function creaLinkGoogle(titolo,inizio,fine,descrizione,posizione){
 
 
