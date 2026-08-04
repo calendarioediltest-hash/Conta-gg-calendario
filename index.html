@@ -35,21 +35,69 @@ margin:auto;
 
 .testataLogo{
 
-height:170px;
-
 display:flex;
+
 justify-content:center;
+
 align-items:center;
 
-margin:0 auto 10px;
+margin:0 auto 5px;
+
+height:150px;
+
+position:relative;
+
+}
+
+
+/* effetto luce dietro al logo */
+
+.testataLogo::before{
+
+content:"";
+
+position:absolute;
+
+width:330px;
+
+height:120px;
 
 background:
-linear-gradient(
-135deg,
-#0b416b,
-#155e9a,
-#0b416b
+radial-gradient(
+ellipse,
+rgba(255,255,255,0.9),
+rgba(148,163,184,0.25) 45%,
+transparent 75%
 );
+
+filter:blur(20px);
+
+z-index:0;
+
+}
+
+
+/* logo vero */
+
+.logoAzienda{
+
+width:360px;
+
+max-width:95%;
+
+height:auto;
+
+position:relative;
+
+z-index:2;
+
+filter:
+
+drop-shadow(0 4px 3px rgba(255,255,255,.8))
+
+drop-shadow(0 12px 18px rgba(11,65,107,.45));
+
+}
 
 border-radius:25px;
 
