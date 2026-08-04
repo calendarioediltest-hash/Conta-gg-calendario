@@ -33,24 +33,47 @@ margin:auto;
 }
 
 
+.testataLogo{
+
+height:170px;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+margin:0 auto 10px;
+
+background:
+linear-gradient(
+135deg,
+#0b416b,
+#155e9a,
+#0b416b
+);
+
+border-radius:25px;
+
+box-shadow:
+0 10px 25px rgba(11,65,107,.35),
+inset 0 2px 8px rgba(255,255,255,.25);
+
+overflow:hidden;
+
+}
+
+
 .logoAzienda{
 
-display:block;
+width:340px;
 
-width:280px;
-max-width:90%;
+max-width:95%;
 
-margin:5px auto 5px;
+height:auto;
 
 object-fit:contain;
 
 filter:
-drop-shadow(0 15px 25px rgba(11,65,107,0.20));
-
-mix-blend-mode:multiply;
-
-animation:
-comparsaLogo .8s ease;
+drop-shadow(0 8px 12px rgba(0,0,0,.35));
 
 }
 .logoAzienda{
@@ -141,7 +164,7 @@ color:#0b416b;
 text-align:center;
 font-size:12px;
 color:#64748b;
-margin-bottom:20px;
+margin-bottom:10px;
 }
 
 
@@ -366,7 +389,9 @@ box-shadow:0 0 15px rgba(22,163,74,.8);
 <div class="app">
 
 
+<<div class="testataLogo">
 <img src="logo.png" class="logoAzienda">
+</div>
 
 
 <div class="sottotitolo">
